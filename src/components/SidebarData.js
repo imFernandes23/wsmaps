@@ -3,25 +3,25 @@ import * as AiIcons from 'react-icons/ai'
 
 export const SidebarData = [
     {
-        title: 'Main',
+        title: 'Navegar',
         path: '/',
         icon: <AiIcons.AiOutlineEnvironment/>,
         cName: 'nav-text'
     },
     {
-        title: 'Statistics',
+        title: 'Estatisticas',
         path: '/statistics',
         icon: <AiIcons.AiOutlineFund/>,
         cName: 'nav-text'
     },
     {
-        title: 'About',
+        title: 'Sobre',
         path: '/about',
         icon: <AiIcons.AiOutlineInfoCircle/>,
         cName: 'nav-text'
     },
     {
-        title: 'Credits',
+        title: 'Creditos',
         path: '/credits',
         icon: <AiIcons.AiOutlinePicRight/>,
         cName: 'nav-text'

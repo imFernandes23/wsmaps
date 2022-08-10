@@ -1,5 +1,5 @@
 .sidebar{
-    background-color: black;
+    background-color: #0442BF;
     height: 80px;
     display: flex;
     justify-content: start;
@@ -14,7 +14,7 @@
 }
 
 .side-menu{
-    background-color:bisque ;
+    background-color:#0455BF ;
     width: 200px;
     height: 100vh;
     display: flex;
@@ -52,7 +52,7 @@
 }
 
 .nav-text a:hover{
-    background-color: aqua;
+    background-color: #0468BF;
 }
 
 .side-menu-itens{
@@ -60,7 +60,7 @@
 }
 
 .sidebar-toggle{
-   background-color: bisque;
+   background-color: #0455BF;
    width: 100%;
    height: 80px;
    display: flex;

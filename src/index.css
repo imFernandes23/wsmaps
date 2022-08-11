@@ -8,3 +8,16 @@
     font-size: 16px;
 }
 
+.Page{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: lightblue;
+}
+.map{
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+.map-container{
+  width: 100%;
+  height: calc(100vh - 80px);
+}

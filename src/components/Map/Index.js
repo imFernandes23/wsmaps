@@ -1,5 +1,5 @@
 import React, {useMemo, onLoad} from "react";
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF, PolygonF } from "@react-google-maps/api";
 import {MapStyle} from "./MapStyle";
 
 export default function Index() {
@@ -11,7 +11,7 @@ export default function Index() {
     return <Map />;
 }
 
-
+console.log('renderizou')
 
 function Map(){
     const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])

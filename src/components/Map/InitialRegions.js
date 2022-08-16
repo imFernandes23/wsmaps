@@ -1,12 +1,18 @@
 import React from "react";
-import { PolygonF } from "@react-google-maps/api";
+import { PolygonF, Marker } from "@react-google-maps/api";
 import { useMemo } from "react";
 
 export default function InitialRegions(props){
+
+    const arryaPath = []
+    const propsArray = props.paths.limites.features[0].geometry.coordinates[0]
+
+    propsArray.map(propsArray => arryaPath.push({lat: propsArray[1] , lng: propsArray[0]}))
+
     const options = useMemo(() => ({
-        fillColor: "lightblue",
-        fillOpacity: 1,
-        strokeColor: "red",
+        fillColor: "#0468BF",
+        fillOpacity: 0.4,
+        strokeColor: "#0455BF",
         strokeOpacity: 1,
         strokeWeight: 2,
         clickable: true,
@@ -19,7 +25,7 @@ export default function InitialRegions(props){
     return(
         <PolygonF
             options={options}
-            path={props.path}
+            path={arryaPath}
             onClick={props.onClick}
         />
     )

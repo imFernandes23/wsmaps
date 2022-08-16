@@ -3,6 +3,8 @@ import { GoogleMap, useLoadScript, MarkerF, PolygonF } from "@react-google-maps/
 import {MapStyle} from "./MapStyle";
 import InitialRegions from "./InitialRegions";
 import { useRoutes } from "react-router-dom";
+import Regions from "../../data/Regions"
+
 
 export default function Index() {
     const { isLoaded } = useLoadScript({
@@ -30,8 +32,15 @@ function Map(){
             center={center} 
             mapContainerClassName="map-container"
             options={options}
-            onLoad={onLoad}
+            
         >
+        {regionIsSet ? console.log('selecionei uma região'): Regions.map((item) => {
+            return(<InitialRegions 
+                key={item.id}
+                paths={item}
+                label={item.nome}
+            />)
+        })}
         </GoogleMap>
     )
 }

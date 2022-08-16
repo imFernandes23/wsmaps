@@ -1,6 +1,8 @@
-import React, {useMemo, onLoad} from "react";
+import React, {useMemo, onLoad, useState} from "react";
 import { GoogleMap, useLoadScript, MarkerF, PolygonF } from "@react-google-maps/api";
 import {MapStyle} from "./MapStyle";
+import InitialRegions from "./InitialRegions";
+import { useRoutes } from "react-router-dom";
 
 export default function Index() {
     const { isLoaded } = useLoadScript({
@@ -11,16 +13,16 @@ export default function Index() {
     return <Map />;
 }
 
-console.log('renderizou')
-
 function Map(){
+    const [regionIsSet, setRegionIsSet] = useState(false)
     const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])
     const options = useMemo(() => ({
         disableDefaultUI: true,
         clickableIcons: false,
         styles: MapStyle,
         
-    }), []) 
+    }), [])
+
 
     return (
         <GoogleMap 
@@ -30,7 +32,6 @@ function Map(){
             options={options}
             onLoad={onLoad}
         >
-            <MarkerF position={center}/>
         </GoogleMap>
     )
 }

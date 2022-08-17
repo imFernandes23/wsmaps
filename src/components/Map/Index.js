@@ -39,6 +39,7 @@ function Map(){
                 key={item.id}
                 paths={item}
                 label={item.nome}
+                
             />)
         })}
         </GoogleMap>

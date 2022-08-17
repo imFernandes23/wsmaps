@@ -4,6 +4,7 @@ import {MapStyle} from "./MapStyle";
 import InitialRegions from "./InitialRegions";
 import Regions from "../../data/Regions"
 import ButtonRedo from "../buttons/ButtonRedo";
+import RegionsSelector from "../selectors/RegionsSelector";
 
 
 export default function Index() {
@@ -16,7 +17,8 @@ export default function Index() {
 }
 
 function Map(){
-    const [regionIsSet, setRegionIsSet] = useState(false)
+    const [regionIsSet, setRegionIsSet] = useState(false);
+    const [regionSelected, setRegionSelected] = useState();
     const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])
     const options = useMemo(() => ({
         disableDefaultUI: true,
@@ -28,12 +30,13 @@ function Map(){
     function handleSetRegion(id) {
         console.log("seelcionei a região" + id)
         setRegionIsSet(!regionIsSet)
+        setRegionSelected(id)
+        
     }
 
-
-
     return (
-        <>
+        <>  
+            
             <GoogleMap 
                 zoom={12.8} //useState
                 center={center} //useState
@@ -41,6 +44,10 @@ function Map(){
                 options={options}
                 
             >
+            <RegionsSelector 
+            regioes={Regions}
+            
+            />
             {regionIsSet ? 
                 (<ButtonRedo onClick={() => setRegionIsSet(!regionIsSet)}/>)
                     : 

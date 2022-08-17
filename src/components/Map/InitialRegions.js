@@ -28,7 +28,7 @@ export default function InitialRegions(props){
         <PolygonF
             options={options}
             path={arryaPath}
-            onClick={props.onClick}
+            onClick={() => props.onClick()}
         />
         <MarkerF
             position={center}

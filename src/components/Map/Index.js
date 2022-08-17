@@ -2,8 +2,8 @@ import React, {useMemo, onLoad, useState} from "react";
 import { GoogleMap, useLoadScript, MarkerF, PolygonF } from "@react-google-maps/api";
 import {MapStyle} from "./MapStyle";
 import InitialRegions from "./InitialRegions";
-import { useRoutes } from "react-router-dom";
 import Regions from "../../data/Regions"
+import ButtonRedo from "../buttons/ButtonRedo";
 
 
 export default function Index() {
@@ -25,23 +25,34 @@ function Map(){
         
     }), [])
 
+    function handleSetRegion(id) {
+        console.log("seelcionei a região" + id)
+        setRegionIsSet(!regionIsSet)
+    }
+
+
 
     return (
-        <GoogleMap 
-            zoom={12.8} 
-            center={center} 
-            mapContainerClassName="map-container"
-            options={options}
-            
-        >
-        {regionIsSet ? console.log('selecionei uma região'): Regions.map((item) => {
-            return(<InitialRegions 
-                key={item.id}
-                paths={item}
-                label={item.nome}
+        <>
+            <GoogleMap 
+                zoom={12.8} //useState
+                center={center} //useState
+                mapContainerClassName="map-container"
+                options={options}
                 
-            />)
-        })}
-        </GoogleMap>
+            >
+            {regionIsSet ? 
+                (<ButtonRedo onClick={() => setRegionIsSet(!regionIsSet)}/>)
+                    : 
+                Regions.map((item) => {
+                return(<InitialRegions 
+                    key={item.id}
+                    paths={item}
+                    label={item.nome}
+                    onClick={() => handleSetRegion(item.id)}
+                />)
+            })}
+            </GoogleMap>
+        </>
     )
 }

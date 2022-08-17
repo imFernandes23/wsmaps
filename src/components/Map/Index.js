@@ -17,8 +17,7 @@ export default function Index() {
 }
 
 function Map(){
-    const [regionIsSet, setRegionIsSet] = useState(false);
-    const [regionSelected, setRegionSelected] = useState();
+    const [regionSelected, setRegionSelected] = useState(null);
     const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])
     const options = useMemo(() => ({
         disableDefaultUI: true,
@@ -27,9 +26,10 @@ function Map(){
         
     }), [])
 
+    console.log(regionSelected)
+
     function handleSetRegion(id) {
-        console.log("seelcionei a região" + id)
-        setRegionIsSet(!regionIsSet)
+        console.log("selecionei a região" + id)
         setRegionSelected(id)
         
     }
@@ -46,10 +46,10 @@ function Map(){
             >
             <RegionsSelector 
             regioes={Regions}
-            
+            onChange={setRegionSelected}
             />
-            {regionIsSet ? 
-                (<ButtonRedo onClick={() => setRegionIsSet(!regionIsSet)}/>)
+            {regionSelected !== null ? 
+                (<ButtonRedo onClick={() => setRegionSelected(null)}/>)
                     : 
                 Regions.map((item) => {
                 return(<InitialRegions 

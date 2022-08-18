@@ -1,19 +1,20 @@
 import React from 'react'
 import './RegionsSelector.css'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 
 export default function RegionsSelector(props){
     const [selectedRegion, setSelectedRegion] = useState('')
-    const arraySupport = []
-    props.regioes.map(item => arraySupport.push(item.nome))
+    const arraySupport = ["",]
+
+    props.regioes.map(item => arraySupport.push([item.nome, item.id]))
+    
 
     const handleSetRegion = event => {
+        const found = arraySupport.findIndex(element => element[0] === (event.target.value))
         setSelectedRegion(event.target.value);
-        const found = arraySupport.findIndex(element => element === (event.target.value))
-        props.onChange(found + 1)
-
-        
+        props.onChange(arraySupport[found][1])
     }
+
 
     return(
         <select className='regions-selector' value={selectedRegion} onChange={handleSetRegion} >

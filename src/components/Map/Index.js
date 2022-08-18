@@ -1,5 +1,5 @@
-import React, {useMemo, onLoad, useState} from "react";
-import { GoogleMap, useLoadScript, MarkerF, PolygonF } from "@react-google-maps/api";
+import React, {useMemo, useState} from "react";
+import { GoogleMap, useLoadScript} from "@react-google-maps/api";
 import {MapStyle} from "./MapStyle";
 import InitialRegions from "./InitialRegions";
 import Regions from "../../data/Regions"
@@ -17,7 +17,7 @@ export default function Index() {
 }
 
 function Map(){
-    const [regionSelected, setRegionSelected] = useState(null);
+    const [regionSelected, setRegionSelected] = useState(null); // id da região selecionada no momento
     const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])
     const options = useMemo(() => ({
         disableDefaultUI: true,
@@ -29,7 +29,7 @@ function Map(){
     console.log(regionSelected)
 
     function handleSetRegion(id) {
-        console.log("selecionei a região" + id)
+        console.log("selecionei a região com o id " + id)
         setRegionSelected(id)
         
     }
@@ -44,21 +44,22 @@ function Map(){
                 options={options}
                 
             >
-            <RegionsSelector 
-            regioes={Regions}
-            onChange={setRegionSelected}
-            />
+            
             {regionSelected !== null ? 
                 (<ButtonRedo onClick={() => setRegionSelected(null)}/>)
-                    : 
-                Regions.map((item) => {
+                    : (<>
+                {Regions.map((item) => {
                 return(<InitialRegions 
                     key={item.id}
                     paths={item}
                     label={item.nome}
                     onClick={() => handleSetRegion(item.id)}
-                />)
-            })}
+                />)})}
+                    <RegionsSelector 
+                        regioes={Regions}
+                        onChange={setRegionSelected}/>
+
+                </>)}
             </GoogleMap>
         </>
     )

@@ -1,6 +1,5 @@
 import React from "react";
 import { PolygonF, MarkerF } from "@react-google-maps/api";
-import { useMemo } from "react";
 
 export default function InitialRegions(props){
 
@@ -10,7 +9,7 @@ export default function InitialRegions(props){
 
     propsArray.map(propsArray => arrayPath.push({lat: propsArray[1] , lng: propsArray[0]}))
 
-    const options = useMemo(() => ({
+    const options = ({
         fillColor: "#0468BF",
         fillOpacity: 0.4,
         strokeColor: "#0455BF",
@@ -21,7 +20,7 @@ export default function InitialRegions(props){
         editable: false,
         geodesic: false,
         zIndex: 1
-    }))
+    })
 
     return(
         <>

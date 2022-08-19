@@ -6,6 +6,7 @@ import Regions from "../../data/Regions"
 import ButtonRedo from "../buttons/ButtonRedo";
 import RegionsSelector from "../selectors/RegionsSelector";
 import RegionsHeader from "../headers/RegionSelected";
+import RegionDraw from "./RegionDraw";
 
 
 export default function Index() {
@@ -49,6 +50,7 @@ function Map(){
                 (<>
                     <ButtonRedo onClick={() => setRegionSelected(null)}/>
                     <RegionsHeader id={regionSelected}/>
+                    <RegionDraw id={regionSelected}/>
 
                 </>)
                     : (<>

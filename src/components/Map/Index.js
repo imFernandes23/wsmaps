@@ -35,6 +35,9 @@ function Map(){
         setRegionSelected(id)
     }
 
+    // console.log(Regions[0].data[0].properties.title)
+
+
     return (
         <>  
             

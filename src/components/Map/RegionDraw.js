@@ -6,6 +6,23 @@ export default function RegionDraw(props) {
     
     const region = FindIndex(props.id) // retorna com a regiao selecionada
 
+    function DrawStreets(region){
+        if(region.data.length > 0){
+            
+            region.data.map( data =>  {
+                if(data.features.length > 0 ){
+                    data.features.map(features => {
+                        console.log(features)
+                    })
+                }
+
+
+                })
+        }else{
+            console.log('não há data')
+        }
+    }
+
 
     function DrawLimits(region){
         const arrayPath = []
@@ -26,11 +43,14 @@ export default function RegionDraw(props) {
             zIndex: 1
         })
 
-        return <PolygonF path={arrayPath} options={options}/>
+        return (<PolygonF path={arrayPath} options={options}/>)
     }
 
 
-    return (DrawLimits(region))
+    return (<>
+                <DrawLimits {...region}/>
+                <DrawStreets {...region}/>    
+            </> )
  
 }
 

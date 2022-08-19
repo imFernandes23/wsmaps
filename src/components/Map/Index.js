@@ -5,6 +5,7 @@ import InitialRegions from "./InitialRegions";
 import Regions from "../../data/Regions"
 import ButtonRedo from "../buttons/ButtonRedo";
 import RegionsSelector from "../selectors/RegionsSelector";
+import RegionsHeader from "../headers/RegionSelected";
 
 
 export default function Index() {
@@ -18,7 +19,8 @@ export default function Index() {
 
 function Map(){
     const [regionSelected, setRegionSelected] = useState(null); // id da região selecionada no momento
-    const center = useMemo(() => ({lat: -1.394782568744898,lng: -48.41606140136719}),  [])
+    const [center, setCenter] = useState({lat: -1.394782568744898,lng: -48.41606140136719})
+    const [zoom, setZoom] = useState(12.8)
     const options = useMemo(() => ({
         disableDefaultUI: true,
         clickableIcons: false,
@@ -26,27 +28,29 @@ function Map(){
         
     }), [])
 
-    console.log(regionSelected)
 
     function handleSetRegion(id) {
         console.log("selecionei a região com o id " + id)
         setRegionSelected(id)
-        
     }
 
     return (
         <>  
             
             <GoogleMap 
-                zoom={12.8} //useState
-                center={center} //useState
+                zoom={zoom}
+                center={center}
                 mapContainerClassName="map-container"
                 options={options}
                 
             >
             
             {regionSelected !== null ? 
-                (<ButtonRedo onClick={() => setRegionSelected(null)}/>)
+                (<>
+                    <ButtonRedo onClick={() => setRegionSelected(null)}/>
+                    <RegionsHeader id={regionSelected}/>
+
+                </>)
                     : (<>
                 {Regions.map((item) => {
                 return(<InitialRegions 

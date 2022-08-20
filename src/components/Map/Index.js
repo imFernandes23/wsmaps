@@ -72,12 +72,12 @@ function Map(){
                 center={center}
                 mapContainerClassName="map-container"
                 options={options}
-                onLoad={map => {
-                    const bounds = new window.google.maps.LatLngBounds(center)
-                    map.fitBounds(bounds)
-                    map.setZoom(map.getZoom() - 2)
+                // onLoad={map => {
+                //     const bounds = new window.google.maps.LatLngBounds(center)
+                //     map.fitBounds(bounds)
+                //     map.setZoom(map.getZoom() - 2)
 
-                }}
+                // }}
 
                 
             >

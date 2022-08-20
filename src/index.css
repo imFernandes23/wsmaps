@@ -16,8 +16,10 @@
 .map{
   width: 100%;
   height: calc(100vh - 80px);
+  z-index: -1;
 }
 .map-container{
   width: 100%;
   height: calc(100vh - 80px);
+  z-index: 1;
 }

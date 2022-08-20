@@ -1,10 +1,23 @@
 import React from "react";
-import { PolygonF, PolylineF } from "@react-google-maps/api";
+import { PolygonF, PolylineF, } from "@react-google-maps/api";
 
 export default function AsphaltDraw(props){
 
     const fullArrayPathPolygons = []
-    let cont = 0
+
+    const optionsPolygons = {
+        fillColor: "#ffad29",
+        fillOpacity: .5,
+        strokeColor: "#ffad29",
+        strokeOpacity: .5,
+        strokeWeight: 1,
+        clickable: false,
+        draggable: false,
+        editable: false,
+        geodesic: false,
+        zIndex: -100
+    }
+
     if(props.street === null){
         console.log('sem dados')
     }else{
@@ -22,16 +35,13 @@ export default function AsphaltDraw(props){
                     fullArrayPathPolygons.push(arrayPath)
 
                 })
-            }else{
-                cont = cont + 1
-                
             }
         })
 
     }
     
-    console.log(cont)
 
-    return fullArrayPathPolygons.map((path, index) => {return(<PolygonF path={path} key={index}/>)})
+
+    return fullArrayPathPolygons.map((path, index) => {return(<PolygonF path={path} options={optionsPolygons} key={index} />)})
     
 }

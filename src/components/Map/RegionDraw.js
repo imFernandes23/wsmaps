@@ -21,7 +21,7 @@ export default function RegionDraw(props) {
 
         const options = ({
             fillColor:"#fff",
-            fillOpacity: 0.3,
+            fillOpacity: 0.1,
             strokeColor: "#000",
             strokeOpacity: 1,
             strokeWeight: 0.5,

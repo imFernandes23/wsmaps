@@ -1,28 +1,17 @@
 import React from "react";
 import { PolylineF , PolygonF} from "@react-google-maps/api";
 import FindIndex from "../hooks/FindIndex";
+import AsphaltDraw from "./AsphaltDraw";
 
 export default function RegionDraw(props) {
     
     const region = FindIndex(props.id) // retorna com a regiao selecionada
 
     function DrawStreets(region){
-        if(region.data.length > 0){
-            
-            region.data.map( data =>  {
-                if(data.features.length > 0 ){
-                    data.features.map(features => {
-                        console.log(features)
-                    })
-                }
-
-
-                })
-        }else{
-            console.log('não há data')
-        }
+        return(<>
+            <AsphaltDraw street={region.Asphalt}/>
+        </>)
     }
-
 
     function DrawLimits(region){
         const arrayPath = []

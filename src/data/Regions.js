@@ -70,10 +70,12 @@ const Regions = [
         id: 1,
         nome: "Icuí-Guajará",
         limites: LimitsIcui,
-        centro: [-48.408164978027344, -1.3266522238965712],
+        centro: [-48.408164978027344, -1.3266522238965712], 
         data: [FloodingIcui, AsphaltIcui, 
             UnpavedIcui, RepairsIcui, ObstructedIcui],
-        descarte: DisposalIcui
+        descarte: DisposalIcui,
+        
+        Asphalt:AsphaltIcui
     },
 
     {
@@ -83,7 +85,9 @@ const Regions = [
         centro: [-48.33653926849365, -1.3415398116527943],
         data: [AsphaltNovaUniao, UnpavedNovaUniao, RepairsNovaUniao, 
             ObstructedNovaUniao],
-        descarte: DisposalNovaUniao
+        descarte: DisposalNovaUniao,
+
+        Asphalt:AsphaltNovaUniao
     },
 
     {
@@ -93,7 +97,9 @@ const Regions = [
         centro: [-48.336453437805176, -1.354496658713901],
         data: [FloodingSaoFrancisco, AsphaltSaoFrancisco, UnpavedSaoFrancisco, 
             RepairsSaoFrancisco, ObstructedSaoFrancisco],
-        descarte: DisposalSaoFrancisco
+        descarte: DisposalSaoFrancisco,
+
+        Asphalt:AsphaltSaoFrancisco
     },
 
     {
@@ -103,7 +109,9 @@ const Regions = [
         centro: [-48.49343776702881, -1.4688742217081574],
         data: [FloodingJurunas, AsphaltJurunas, BlockJurunas, 
             UnpavedJurunas, RepairsJurunas, ObstructedJurunas],
-        descarte: DisposalJurunas
+        descarte: DisposalJurunas,
+
+        Asphalt:AsphaltJurunas
     },
 
     {
@@ -118,7 +126,9 @@ const Regions = [
         centro: [-48.4552001953125, -1.3759053366666054],
         data: [FloodingBengui, AsphaltBengui, BlockBengui, 
             UnpavedBengui, RepairsBengui, ObstructedBengui],
-        descarte: DisposalBengui
+        descarte: DisposalBengui,
+
+        Asphalt:AsphaltBengui
     },
 
     {
@@ -133,7 +143,9 @@ const Regions = [
         centro: [-48.43305587768555, -1.3686118205158533],
         data: [AsphaltCabanagem, UnpavedCabanagem,
             FloodingCabanagem, RepairsCabanagem, ObstructedCabanagem],
-        descarte: DisposalCabanagem
+        descarte: DisposalCabanagem,
+
+        Asphalt:AsphaltCabanagem
     },
 
     {
@@ -141,7 +153,9 @@ const Regions = [
         nome: "Terra Firme",
         limites: LimitsTerraFirme,
         centro: [-48.450565338134766, -1.4550599791599692],
-        data: []
+        data: [BlockTerraFirme,AsphaltTerraFirme,RepairsTerraFirme,UnpavedTerraFirme, FloodingTerraFirme, ObstructedTerraFirme],
+
+        Asphalt:AsphaltTerraFirme
     },
 
     {
@@ -151,7 +165,9 @@ const Regions = [
         centro: [-48.463053703308105, -1.4699038512829878],
         data: [FloodingGuama, AsphaltGuama, BlockGuama, 
             UnpavedGuama, RepairsGuama, ObstructedGuama],
-        descarte: DisposalGuama
+        descarte: DisposalGuama,
+
+        Asphalt:AsphaltGuama
     },
 ];
 

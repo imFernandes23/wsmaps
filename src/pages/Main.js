@@ -1,11 +1,10 @@
 import React,{useState} from "react";
-import {useLoadScript, MarkerF} from '@react-google-maps/api'
-// import Map from '../components/Map/Map'
-// import Index from "../components/Map/Index"
+import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
 import ButtonRedo from "../components/buttons/ButtonRedo";
-import RegionsSelector from "../components/selectors/RegionsSelector"
+import RegionSelector from "../components/selectors/RegionSelector"
+import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 
 const regionsInitVectors = RegionsInitVectors()
 
@@ -19,10 +18,6 @@ function Main(){
     const [center, setCenter] = useState({lat: -1.394782568744898,lng: -48.41606140136719})
     const [regionSelected, setRegionSelected] = useState(null);
 
-
-    const markers = [{lat: -1.394782868744898,lng: -48.41606170136719},
-    {lat: -1.394282568744898,lng: -48.41604140136719},
-{lat: -1.393782568744898,lng: -48.41605140136719}]
     
     function handleSetRegion(index){
         setRegionSelected(index)
@@ -33,8 +28,20 @@ function Main(){
     if(!isLoaded){
         return <div>Loading...</div>
     }else{// a página Main começa aqui
+        //Items da tela inicial
         return(<>
         <ButtonRedo onClick={() => setRegionSelected(null)} setRegion={regionSelected}/>
+
+        <RegionSelector
+            labels={regionsInitVectors.regionsLabel}
+            onChange={handleSetRegion}
+            setRegion={regionSelected}
+        />
+
+        <RegionSelectedHeader
+            labels={regionsInitVectors.regionsLabel}
+            setRegion={regionSelected}
+        />
         
         {regionSelected !== null ?
          (

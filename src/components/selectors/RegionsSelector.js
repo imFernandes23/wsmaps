@@ -1,6 +1,6 @@
 import React from 'react'
 import './RegionsSelector.css'
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 
 export default function RegionsSelector(props){
     const [selectedRegion, setSelectedRegion] = useState('')

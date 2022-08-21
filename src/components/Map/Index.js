@@ -100,7 +100,9 @@ function Map(){
                 />)})}
                     <RegionsSelector 
                         regioes={Regions}
-                        onChange={setRegionSelected}/>
+                        onChange={setRegionSelected}
+                        
+                        />
 
                 </>)}
             </GoogleMap>

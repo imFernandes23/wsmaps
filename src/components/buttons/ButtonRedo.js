@@ -5,7 +5,7 @@ import "./ButtonRedo.css"
 export default function ButtonRedo(props){
 
     return(
-        <button className="button-redo" onClick={() => props.onClick()}>
+        <button className={ props.setRegion === null? "button-redo":"button-redo active"} onClick={() => props.onClick()}>
             <AiIcons.AiOutlineRedo/>
         </button>
     )

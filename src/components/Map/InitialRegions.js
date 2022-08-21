@@ -3,12 +3,6 @@ import { PolygonF, MarkerF } from "@react-google-maps/api";
 
 export default function InitialRegions(props){
 
-    const arrayPath = []
-    const propsArray = props.paths.limites.features[0].geometry.coordinates[0]
-    const center = { lat: props.paths.centro[1] , lng: props.paths.centro[0] }
-
-    propsArray.map(propsArray => arrayPath.push({lat: propsArray[1] , lng: propsArray[0]}))
-
     const options = ({
         fillColor: "#0468BF",
         fillOpacity: 0.4,
@@ -26,11 +20,11 @@ export default function InitialRegions(props){
         <>
         <PolygonF
             options={options}
-            path={arrayPath}
+            path={props.arrayPath}
             onClick={() => props.onClick()}
         />
         <MarkerF
-            position={center}
+            position={props.center}
             label={{
                 className: "map-marker",
                 text: props.label,

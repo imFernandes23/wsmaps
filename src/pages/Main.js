@@ -9,8 +9,9 @@ import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
 
 const regionsInitVectors = RegionsInitVectors()
 
-RegionsGetFitBounds()
+const regionsGetFitBounds = RegionsGetFitBounds()
 
+console.log(regionsGetFitBounds)
 
 function Main(){
     const { isLoaded } = useLoadScript({

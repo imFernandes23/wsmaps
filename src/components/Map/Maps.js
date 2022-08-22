@@ -1,7 +1,8 @@
-import React, {useMemo}  from "react";
+import React, {useMemo, useRef, useEffect, useState}  from "react";
 import { GoogleMap, MarkerF, PolygonF } from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
+import RegionsGetFitBounds from "./RegionsGetFitBounds";
 
 function Maps(props){
     const options = useMemo(() => ({
@@ -10,15 +11,33 @@ function Maps(props){
         styles: MapStyle,
     }), [])
 
+    const [map, setMap] = useState(null);
 
+    const regions = RegionsGetFitBounds()
+
+    const test = regions.allRegionsBounds
+
+    const onLoad = React.useCallback(function callback(map){
+        const bounds = new window.google.maps.LatLngBounds()
+        test.map(item => {
+            bounds.extend(item)
+        })
+        map.fitBounds(bounds)
+        setMap(map)
+
+    }, [])
 
     return(
         <GoogleMap 
 
             mapContainerClassName='map-container'
             options={options}
+            defaultZoom={12.8}
+            onLoad = {onLoad}
+            defaultCenter={{lat: -1.394782568744898,lng: -48.41606140136719}}
             zoom={props.zoom}
             center={props.center}
+            
         >
 
             {props.polygonsInit !== undefined ? (<>{
@@ -35,6 +54,15 @@ function Maps(props){
         
         <MarkerF position={{lat:-1.30555243134685, lng:-48.5052163084356}}/>
         <MarkerF position={{lat:-1.47874333861475, lng:-48.3280682022797}}/>
+
+        {regions.regionBounds.map((item) => {
+            return(<>
+                <MarkerF position={item[0]}/>
+                <MarkerF position={item[1]}/>
+            </>
+                
+            )
+        })}
             
         </GoogleMap>
     )

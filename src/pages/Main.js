@@ -51,6 +51,7 @@ function Main(){
                 <Maps 
                     center={center}
                     zoom={zoom}
+                    view={regionsGetFitBounds.regionBounds[regionSelected]}
                 />
             </>
          ):
@@ -61,6 +62,7 @@ function Main(){
                     zoom={zoom} 
                     polygonsInit={regionsInitVectors}
                     polyInitOnClick={handleSetRegion}
+                    view={regionsGetFitBounds.allRegionsBounds}
                 />
             </>
          )}

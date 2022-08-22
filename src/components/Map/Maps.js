@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useEffect, useState}  from "react";
+import React, {useMemo, useRef, useEffect, useState, useCallback}  from "react";
 import { GoogleMap, MarkerF, PolygonF } from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
@@ -17,15 +17,17 @@ function Maps(props){
 
     const test = regions.allRegionsBounds
 
-    const onLoad = React.useCallback(function callback(map){
-        const bounds = new window.google.maps.LatLngBounds()
-        test.map(item => {
-            bounds.extend(item)
-        })
-        map.fitBounds(bounds)
-        setMap(map)
+    const onLoad = useCallback((map) => setMap(map),[])
 
-    }, [])
+    useEffect(() => {
+        if(map){
+            const bounds = new window.google.maps.LatLngBounds();
+            props.view.map(marker => {
+                bounds.extend(marker)
+            })
+            map.fitBounds(bounds)
+        }
+    }, [map, props.view])
 
     return(
         <GoogleMap 

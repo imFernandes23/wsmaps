@@ -5,9 +5,11 @@ import RegionsInitVectors from "../components/Map/RegionsInitVectors";
 import ButtonRedo from "../components/buttons/ButtonRedo";
 import RegionSelector from "../components/selectors/RegionSelector"
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
+import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
 
 const regionsInitVectors = RegionsInitVectors()
 
+RegionsGetFitBounds()
 
 
 function Main(){
@@ -23,7 +25,6 @@ function Main(){
         setRegionSelected(index)
     }
 
-    console.log(regionSelected)
 
     if(!isLoaded){
         return <div>Loading...</div>

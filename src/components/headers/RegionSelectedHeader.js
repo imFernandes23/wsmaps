@@ -3,7 +3,6 @@ import "./RegionSelectedHeader.css"
 
 export default function RegionSelectedHeader(props){
 
-    console.log(props.labels)
     return(
         <div className={props.setRegion === null ? 'full-layout' : 'full-layout active'}>
             {props.setRegion !== null ? (

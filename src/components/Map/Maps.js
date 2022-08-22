@@ -32,7 +32,9 @@ function Maps(props){
                     />)
                 })
             }</>) : (<></>)}
-
+        
+        <MarkerF position={{lat:-1.30555243134685, lng:-48.5052163084356}}/>
+        <MarkerF position={{lat:-1.47874333861475, lng:-48.3280682022797}}/>
             
         </GoogleMap>
     )

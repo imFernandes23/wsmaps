@@ -13,10 +13,6 @@ function Maps(props){
 
     const [map, setMap] = useState(null);
 
-    const regions = RegionsGetFitBounds()
-
-    const test = regions.allRegionsBounds
-
     const onLoad = useCallback((map) => setMap(map),[])
 
     useEffect(() => {
@@ -54,17 +50,6 @@ function Maps(props){
                 })
             }</>) : (<></>)}
         
-        <MarkerF position={{lat:-1.30555243134685, lng:-48.5052163084356}}/>
-        <MarkerF position={{lat:-1.47874333861475, lng:-48.3280682022797}}/>
-
-        {regions.regionBounds.map((item) => {
-            return(<>
-                <MarkerF position={item[0]}/>
-                <MarkerF position={item[1]}/>
-            </>
-                
-            )
-        })}
             
         </GoogleMap>
     )

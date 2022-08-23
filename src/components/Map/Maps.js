@@ -10,6 +10,7 @@ function Maps(props){
         disableDefaultUI: true,
         clickableIcons: false,
         styles: MapStyle,
+    
     }), [])
 
     const [map, setMap] = useState(null);
@@ -22,7 +23,10 @@ function Maps(props){
             props.view.map(marker => {
                 bounds.extend(marker)
             })
+            
             map.fitBounds(bounds)
+
+
         }
     }, [map, props.view, props.polygonsInit])
 
@@ -31,11 +35,12 @@ function Maps(props){
 
             mapContainerClassName='map-container'
             options={options}
-            defaultZoom={12.8}
+            defaultZoom={14}
             onLoad = {onLoad}
             defaultCenter={{lat: -1.394782568744898,lng: -48.41606140136719}}
             zoom={props.zoom}
             center={props.center}
+    
             
         >
 

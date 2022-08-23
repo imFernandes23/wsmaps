@@ -1,5 +1,5 @@
 import React from "react";
-import { MarkerF, PolygonF } from "@react-google-maps/api";
+import { MarkerF, PolygonF, PolylineF } from "@react-google-maps/api";
 import Regions from "../../data/Regions";
 
 export default function RegionsDraw(props){
@@ -50,14 +50,14 @@ export default function RegionsDraw(props){
             zIndex: 2
         }
 
-        if(Regions[props.region] === null){
-            console.log('sem dados')
+        if(Regions[props.region].Asphalt === null){
+            
         }else{
             const Asphalt = Regions[props.region].Asphalt
-            // console.log(Asphalt)
+ 
 
             Asphalt.features.map((feature, index) => {
-                // console.log(feature)
+
                 if(feature.geometry.type === 'Polygon'){
                     feature.geometry.coordinates.map( coords => {
                         const arrayPath = []
@@ -77,6 +77,248 @@ export default function RegionsDraw(props){
 
     }
 
+    function DrawAreaBlock(){
+
+        const blockArray = []
+
+        const blockOptions = {
+            fillColor: "#7C7C7C",
+            fillOpacity: .8,
+            strokeColor: "#7C7C7C",
+            strokeOpacity: .8,
+            strokeWeight: 1.5,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: 3
+        }
+
+        if(Regions[props.region].Block === null){
+
+        }else{
+            const Block = Regions[props.region].Block
+   
+
+            Block.features.map((feature, index) => {
+   
+                if(feature.geometry.type === 'Polygon'){
+                    feature.geometry.coordinates.map( coords => {
+                        const arrayPath = []
+
+                        coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
+
+                        blockArray.push(arrayPath)
+                    })
+                }
+            })
+
+        }
+
+        return blockArray.map((path, index) => {
+            return(<PolygonF path={path} options={blockOptions} key={`Block_${index}`}/>)
+        })
+
+    }
+
+    function DrawAreaUnpaved(){
+
+        const unpavedArray = []
+
+        const unpavedOptions = {
+            fillColor: "#EFE944",
+            fillOpacity: .8,
+            strokeColor: "#EFE944",
+            strokeOpacity: .8,
+            strokeWeight: 1.5,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: 4
+        }
+
+        if(Regions[props.region].Unpaved === null){
+
+        }else{
+            const Unpaved = Regions[props.region].Unpaved
+
+            Unpaved.features.map((feature, index) => {
+ 
+                if(feature.geometry.type === 'Polygon'){
+                    feature.geometry.coordinates.map( coords => {
+                        const arrayPath = []
+
+                        coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
+
+                        unpavedArray.push(arrayPath)
+                    })
+                }
+            })
+
+        }
+
+        return unpavedArray.map((path, index) => {
+            return(<PolygonF path={path} options={unpavedOptions} key={`Unpaved_${index}`}/>)
+        })
+
+    }
+
+    function DrawAreaFlooding(){
+
+        const floodingArray = []
+
+        const floodingOptions = {
+            fillColor: "#005FFF",
+            fillOpacity: 1,
+            strokeColor: "#005FFF",
+            strokeOpacity: 1,
+            strokeWeight: 2,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: 5
+        }
+
+        if(Regions[props.region].Flooding === null){
+
+        }else{
+            const Flooding = Regions[props.region].Flooding
+            
+            Flooding.features.map((feature, index) => {
+                console.log(feature.geometry.type)
+                if(feature.geometry.type === 'LineString'){
+                    const arrayPath = []
+                    feature.geometry.coordinates.map( coords => {
+                        arrayPath.push({lat: coords[1], lng:coords[0]})
+
+                        
+                    })
+                    floodingArray.push(arrayPath)
+                }
+                
+            })
+
+        }
+
+        return floodingArray.map((path, index) => {
+        return(<PolylineF path={path} options={floodingOptions} key={`Flooding_${index}`}/>)
+        })
+
+    }
+
+    function DrawAreaRepairs(){
+
+        const repairsArray = []
+
+        const dashSymbol = {
+            path: "M 0,-1 0,1 ",
+            strokeOpacity: 1,
+            scale: 1.5,
+        };
+
+        const repairsOptions = {
+            fillColor: "#FFF",
+            fillOpacity: 1,
+            strokeColor: "#F54516",
+            strokeOpacity: 0,
+            strokeWeight: 1.5,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: 6,
+            icons: [{
+                icon: dashSymbol,
+                offset: '2',
+                repeat:"10px"
+            },],
+        }
+
+        if(Regions[props.region].Repairs === null){
+            console.log('sem dados')
+        }else{
+            const Repairs = Regions[props.region].Repairs
+            
+            Repairs.features.map((feature, index) => {
+                if(feature.geometry.type === 'LineString'){
+                    const arrayPath = []
+                    feature.geometry.coordinates.map( coords => {
+                        arrayPath.push({lat: coords[1], lng:coords[0]})
+
+                        
+                    })
+                    repairsArray.push(arrayPath)
+                }
+                
+            })
+
+        }
+
+        console.log(repairsArray)
+
+        return repairsArray.map((path, index) => {
+        return(<PolylineF path={path} options={repairsOptions} key={`Repairs_${index}`}/>)
+        })
+
+    }
+
+    function DrawAreaObstructed(){
+
+        const obstructedArray = []
+
+        const circleSymbol = {
+            path: "M 0,2 0,-2 ",
+            strokeOpacity: 1,
+            scale: 1.5,
+            transform: [{rotate: '50deg'}],
+        };
+
+        const obstructedOptions = {
+            fillColor: "#FFF",
+            fillOpacity: 1,
+            strokeColor: "#52EA55",
+            strokeOpacity: 0,
+            strokeWeight: 1.5,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: 6,
+            icons: [{
+                icon: circleSymbol,
+                offset: '1',
+                repeat:"20px"
+            },],
+        }
+
+        if(Regions[props.region].Obstructed === null){
+            console.log('sem dados')
+        }else{
+            const Obstructed = Regions[props.region].Obstructed
+            
+            Obstructed.features.map((feature, index) => {
+                if(feature.geometry.type === 'LineString'){
+                    const arrayPath = []
+                    feature.geometry.coordinates.map( coords => {
+                        arrayPath.push({lat: coords[1], lng:coords[0]})
+
+                        
+                    })
+                    obstructedArray.push(arrayPath)
+                }
+                
+            })
+
+        }
+
+        return obstructedArray.map((path, index) => {
+        return(<PolylineF path={path} options={obstructedOptions} key={`Obstructed_${index}`}/>)
+        })
+
+    }
+
 
     return(<>
         <div key={'areaLimits'}>
@@ -84,6 +326,21 @@ export default function RegionsDraw(props){
         </div>
         <div key={'areaAsphalt'}>
             {DrawAreaAsphalt()}
+        </div>
+        <div key={'areaBlock'}>
+            {DrawAreaBlock()}
+        </div>
+        <div key={'areaUnpaved'}>
+            {DrawAreaUnpaved()}
+        </div>
+        <div key={'areaFlooding'}>
+            {DrawAreaFlooding()}
+        </div>
+        <div key={'areaRepairs'}>
+            {DrawAreaRepairs()}
+        </div>
+        <div key={'areaObstructed'}>
+            {DrawAreaObstructed()}
         </div>
     </>)
 }

@@ -75,7 +75,12 @@ const Regions = [
             UnpavedIcui, RepairsIcui, ObstructedIcui],
         descarte: DisposalIcui,
         
-        Asphalt:AsphaltIcui
+        Asphalt:AsphaltIcui,
+        Block: null,
+        Unpaved: UnpavedIcui,
+        Flooding: FloodingIcui,
+        Repairs: RepairsIcui,
+        Obstructed: ObstructedIcui,
     },
 
     {
@@ -87,7 +92,12 @@ const Regions = [
             ObstructedNovaUniao],
         descarte: DisposalNovaUniao,
 
-        Asphalt:AsphaltNovaUniao
+        Asphalt:AsphaltNovaUniao,
+        Block: null,
+        Unpaved: UnpavedNovaUniao,
+        Flooding: null,
+        Repairs: RepairsNovaUniao,
+        Obstructed: ObstructedNovaUniao,
     },
 
     {
@@ -99,7 +109,12 @@ const Regions = [
             RepairsSaoFrancisco, ObstructedSaoFrancisco],
         descarte: DisposalSaoFrancisco,
 
-        Asphalt:AsphaltSaoFrancisco
+        Asphalt:AsphaltSaoFrancisco,
+        Block: null,
+        Unpaved: UnpavedSaoFrancisco,
+        Flooding: FloodingSaoFrancisco,
+        Repairs: RepairsSaoFrancisco,
+        Obstructed: ObstructedSaoFrancisco,
     },
 
     {
@@ -111,7 +126,12 @@ const Regions = [
             UnpavedJurunas, RepairsJurunas, ObstructedJurunas],
         descarte: DisposalJurunas,
 
-        Asphalt:AsphaltJurunas
+        Asphalt:AsphaltJurunas,
+        Block: BlockJurunas,
+        Unpaved: UnpavedJurunas,
+        Flooding: FloodingJurunas,
+        Repairs: RepairsJurunas,
+        Obstructed: ObstructedJurunas,
     },
 
     {
@@ -128,7 +148,12 @@ const Regions = [
             UnpavedBengui, RepairsBengui, ObstructedBengui],
         descarte: DisposalBengui,
 
-        Asphalt:AsphaltBengui
+        Asphalt:AsphaltBengui,
+        Block: BlockBengui,
+        Unpaved: UnpavedBengui,
+        Flooding: FloodingBengui,
+        Repairs: RepairsBengui,
+        Obstructed: ObstructedBengui,
     },
 
     {
@@ -145,7 +170,12 @@ const Regions = [
             FloodingCabanagem, RepairsCabanagem, ObstructedCabanagem],
         descarte: DisposalCabanagem,
 
-        Asphalt:AsphaltCabanagem
+        Asphalt:AsphaltCabanagem,
+        Block: null,
+        Unpaved: UnpavedCabanagem,
+        Flooding: FloodingCabanagem,
+        Repairs: RepairsCabanagem,
+        Obstructed: ObstructedCabanagem,
     },
 
     {
@@ -155,7 +185,12 @@ const Regions = [
         centro: [-48.450565338134766, -1.4550599791599692],
         data: [BlockTerraFirme,AsphaltTerraFirme,RepairsTerraFirme,UnpavedTerraFirme, FloodingTerraFirme, ObstructedTerraFirme],
 
-        Asphalt:AsphaltTerraFirme
+        Asphalt:AsphaltTerraFirme,
+        Block: BlockTerraFirme,
+        Unpaved: UnpavedTerraFirme,
+        Flooding: FloodingTerraFirme,
+        Repairs: RepairsTerraFirme,
+        Obstructed: ObstructedTerraFirme,
     },
 
     {
@@ -167,7 +202,12 @@ const Regions = [
             UnpavedGuama, RepairsGuama, ObstructedGuama],
         descarte: DisposalGuama,
 
-        Asphalt:AsphaltGuama
+        Asphalt:AsphaltGuama,
+        Block: null,
+        Unpaved: UnpavedGuama,
+        Flooding: FloodingGuama,
+        Repairs: RepairsGuama,
+        Obstructed: ObstructedGuama,
     },
 ];
 

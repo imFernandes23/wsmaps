@@ -1,5 +1,5 @@
 import React from "react";
-import { MarkerF, PolygonF, PolylineF } from "@react-google-maps/api";
+import { PolygonF, PolylineF } from "@react-google-maps/api";
 import Regions from "../../data/Regions";
 
 export default function RegionsDraw(props){
@@ -56,10 +56,10 @@ export default function RegionsDraw(props){
             const Asphalt = Regions[props.region].Asphalt
  
 
-            Asphalt.features.map((feature, index) => {
+            Asphalt.features.forEach((feature, index) => {
 
                 if(feature.geometry.type === 'Polygon'){
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.forEach( coords => {
                         const arrayPath = []
 
                         coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
@@ -100,10 +100,10 @@ export default function RegionsDraw(props){
             const Block = Regions[props.region].Block
    
 
-            Block.features.map((feature, index) => {
+            Block.features.forEach((feature, index) => {
    
                 if(feature.geometry.type === 'Polygon'){
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.forEach( coords => {
                         const arrayPath = []
 
                         coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
@@ -143,10 +143,10 @@ export default function RegionsDraw(props){
         }else{
             const Unpaved = Regions[props.region].Unpaved
 
-            Unpaved.features.map((feature, index) => {
+            Unpaved.features.forEach((feature, index) => {
  
                 if(feature.geometry.type === 'Polygon'){
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.forEach( coords => {
                         const arrayPath = []
 
                         coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
@@ -186,11 +186,10 @@ export default function RegionsDraw(props){
         }else{
             const Flooding = Regions[props.region].Flooding
             
-            Flooding.features.map((feature, index) => {
-                console.log(feature.geometry.type)
+            Flooding.features.forEach((feature, index) => {
                 if(feature.geometry.type === 'LineString'){
                     const arrayPath = []
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.forEach( coords => {
                         arrayPath.push({lat: coords[1], lng:coords[0]})
 
                         
@@ -241,10 +240,10 @@ export default function RegionsDraw(props){
         }else{
             const Repairs = Regions[props.region].Repairs
             
-            Repairs.features.map((feature, index) => {
+            Repairs.features.forEach((feature, index) => {
                 if(feature.geometry.type === 'LineString'){
                     const arrayPath = []
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.forEach( coords => {
                         arrayPath.push({lat: coords[1], lng:coords[0]})
 
                         
@@ -256,7 +255,6 @@ export default function RegionsDraw(props){
 
         }
 
-        console.log(repairsArray)
 
         return repairsArray.map((path, index) => {
         return(<PolylineF path={path} options={repairsOptions} key={`Repairs_${index}`}/>)
@@ -298,14 +296,14 @@ export default function RegionsDraw(props){
         }else{
             const Obstructed = Regions[props.region].Obstructed
             
-            Obstructed.features.map((feature, index) => {
+            Obstructed.features.forEach((feature, index) => {
                 if(feature.geometry.type === 'LineString'){
                     const arrayPath = []
-                    feature.geometry.coordinates.map( coords => {
+                    feature.geometry.coordinates.map( coords => (
                         arrayPath.push({lat: coords[1], lng:coords[0]})
 
                         
-                    })
+                    ))
                     obstructedArray.push(arrayPath)
                 }
                 

@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useEffect, useState, useCallback}  from "react";
+import React, {useMemo, useEffect, useState, useCallback}  from "react";
 import { GoogleMap } from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
@@ -20,7 +20,7 @@ function Maps(props){
     useEffect(() => {
         if(map){
             const bounds = new window.google.maps.LatLngBounds();
-            props.view.map(marker => {
+            props.view.forEach(marker => {
                 bounds.extend(marker)
             })
             

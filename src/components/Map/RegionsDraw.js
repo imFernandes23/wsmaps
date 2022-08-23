@@ -28,15 +28,62 @@ export default function RegionsDraw(props){
         )
 
         return(<> 
-            <PolygonF path={regionLimits} options={optionLimits}/>
+            <PolygonF  key={region.nome} path={regionLimits} options={optionLimits}/>
         </>)
         
     }
 
     function DrawAreaAsphalt(){
-        
+
+        const asphaltArray = []
+
+        const asphaltOptions = {
+            fillColor: "#ffad29",
+            fillOpacity: .8,
+            strokeColor: "#ffad29",
+            strokeOpacity: .5,
+            strokeWeight: 1,
+            clickable: false,
+            draggable: false,
+            editable: false,
+            geodesic: false,
+            zIndex: -100
+        }
+
+        if(Regions[props.region] === null){
+            console.log('sem dados')
+        }else{
+            const Asphalt = Regions[props.region].Asphalt
+            // console.log(Asphalt)
+
+            Asphalt.features.map((feature, index) => {
+                // console.log(feature)
+                if(feature.geometry.type === 'Polygon'){
+                    feature.geometry.coordinates.map( coords => {
+                        const arrayPath = []
+
+                        coords.map(path => arrayPath.push({lat:path[1], lng:path[0]}))
+
+                        asphaltArray.push(arrayPath)
+                    })
+                }
+            })
+
+        }
+
+        return asphaltArray.map((path, index) => {
+            return(<PolygonF path={path} options={asphaltOptions} key={`Asphalt_${index}`}/>)
+        })
+
     }
 
 
-    return [DrawAreaLimits()]
+    return(<>
+        <div key={'areaLimits'}>
+            {DrawAreaLimits()}
+        </div>
+        <div key={'areaAsphalt'}>
+            {DrawAreaAsphalt()}
+        </div>
+    </>)
 }

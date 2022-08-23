@@ -1,8 +1,9 @@
 import React, {useMemo, useRef, useEffect, useState, useCallback}  from "react";
-import { GoogleMap, MarkerF, PolygonF } from "@react-google-maps/api";
+import { GoogleMap } from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
-import RegionsGetFitBounds from "./RegionsGetFitBounds";
+import RegionsDraw from './RegionsDraw'
+
 
 function Maps(props){
     const options = useMemo(() => ({
@@ -23,7 +24,7 @@ function Maps(props){
             })
             map.fitBounds(bounds)
         }
-    }, [map, props.view])
+    }, [map, props.view, props.polygonsInit])
 
     return(
         <GoogleMap 
@@ -49,7 +50,12 @@ function Maps(props){
                     />)
                 })
             }</>) : (<></>)}
+
+            {props.regionDetails !== undefined ? (<>
+
+            </>):(<></>)} 
         
+            {props.region !== undefined ? (<><RegionsDraw region={props.region}/></>):(<></>)}
             
         </GoogleMap>
     )

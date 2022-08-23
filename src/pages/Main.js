@@ -11,7 +11,6 @@ const regionsInitVectors = RegionsInitVectors()
 
 const regionsGetFitBounds = RegionsGetFitBounds()
 
-console.log(regionsGetFitBounds)
 
 function Main(){
     const { isLoaded } = useLoadScript({
@@ -52,6 +51,7 @@ function Main(){
                     center={center}
                     zoom={zoom}
                     view={regionsGetFitBounds.regionBounds[regionSelected]}
+                    region={regionSelected}
                 />
             </>
          ):

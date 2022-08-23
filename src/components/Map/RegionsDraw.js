@@ -15,7 +15,7 @@ export default function RegionsDraw(props){
         const optionLimits = (
             {
                 fillColor: "#fff",
-                fillOpacity: 0.2,
+                fillOpacity: 0.6,
                 strokeColor: "#000",
                 strokeOpacity: 1,
                 strokeWeight: .8,
@@ -41,13 +41,13 @@ export default function RegionsDraw(props){
             fillColor: "#ffad29",
             fillOpacity: .8,
             strokeColor: "#ffad29",
-            strokeOpacity: .5,
-            strokeWeight: 1,
+            strokeOpacity: .8,
+            strokeWeight: 1.5,
             clickable: false,
             draggable: false,
             editable: false,
             geodesic: false,
-            zIndex: -100
+            zIndex: 2
         }
 
         if(Regions[props.region] === null){

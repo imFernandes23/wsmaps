@@ -269,7 +269,7 @@ export default function RegionsDraw(props){
         const obstructedArray = []
 
         const circleSymbol = {
-            path: "M 0,2 0,-2 ",
+            path: "m -2 0 L 2 0",
             strokeOpacity: 1,
             scale: 1.5,
             transform: [{rotate: '50deg'}],

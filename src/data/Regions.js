@@ -73,8 +73,8 @@ const Regions = [
         centro: [-48.408164978027344, -1.3266522238965712], 
         data: [FloodingIcui, AsphaltIcui, 
             UnpavedIcui, RepairsIcui, ObstructedIcui],
-        descarte: DisposalIcui,
-        
+
+        Disposal: DisposalIcui,
         Asphalt:AsphaltIcui,
         Block: null,
         Unpaved: UnpavedIcui,
@@ -90,8 +90,8 @@ const Regions = [
         centro: [-48.33653926849365, -1.3415398116527943],
         data: [AsphaltNovaUniao, UnpavedNovaUniao, RepairsNovaUniao, 
             ObstructedNovaUniao],
-        descarte: DisposalNovaUniao,
 
+        Disposal: DisposalNovaUniao,
         Asphalt:AsphaltNovaUniao,
         Block: null,
         Unpaved: UnpavedNovaUniao,
@@ -107,8 +107,8 @@ const Regions = [
         centro: [-48.336453437805176, -1.354496658713901],
         data: [FloodingSaoFrancisco, AsphaltSaoFrancisco, UnpavedSaoFrancisco, 
             RepairsSaoFrancisco, ObstructedSaoFrancisco],
-        descarte: DisposalSaoFrancisco,
 
+        Disposal: DisposalSaoFrancisco,
         Asphalt:AsphaltSaoFrancisco,
         Block: null,
         Unpaved: UnpavedSaoFrancisco,
@@ -124,8 +124,8 @@ const Regions = [
         centro: [-48.49343776702881, -1.4688742217081574],
         data: [FloodingJurunas, AsphaltJurunas, BlockJurunas, 
             UnpavedJurunas, RepairsJurunas, ObstructedJurunas],
-        descarte: DisposalJurunas,
 
+        Disposal: DisposalJurunas,
         Asphalt:AsphaltJurunas,
         Block: BlockJurunas,
         Unpaved: UnpavedJurunas,
@@ -146,8 +146,8 @@ const Regions = [
         centro: [-48.4552001953125, -1.3759053366666054],
         data: [FloodingBengui, AsphaltBengui, BlockBengui, 
             UnpavedBengui, RepairsBengui, ObstructedBengui],
-        descarte: DisposalBengui,
 
+        Disposal: DisposalBengui,
         Asphalt:AsphaltBengui,
         Block: BlockBengui,
         Unpaved: UnpavedBengui,
@@ -168,8 +168,8 @@ const Regions = [
         centro: [-48.43305587768555, -1.3686118205158533],
         data: [AsphaltCabanagem, UnpavedCabanagem,
             FloodingCabanagem, RepairsCabanagem, ObstructedCabanagem],
-        descarte: DisposalCabanagem,
 
+        Disposal: DisposalCabanagem,
         Asphalt:AsphaltCabanagem,
         Block: null,
         Unpaved: UnpavedCabanagem,
@@ -185,6 +185,7 @@ const Regions = [
         centro: [-48.450565338134766, -1.4550599791599692],
         data: [BlockTerraFirme,AsphaltTerraFirme,RepairsTerraFirme,UnpavedTerraFirme, FloodingTerraFirme, ObstructedTerraFirme],
 
+        Disposal: null,
         Asphalt:AsphaltTerraFirme,
         Block: BlockTerraFirme,
         Unpaved: UnpavedTerraFirme,
@@ -200,8 +201,8 @@ const Regions = [
         centro: [-48.463053703308105, -1.4699038512829878],
         data: [FloodingGuama, AsphaltGuama, BlockGuama, 
             UnpavedGuama, RepairsGuama, ObstructedGuama],
-        descarte: DisposalGuama,
 
+        Disposal: DisposalGuama,
         Asphalt:AsphaltGuama,
         Block: null,
         Unpaved: UnpavedGuama,

@@ -72,16 +72,18 @@
 
 .configurations{
     position: absolute;
-    top: 80px;
+    top: calc(50vh - 80px);
+    transform: translateY(-50%);
     z-index: 100;
     left: -410px;
     width: 390px;
-    height: calc(100vh - 240px);
+    height: fit-content;
     background-color: white;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
     transition: .5s;
     padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 
@@ -117,6 +119,7 @@
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.41);
     right: 80px;
+    border: 3px solid white;
 
 }
 

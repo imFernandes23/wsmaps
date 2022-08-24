@@ -60,7 +60,12 @@ function Maps(props){
 
             </>):(<></>)} 
         
-            {props.region !== undefined ? (<><RegionsDraw region={props.region}/></>):(<></>)}
+            {props.region !== undefined ? (<>
+            <RegionsDraw 
+                region={props.region}
+                controlArray={props.controlArray}
+            />
+            </>):(<></>)}
             
         </GoogleMap>
     )

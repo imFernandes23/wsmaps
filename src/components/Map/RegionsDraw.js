@@ -351,26 +351,26 @@ export default function RegionsDraw(props){
         <div key={'areaLimits'}>
             {DrawAreaLimits()}
         </div>
-        <div key={'areaAsphalt'}>
-            {DrawAreaAsphalt()}
-        </div>
-        <div key={'areaBlock'}>
-            {DrawAreaBlock()}
-        </div>
-        <div key={'areaUnpaved'}>
-            {DrawAreaUnpaved()}
-        </div>
-        <div key={'areaFlooding'}>
-            {DrawAreaFlooding()}
-        </div>
-        <div key={'areaRepairs'}>
-            {DrawAreaRepairs()}
-        </div>
-        <div key={'areaObstructed'}>
-            {DrawAreaObstructed()}
-        </div>
-        <div key={'areaDisposal'}>
-            {DrawAreaDisposal()}
-        </div>
+        {props.controlArray[0] ? (<>
+            <div key={'areaAsphalt'}>{DrawAreaAsphalt()}</div>
+        </>): ('')}
+        {props.controlArray[1] ? (<>
+            <div key={'areaBlock'}>{DrawAreaBlock()}</div>
+        </>): ('')}
+        {props.controlArray[2] ? (<>
+            <div key={'areaUnpaved'}>{DrawAreaUnpaved()}</div>
+        </>): ('')}
+        {props.controlArray[3] ? (<>
+            <div key={'areaFlooding'}>{DrawAreaFlooding()}</div>
+        </>): ('')}
+        {props.controlArray[4] ? (<>
+            <div key={'areaRepairs'}>{DrawAreaRepairs()}</div>
+        </>): ('')}
+        {props.controlArray[5] ? (<>
+            <div key={'areaObstructed'}>{DrawAreaObstructed()}</div>
+        </>): ('')}
+        {props.controlArray[6] ? (<>
+            <div key={'areaDisposal'}>{DrawAreaDisposal()}</div>
+        </>): ('')}
     </>)
 }

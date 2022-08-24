@@ -20,7 +20,12 @@ function Main(){
     const [center, setCenter] = useState({lat: -1.394782568744898,lng: -48.41606140136719})
     const [regionSelected, setRegionSelected] = useState(null);
 
-    
+    //headers
+
+    const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
+
+
+    console.log(controlArray)
     function handleSetRegion(index){
         setRegionSelected(index)
     }
@@ -42,6 +47,8 @@ function Main(){
         <RegionSelectedHeader
             labels={regionsInitVectors.regionsLabel}
             setRegion={regionSelected}
+            controlArray={controlArray}
+            onChange={setControlArray}
         />
         
         {regionSelected !== null ?
@@ -52,6 +59,8 @@ function Main(){
                     zoom={zoom}
                     view={regionsGetFitBounds.regionBounds[regionSelected]}
                     region={regionSelected}
+                    controlArray={controlArray}
+
                 />
             </>
          ):

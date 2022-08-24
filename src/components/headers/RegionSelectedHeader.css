@@ -17,7 +17,7 @@
 }
 
 .full-layout{
-    transition: .2s;
+    transition: .5s;
     width: 100vw;
     height: calc(100vh - 80px);
     position: absolute;
@@ -26,5 +26,133 @@
 
 .full-layout.active{
     left: 0;
-    transition: .2;
+    transition: .5;
+}
+
+.buttom-menu{
+    position: absolute;
+    z-index: 100;
+    top:20px;
+    left: -40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    background-color: #0455BF;
+    transition: .5s;
+    outline: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
+}
+
+.buttom-menu.active{
+    left: 2vh;
+    transition: .5s;
+}
+
+.buttom-menu svg{
+    position: relative;
+    top: 3px;
+    font-size: 25px;
+    color: white;
+}
+
+.buttom-menu:hover{
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.49);
+    background-color: #0468BF;
+    transition: .2s;
+}
+
+.buttom-menu:active{
+    background-color: #0468BF;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.49);
+    transform: translateY(2px);
+
+}
+
+.configurations{
+    position: absolute;
+    top: 80px;
+    z-index: 100;
+    left: -410px;
+    width: 390px;
+    height: calc(100vh - 240px);
+    background-color: white;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
+    transition: .5s;
+    padding-top: 50px;
+}
+
+
+.configurations.active{
+    left:0;
+    transition: .5s;
+}
+
+.btn-close svg{
+    position: absolute;
+    font-size: 20px;
+    color: #0455BF;
+    right: 15px;
+    top: 15px;
+}
+
+
+
+.element{
+    display: flex;
+    width: 390px;
+    padding: 5px;
+    padding-left: 20px;
+    height: 40px;
+    margin: 20px 0;
+
+}
+
+.color-element{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.41);
+    right: 80px;
+
+}
+
+input[type='checkbox']{
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    -webkit-appearance: none;
+    background-color: #c6c6c6;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    transition: .5s;
+    right: 10px;
+
+}
+
+input:checked[type='checkbox']{
+    background-color: #0468BF;
+}
+
+input[type='checkbox']::before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    transition: .5s;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+input:checked[type='checkbox']::before{
+    left: 30px;
 }

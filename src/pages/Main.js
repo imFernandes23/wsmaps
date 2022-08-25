@@ -6,6 +6,7 @@ import ButtonRedo from "../components/buttons/ButtonRedo";
 import RegionSelector from "../components/selectors/RegionSelector"
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
+import LoadingOverlay from "../components/LoadingOverlay"
 
 const regionsInitVectors = RegionsInitVectors()
 
@@ -36,6 +37,9 @@ function Main(){
     }else{// a página Main começa aqui
         //Items da tela inicial
         return(<>
+        <LoadingOverlay Loading={false}/>
+
+
         <ButtonRedo onClick={() => setRegionSelected(null)} setRegion={regionSelected}/>
 
         <RegionSelector

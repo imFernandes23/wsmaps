@@ -26,7 +26,6 @@ function Main(){
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
 
 
-    console.log(controlArray)
     function handleSetRegion(index){
         setRegionSelected(index)
     }

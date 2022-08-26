@@ -7,11 +7,13 @@ import RegionSelector from "../components/selectors/RegionSelector"
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
 import LoadingOverlay from "../components/LoadingOverlay"
+import ApiInfo from "../components/hooks/ApiInfo";
 
 const regionsInitVectors = RegionsInitVectors()
 
 const regionsGetFitBounds = RegionsGetFitBounds()
 
+ApiInfo()
 
 function Main(){
     const { isLoaded } = useLoadScript({

@@ -15,7 +15,6 @@ export default function RegionSelectedHeader(props){
         newArray[index] = !props.controlArray[index]
 
         props.onChange(newArray)
-        console.log(props.controlArray)
     }
 
     return(

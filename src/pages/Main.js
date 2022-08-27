@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState, useRef} from "react";
 import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
@@ -7,13 +7,12 @@ import RegionSelector from "../components/selectors/RegionSelector"
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
 import LoadingOverlay from "../components/LoadingOverlay"
-import ApiInfo from "../components/hooks/ApiInfo";
+import api from "../services/api";
+import Regions from "../data/Regions";
 
 const regionsInitVectors = RegionsInitVectors()
 
 const regionsGetFitBounds = RegionsGetFitBounds()
-
-ApiInfo()
 
 function Main(){
     const { isLoaded } = useLoadScript({
@@ -26,11 +25,38 @@ function Main(){
     //headers
 
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
+    const [controlArrayTheme, setControlArrayTheme] = useState([false,false,false,false,false])
+    const arraySupport = [28,33,60,15]
+    const [dataApi, setApiData] = useState([])
+    const [inLoadScreen, setInLoadScreen] = useState(false)
+    const [numPages, setNumPages] = useState()
+
+
+
+
 
 
     function handleSetRegion(index){
         setRegionSelected(index)
+        const id = Regions[index].id
+        fetchApiData(id)
     }
+
+    async function fetchApiData(id){
+        const page = 1
+        setInLoadScreen(true)
+        await api.get('regions/'+id+'/activities?page='+page+'&subclasses[]=28&subclasses[]=33&subclasses[]=60&subclasses[]=15&subclasses[]=74&subclasses[]=71&subclasses[]=3',).then((res) => {
+
+            setNumPages(res.last_page)
+        })
+        .catch((err) =>{console.log(err)})
+
+
+
+        setInLoadScreen(false)
+        console.log(numPages)
+    }
+
 
 
     if(!isLoaded){
@@ -38,7 +64,7 @@ function Main(){
     }else{// a página Main começa aqui
         //Items da tela inicial
         return(<>
-        <LoadingOverlay Loading={false}/>
+        <LoadingOverlay Loading={inLoadScreen}/>
 
 
         <ButtonRedo onClick={() => setRegionSelected(null)} setRegion={regionSelected}/>
@@ -54,6 +80,8 @@ function Main(){
             setRegion={regionSelected}
             controlArray={controlArray}
             onChange={setControlArray}
+            controlArrayTheme={controlArrayTheme}
+            onChange2={setControlArrayTheme}
         />
         
         {regionSelected !== null ?

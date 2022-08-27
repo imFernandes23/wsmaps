@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import "./RegionSelectedHeader.css"
 import * as AiIcons from 'react-icons/ai'
 import RegionsDraw from "../Map/RegionsDraw";
+import ButtonTemas from "../buttons/ButtonTemas";
+
 
 
 export default function RegionSelectedHeader(props){
     const [configMenu,setConfigMenu] = useState(false)
-
+    const [configTemas, setConfigTemas] = useState(false)
 
     function handleSetConfig(index){
         let newArray = [...props.controlArray]
@@ -15,7 +17,25 @@ export default function RegionSelectedHeader(props){
         newArray[index] = !props.controlArray[index]
 
         props.onChange(newArray)
+
+        setConfigTemas(false) 
     }
+//remove this in future
+    function handleSetConfigTheme(index){
+        let newArray = [...props.controlArrayTheme]
+
+        newArray[index] = !props.controlArrayTheme[index]
+
+        props.onChange2(newArray)
+        setConfigMenu(false) 
+    }
+//
+
+    function handleSetConfigTemas(){
+        setConfigTemas(!configTemas)
+        setConfigMenu(false)
+    }
+
 
     return(
         <div className={props.setRegion === null ? 'full-layout' : 'full-layout active'}>
@@ -23,8 +43,9 @@ export default function RegionSelectedHeader(props){
                 <>
                 <div className="region-header-title" >{props.labels[props.setRegion]}</div>
 
-
-                <button className={configMenu ? 'buttom-menu' : 'buttom-menu active'} onClick={() => setConfigMenu(!configMenu)}>
+                <button className={configMenu ? 'buttom-menu' : 'buttom-menu active'} onClick={() => {setConfigMenu(!configMenu)
+                setConfigTemas(false)
+                }}>
                     <AiIcons.AiFillSetting/>
                 </button>
 
@@ -97,6 +118,64 @@ export default function RegionSelectedHeader(props){
 
                     
                 </form>
+            
+
+            
+
+            <ButtonTemas setTemas={configTemas} onClick={handleSetConfigTemas}/>
+            
+            <form className={configTemas ? 'configurations active':'configurations'} >
+                    <span className="btn-close" onClick={() => setConfigTemas(!configTemas)}><AiIcons.AiOutlineClose/></span>
+
+                    <div className="element">
+                        <p className="ele-nome">Pontos de Venda de Açái</p>
+                        <div style={{backgroundColor:'#5C32C7'}} className='color-element'></div>
+                        <input 
+                            type='checkbox'
+                            checked={props.controlArrayTheme[0]}
+                            onChange={() => handleSetConfigTheme(0)}
+                        />
+                    </div>
+                    <div className="element">
+                        <p className="ele-nome">Restaurantes</p>
+                        <div style={{backgroundColor:'#E6FA09'}} className='color-element'></div>
+                        <input 
+                            type='checkbox'
+                            checked={props.controlArrayTheme[1]}
+                            onChange={() => handleSetConfigTheme(1)}
+                        />
+                    </div>
+                    <div className="element">
+                        <p className="ele-nome">Lanchonetes</p>
+                        <div style={{backgroundColor:'#FA5009'}} className='color-element'></div>
+                        <input 
+                            type='checkbox'
+                            checked={props.controlArrayTheme[2]}
+                            onChange={() => handleSetConfigTheme(2)}
+                        />
+                    </div>
+                    <div className="element">
+                        <p className="ele-nome">Arena Esportiva</p>
+                        <div style={{backgroundColor:'#2EFA09'}} className='color-element'></div>
+                        <input 
+                            type='checkbox'
+                            checked={props.controlArrayTheme[3]}
+                            onChange={() => handleSetConfigTheme(3)}
+                        />
+                    </div>
+                    <div className="element">
+                        <p className="ele-nome">Posto de Saúde</p>
+                        <div style={{backgroundColor:'#FF0000'}} className='color-element'></div>
+                        <input 
+                            type='checkbox'
+                            checked={props.controlArrayTheme[4]}
+                            onChange={() => handleSetConfigTheme(4)}
+                        />
+                    </div>
+                    
+                </form>
+
+
 
 
                 </>

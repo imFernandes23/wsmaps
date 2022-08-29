@@ -45,11 +45,11 @@ function Main(){
     async function fetchApiData(id){
         const page = 1
         setInLoadScreen(true)
-        await api.get('regions/'+id+'/activities?page='+page+'&subclasses[]=28&subclasses[]=33&subclasses[]=60&subclasses[]=15&subclasses[]=74&subclasses[]=71&subclasses[]=3',).then((res) => {
+        // await api.get('regions/'+id+'/activities?page='+page+'&subclasses[]=28&subclasses[]=33&subclasses[]=60&subclasses[]=15&subclasses[]=74&subclasses[]=71&subclasses[]=3',).then((res) => {
 
-            setNumPages(res.last_page)
-        })
-        .catch((err) =>{console.log(err)})
+        //     setNumPages(res.last_page)
+        // })
+        // .catch((err) =>{console.log(err)})
 
 
 

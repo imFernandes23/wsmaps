@@ -1,57 +1,23 @@
-.region-header-title{
-    position: absolute;
-    z-index: 100;
-    width: fit-content;
-    height: 40px;
-    align-self: center;
-    margin-left: 50%;
-    top: 20px;
-    transform: translateX(-50%);
-    border-radius: 25px;
-    border: none;
-    padding-right: 30px;
-    padding-left: 30px;
-    background-color: white;
-    padding-top:8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
-}
-
-.full-layout{
-    transition: .5s;
-    width: 100vw;
-    height: calc(100vh - 80px);
-    position: absolute;
-    left: -100vw;
-}
-
-.full-layout.active{
-    left: 0;
-    transition: .5;
-}
-
-
 .configurations{
     position: absolute;
     top: calc(50vh - 80px);
     transform: translateY(-50%);
     z-index: 100;
-    left: -410px;
+    left: -450px;
     width: 450px;
-    height: 60vh;
+    height: fit-content;
     background-color: white;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
     transition: .5s;
     padding-top: 50px;
     padding-bottom: 20px;
+    overflow-y: scroll;
 }
-
-
 .configurations.active{
     left:0;
     transition: .5s;
 }
-
 .btn-close svg{
     position: absolute;
     font-size: 20px;
@@ -59,8 +25,6 @@
     right: 15px;
     top: 15px;
 }
-
-
 
 .element{
     display: flex;
@@ -117,4 +81,5 @@ input[type='checkbox']::before{
 input:checked[type='checkbox']::before{
     left: 30px;
 }
+
 

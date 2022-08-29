@@ -13,7 +13,7 @@
 }
 
 .toglle-menu.active{
-    top:100px;
+    top:90px;
 }
 
 
@@ -47,7 +47,7 @@
 .btn-opt.active{
     position: absolute;
     transition-delay: calc(var(--value) * 0.1s);
-    transform: rotate(calc(var(--value) * (-360deg/8))) translateY(80px);
+    transform: rotate(calc(var(--value) * (-360deg/8))) translateY(70px);
 }
 
 .btn-opt{

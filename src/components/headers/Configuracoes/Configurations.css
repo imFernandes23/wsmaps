@@ -1,23 +1,36 @@
 .configurations{
-    position: absolute;
+    position: relative;
     top: calc(50vh - 80px);
     transform: translateY(-50%);
-    z-index: 100;
     left: -450px;
     width: 450px;
-    height: fit-content;
+    height: 60vh;
     background-color: white;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
     transition: .5s;
     padding-top: 50px;
     padding-bottom: 20px;
-    overflow-y: scroll;
+
+    z-index: 100;
 }
 .configurations.active{
     left:0;
     transition: .5s;
 }
+
+.title-element{
+    position: relative;
+    width: fit-content;
+    padding: 10px;
+    font-size: 1.2em;
+    margin: -20px auto;
+    border-radius: 1.6em;
+    border: 4px solid #0468BF;
+    color: #0468BF;
+    
+}
+
 .btn-close svg{
     position: absolute;
     font-size: 20px;

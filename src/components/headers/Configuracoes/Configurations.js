@@ -6,10 +6,9 @@ import * as AiIcons from 'react-icons/ai'
 function Configurations(props){
 
 
-    return(<div className={props.configMenu ? 'configuratios active' : 'configurations'}>
+    return(<div className={props.configMenu ? 'configurations active' : 'configurations'}>
         <h2 className="title-element"> Configurações </h2>
 
-        <form>
             <span className="btn-close" onClick={() => props.setConfigMenu(!props.configMenu)}>
                 <AiIcons.AiOutlineClose/>
             </span>
@@ -28,8 +27,6 @@ function Configurations(props){
                 )
             })}
 
-
-        </form>
     </div>)
 }
 

@@ -5,6 +5,7 @@ import * as AiIcons from 'react-icons/ai'
 import RegionsDraw from "../Map/RegionsDraw";
 import ButtonTemas from "../buttons/ButtonTemas";
 import ToglleSelect from "../selectors/ToglleSelect";
+import Configurations from "./Configuracoes/Configurations";
 
 
 
@@ -46,80 +47,16 @@ export default function RegionSelectedHeader(props){
                 <div className="region-header-title" >{props.labels[props.setRegion]}</div>
 
                 <ToglleSelect 
-                    setConfigMenu={setConfigMenu}
                     configMenu={configMenu}
+                    setConfigMenu={setConfigMenu}
                 />
 
-
-                <form className={configMenu ? 'configurations active':'configurations'} >
-                    <span className="btn-close" onClick={() => setConfigMenu(!configMenu)}><AiIcons.AiOutlineClose/></span>
-
-                    <div className="element">
-                        <p className="ele-nome">Ruas Pavimentadas</p>
-                        <div style={{backgroundColor:'#ffad29'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[0]}
-                            onChange={() => handleSetConfig(0)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Ruas com bloquetes</p>
-                        <div style={{backgroundColor:'#7C7C7C'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[1]}
-                            onChange={() => handleSetConfig(1)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Ruas sem asfalto</p>
-                        <div style={{backgroundColor:'#EFE944'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[2]}
-                            onChange={() => handleSetConfig(2)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Ruas com alagamentos</p>
-                        <div style={{backgroundColor:'#005FFF'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[3]}
-                            onChange={() => handleSetConfig(3)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Ruas que precisam de reparos</p>
-                        <div style={{backgroundColor:'#F54516'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[4]}
-                            onChange={() => handleSetConfig(4)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Ruas obstruidas</p>
-                        <div style={{backgroundColor:'#000'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[5]}
-                            onChange={() => handleSetConfig(5)}
-                        />
-                    </div>
-                    <div className="element">
-                        <p className="ele-nome">Mostrar pontos de coleta de lixo</p>
-                        <div style={{backgroundColor:'#A3ABA2'}} className='color-element'></div>
-                        <input 
-                            type='checkbox'
-                            checked={props.controlArray[6]}
-                            onChange={() => handleSetConfig(6)}
-                        />
-                    </div>
-
-                    
-                </form>
+                <Configurations
+                    configMenu={configMenu}
+                    setConfigMenu={setConfigMenu}
+                    controlArray={props.controlArray}
+                    handleSetConfig={handleSetConfig}
+                />
             
                 </>
             ):(<><p> </p></>)}

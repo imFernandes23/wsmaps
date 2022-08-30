@@ -1,17 +1,17 @@
 .configurations{
     position: relative;
-    top: calc(50vh - 80px);
+    top: calc(50vh - 40px);
     transform: translateY(-50%);
     left: -450px;
-    width: 450px;
-    height: 60vh;
+    width: fit-content;
+    height: 70vh;
     background-color: white;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
     transition: .5s;
     padding-top: 50px;
     padding-bottom: 20px;
-
+    overflow: hidden;
     z-index: 100;
 }
 .configurations.active{
@@ -31,6 +31,14 @@
     
 }
 
+.list-itens{
+    width: fit-content;
+    height: 55vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
 .btn-close svg{
     position: absolute;
     font-size: 20px;
@@ -41,34 +49,40 @@
 
 .element{
     display: flex;
-    width: 390px;
-    padding: 5px;
-    padding-left: 20px;
-    height: 40px;
-    margin: 10px 0px 0px 20px;
+    width: fit-content;
+    height: 60px;
+    padding: 10px;
+    margin: 5px 5px 5px 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
 
+
+.ele-nome{
+    width: 250px;
+    height: fit-content;
+}
 .color-element{
-    position: absolute;
+    position: relative;
+    margin: 0 10px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.41);
-    right: 100px;
     border: 3px solid white;
 }
 
 input[type='checkbox']{
-    position: absolute;
+    position: relative;
     width: 60px;
     height: 30px;
+
     -webkit-appearance: none;
     background-color: #c6c6c6;
     border-radius: 15px;
     outline: none;
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
     transition: .5s;
-    right: 25px;
+
 
 }
 
@@ -82,6 +96,7 @@ input[type='checkbox']::before{
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    z-index: 10;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -95,4 +110,11 @@ input:checked[type='checkbox']::before{
     left: 30px;
 }
 
+::-webkit-scrollbar{
+    width: 5px;
+}
 
+::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: #0468BF;
+}

@@ -13,6 +13,7 @@ function Configurations(props){
                 <AiIcons.AiOutlineClose/>
             </span>
 
+            <div className="list-itens">
             {ConfigurationsData.map((item, index) => {
                 return(
                     <div className="element" key={index}>
@@ -26,6 +27,7 @@ function Configurations(props){
                     </div>
                 )
             })}
+            </div>
 
     </div>)
 }

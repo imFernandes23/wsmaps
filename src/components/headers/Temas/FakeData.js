@@ -32,8 +32,8 @@ const FakeData = [
             },{
                 name: 'subClasse 18',
                 id: 18,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 2',
         id: 2,
@@ -67,8 +67,8 @@ const FakeData = [
             },{
                 name: 'subClasse 28',
                 id: 28,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 3',
         id: 3,
@@ -102,8 +102,8 @@ const FakeData = [
             },{
                 name: 'subClasse 38',
                 id: 38,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 4',
         id: 4,
@@ -137,8 +137,8 @@ const FakeData = [
             },{
                 name: 'subClasse 48',
                 id: 48,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 5',
         id: 5,
@@ -172,8 +172,8 @@ const FakeData = [
             },{
                 name: 'subClasse 58',
                 id: 58,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 6',
         id: 6,
@@ -207,8 +207,8 @@ const FakeData = [
             },{
                 name: 'subClasse 68',
                 id: 68,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 7',
         id: 7,
@@ -242,8 +242,8 @@ const FakeData = [
             },{
                 name: 'subClasse 78',
                 id: 78,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 8',
         id: 8,
@@ -277,8 +277,8 @@ const FakeData = [
             },{
                 name: 'subClasse 88',
                 id: 88,
-            },
-        ],
+            }
+        ]
     },{
         name: 'classe 9',
         id: 9,
@@ -312,7 +312,9 @@ const FakeData = [
             },{
                 name: 'subClasse 98',
                 id: 98,
-            },
-        ],
+            }
+        ]
     },
 ]
+
+export default FakeData

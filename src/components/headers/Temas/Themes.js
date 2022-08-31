@@ -5,7 +5,7 @@ import ClassObject from "./ClassObject";
 import FakeData from "./FakeData";
 
 function Themes(props){
-    console.log(FakeData[0])
+    console.log(FakeData)
 
 
     return(
@@ -15,7 +15,9 @@ function Themes(props){
 
         <div className="full-list">
         
-
+        {FakeData.map((item, index) => {
+            return(<ClassObject name={item.name} id={item.id}/>)
+        })}
 
         </div>
         

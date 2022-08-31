@@ -1,0 +1,51 @@
+.class-object{
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
+    display: flex;
+    width: 90%;
+    height: 50px;
+    overflow: hidden;
+    margin: 2px;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.class-object.active{
+    background-color: #0455BF;
+    color: white;
+    margin-bottom: -2px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.class-object:hover{
+    background-color: #0455BF;
+    color: white;
+    border: none;
+}
+.name{
+    text-align: center;
+    width: 250px;
+}
+.icon{
+    position: relative;
+    left: 20px;
+    transition: .3s;
+}
+.icon.active{
+    transform: rotate(90deg);
+}
+.childrens{
+    width: 90%;
+    height: max-content;
+    background-color: #0455BF;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}

@@ -10,7 +10,9 @@ function ToglleSelect(props){
         <>
             <div className={toglle ? 'toglle-menu active' : 'toglle-menu'}>
                 <button className={ toglle ? 'btn-toglle active' : 'btn-toglle'} onClick={() => {setToglle(!toglle)
-                props.setConfigMenu(false)}}>
+                props.setConfigMenu(false)
+                props.setThemesMenu(false)
+                }}>
                     <AiIcons.AiOutlinePlus/>
                 </button>
 
@@ -25,7 +27,8 @@ function ToglleSelect(props){
            
                 </button>
 
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}}>
+                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}} onClick={() => {props.setThemesMenu(!props.themesMenu)
+                setToglle(false)}}>
                     <AiIcons.AiOutlineBulb />
   
                 </button>

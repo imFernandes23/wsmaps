@@ -6,12 +6,13 @@ import RegionsDraw from "../Map/RegionsDraw";
 import ButtonTemas from "../buttons/ButtonTemas";
 import ToglleSelect from "../selectors/ToglleSelect";
 import Configurations from "./Configuracoes/Configurations";
+import Themes from './Temas/Themes'
 
 
 
 export default function RegionSelectedHeader(props){
     const [configMenu,setConfigMenu] = useState(false)
-    const [configTemas, setConfigTemas] = useState(false)
+    const [themesMenu, setThemesMenu] = useState(false)
     const [toglle, setToglle] = useState(false)
 
     function handleSetConfig(index){
@@ -21,21 +22,10 @@ export default function RegionSelectedHeader(props){
 
         props.onChange(newArray)
 
-        setConfigTemas(false) 
-    }
-//remove this in future
-    function handleSetConfigTheme(index){
-        let newArray = [...props.controlArrayTheme]
 
-        newArray[index] = !props.controlArrayTheme[index]
-
-        props.onChange2(newArray)
-        setConfigMenu(false) 
     }
-//
 
     function handleSetConfigTemas(){
-        setConfigTemas(!configTemas)
         setConfigMenu(false)
     }
 
@@ -49,6 +39,8 @@ export default function RegionSelectedHeader(props){
                 <ToglleSelect 
                     configMenu={configMenu}
                     setConfigMenu={setConfigMenu}
+                    themesMens={themesMenu}
+                    setThemesMenu={setThemesMenu}
                 />
 
                 <Configurations
@@ -56,6 +48,11 @@ export default function RegionSelectedHeader(props){
                     setConfigMenu={setConfigMenu}
                     controlArray={props.controlArray}
                     handleSetConfig={handleSetConfig}
+                />
+
+                <Themes
+                    themesMenu={themesMenu}
+                    setThemesMenu={setThemesMenu}
                 />
             
                 </>

@@ -66,13 +66,13 @@
 
 .full-list{
     margin-top: 5px;
-    padding: auto;
+    margin-left: 20px;
     align-items: center;
 
     z-index: 100;
     overflow-y: scroll;
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 52vh;
     overflow-y: scroll;
 }

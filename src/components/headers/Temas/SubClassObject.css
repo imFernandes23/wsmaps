@@ -26,6 +26,7 @@
 }
 
 .subclass-name{
+    color: black;
     width: 250px;
     overflow-x: hidden;
 }

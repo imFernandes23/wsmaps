@@ -5,7 +5,14 @@ import ClassObject from "./ClassObject";
 import FakeData from "./FakeData";
 
 function Themes(props){
-    console.log(FakeData)
+
+    function setRequestClass(id){
+        console.log('carregar classe' + id)
+    }
+
+    function setRequestSubClass(id){
+        console.log('carregar subclasse' + id)
+    }
 
 
     return(
@@ -16,7 +23,7 @@ function Themes(props){
         <div className="full-list">
         
         {FakeData.map((item, index) => {
-            return(<ClassObject name={item.name} id={item.id}/>)
+            return(<ClassObject key={index} name={item.name} id={item.id} setRequestClass={setRequestClass} setRequestSubClass={setRequestSubClass} children={item.children}/>)
         })}
 
         </div>

@@ -39,13 +39,24 @@
 }
 .childrens{
     width: 95%;
-    height: max-content;
+    max-height: 40vh;
     background-color: #0455BF;
     border-radius: 0px 0px 5px 5px;
     display: flex;
-    overflow-y: scroll;
-    overflow-x: hidden;
     align-items: center;
     justify-content: center;
     padding: 10px;
+}
+
+.childrens-list{
+    width: 99%;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-items: center;
+    max-height: 37vh;
+    background-color: white;
+    border-radius: 5px;
 }

@@ -54,6 +54,7 @@ export default function RegionSelectedHeader(props){
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
                     dataLoaded={props.dataLoaded}
+                    fetchApiData={props.fetchApiData}
                 />
             
                 </>

@@ -77,8 +77,57 @@
     overflow-y: scroll;
 }
 
-#class-loader{
+
+
+.loader.deactive{
+    width: 95%;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.20);
+}
+
+.loader.active{
     width: 95%;
     height: 5px;
-    background-color: aqua;
+    transition: .5s;
+}
+
+.loader.active::before{
+    content: '';
+    position: absolute;
+    width: 5%;
+    height: 5px;
+    background-color: #0455BF;
+    left: 0%;
+    z-index: 1;
+    transition: .5s;
+    animation: 3s loader1 infinite linear;
+}
+
+.loader.active::after{
+    content: '';
+    position: absolute;
+    width: 5%;
+    height: 5px;
+    background-color: #0455BF;
+    right: 5%;
+    z-index: 1;
+    transition: .5s;
+    animation: 3s loader2 infinite linear;
+}
+@keyframes loader1{
+    0%,100%{
+        left: 0%;
+    }
+    50%{
+        left: 90%;
+    }
+}
+
+@keyframes loader2{
+    0%,100%{
+        right: 5%;
+    }
+    50%{
+        right: 95%;
+    }
 }

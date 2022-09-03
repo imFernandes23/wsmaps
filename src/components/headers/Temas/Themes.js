@@ -10,14 +10,15 @@ import {useState, useEffect} from 'react'
 function Themes(props){
     const [dataLoaded, setDataLoaded] = useState(props.dataLoaded)
     const [currentPage, setCurrentPage] = useState(1)
-    let maxThemePages = 1
+    const [loader, setLoader] = useState(true)
 
     
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
             if(entries.some((entry) => entry.isIntersecting)){
-                console.log('elemento visto')
+                console.log('carregar mais')
+                // props.fetchApiData(null, true, false, 2)
             }
         });
         intersectionObserver.observe(document.querySelector('#class-loader'))
@@ -45,7 +46,7 @@ function Themes(props){
         {dataLoaded.map((item, index) => {
             return(<ClassObject key={index} name={item.name} id={item.id} setRequestClass={setRequestClass} setRequestSubClass={setRequestSubClass} children={item.children}/>)
         })}
-        <div id="class-loader"/>
+        <div id="class-loader" className={ loader ? 'loader active' : 'loader deactive'}/>
         </div>
         
         <button className="btn-confirm">

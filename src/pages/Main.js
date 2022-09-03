@@ -49,7 +49,7 @@ function Main(){
         setInLoadScreen(true)
         // rotina para adquirir as classes
         if(classes === true){
-            await api.get(`classes/?${page}`).then((res) => {
+            await api.get(`classes?${page}`).then((res) => {
                 maxClassPages = res.data.last_page;
                     res.data.data.forEach((item) => {
                         setDataLoaded(dataLoaded.push({id: item.id, name: item.name, children: null}))

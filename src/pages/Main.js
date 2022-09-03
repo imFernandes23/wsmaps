@@ -25,11 +25,13 @@ function Main(){
     //headers
 
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
-    const [controlArrayTheme, setControlArrayTheme] = useState([false,false,false,false,false])
-    const arraySupport = [28,33,60,15]
-    const [dataApi, setApiData] = useState([])
+
+
+
     const [inLoadScreen, setInLoadScreen] = useState(false)
-    const [numPages, setNumPages] = useState()
+
+    const [dataLoaded, setDataLoaded] = useState([])
+    let maxClassPages 
 
 
 
@@ -39,12 +41,26 @@ function Main(){
     function handleSetRegion(index){
         setRegionSelected(index)
         const id = Regions[index].id
-        fetchApiData(id)
+        const classes = true
+        fetchApiData(id,classes)
     }
 
-    async function fetchApiData(id){
-        const page = 1
+    async function fetchApiData(id, classes, page){
         setInLoadScreen(true)
+        // rotina para adquirir as classes
+        if(classes === true){
+            await api.get(`classes/?${page}`).then((res) => {
+                maxClassPages = res.data.last_page;
+                    res.data.data.forEach((item) => {
+                        setDataLoaded(dataLoaded.push({id: item.id, name: item.name, children: null}))
+                    })
+                console.log(dataLoaded)
+            })
+            .catch((err) => {console.log(err)})
+        }
+
+
+        
         // await api.get('regions/'+id+'/activities?page='+page+'&subclasses[]=28&subclasses[]=33&subclasses[]=60&subclasses[]=15&subclasses[]=74&subclasses[]=71&subclasses[]=3',).then((res) => {
 
         //     setNumPages(res.last_page)
@@ -54,7 +70,7 @@ function Main(){
 
 
         setInLoadScreen(false)
-        console.log(numPages)
+  
     }
 
 
@@ -80,8 +96,7 @@ function Main(){
             setRegion={regionSelected}
             controlArray={controlArray}
             onChange={setControlArray}
-            controlArrayTheme={controlArrayTheme}
-            onChange2={setControlArrayTheme}
+            dataLoaded={dataLoaded}
         />
         
         {regionSelected !== null ?

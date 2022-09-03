@@ -76,3 +76,9 @@
     height: 52vh;
     overflow-y: scroll;
 }
+
+#class-loader{
+    width: 95%;
+    height: 5px;
+    background-color: aqua;
+}

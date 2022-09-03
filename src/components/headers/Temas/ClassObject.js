@@ -28,7 +28,7 @@ export default function ClassObject(props){
                                 setRequestSubClass={props.setRequestSubClass}
                             />)
                         })
-                    }</>): console.log('false')}
+                    }</>): ''}
                 </div>
 
         </div>

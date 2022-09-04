@@ -1,11 +1,44 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import React from "react";
 import * as AiIcons from 'react-icons/ai'
 import SubClassObject from "./SubClassObject";
 import './ClassObject.css'
+import api from "../../../services/api";
 
 export default function ClassObject(props){
-    const[isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [maxNumPage, setMaxNumPage] = useState(1)
+    const [loader, setLoader] = useState(true)
+    const [dataLoaded, setDataLoaded] = useState([])
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            if(entries.some((entry) => entry.isIntersecting)){
+                getSubClasses()
+            }
+        });
+        intersectionObserver.observe(document.querySelector(`#subclass-loader${props.id}`))
+        return () => intersectionObserver.disconnect();
+    })
+
+    async function getSubClasses(){
+        if(currentPage <= maxNumPage){
+            await api.get(`classes/${props.id}/subclasses?page=${currentPage}`).then((res)=>{
+                setMaxNumPage(res.data.last_page)
+                let newData = []
+                res.data.data.forEach((item) => {
+                    newData.push({id: item.id, name: item.name, children: null})
+                })
+                setDataLoaded((prevData) => [...prevData,...newData])
+            })
+            setCurrentPage(currentPage+1)
+            setLoader(false)
+           
+
+        }
+    }
+
 
     return(<>
     
@@ -18,9 +51,11 @@ export default function ClassObject(props){
 
             
                 <div className="childrens-list">
-                    {props.children ? 
-                    (<>{
-                        props.children.map((item, index) => {
+                    {loader ==- true ? 
+                    (<>
+
+                    </>):(<>{
+                        dataLoaded.map((item, index) => {
                             return(<SubClassObject
                                 key={`class_${props.id}_sub${index}`}
                                 subname={item.name}
@@ -28,7 +63,10 @@ export default function ClassObject(props){
                                 setRequestSubClass={props.setRequestSubClass}
                             />)
                         })
-                    }</>): ''}
+                    }</>)}
+
+                    <div id={`subclass-loader${props.id}`} className={ loader ? 'loader active' : 'loader deactive'}></div>
+
                 </div>
 
         </div>

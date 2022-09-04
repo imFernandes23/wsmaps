@@ -1,7 +1,8 @@
 .subclass-object{
     position: relative;
-    height: 50px;
-    width: 95%;
+    height: auto;
+    width: 100%;
+    padding: 10px 0;
     margin-bottom: 5px;
     border-radius: 5px;
     display: flex;
@@ -9,13 +10,26 @@
     justify-content: center;
     border-bottom: 1px solid rgba(128, 128, 128, 0.2);
     border-right: 1px solid rgba(128, 128, 128, 0.2);
-    overflow: hidden;
     transition: .3s;
 }
 
 .subclass-object:hover{
     background-color: #0468BF;
+}
+
+.subclass-object:hover .subclass-name
+{
     color: white;
+}
+
+.subclass-object:hover .icon-v
+{
+    color: white;
+}
+
+.subclass-object:hover .icon-v.active
+{
+    color:#28F728;
 }
 
 .subclass-object.active{
@@ -27,8 +41,11 @@
 
 .subclass-name{
     color: black;
-    width: 250px;
-    overflow-x: hidden;
+    width: 260px;
+}
+
+.icon-v{
+    color: black;
 }
 
 .icon-v.active{

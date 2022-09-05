@@ -9,7 +9,11 @@ export default function SubClassObject(props)
 
     return(<>
         <div className={isSelected ? 'subclass-object active': 'subclass-object'} onClick={() => {setIsSelected(!isSelected)
-        if(isSelected === false){props.setRequestSubClass(props.id)}}}>
+        if(isSelected === false){
+            props.addSubClass(props.id)
+        }else{
+            props.removeSubClass(props.id)
+        }}}>
             <p className="subclass-name">{props.subname}</p>
             <AiIcons.AiOutlineCheck className={ isSelected ? 'icon-v active':' icon-v'}/>
         </div>

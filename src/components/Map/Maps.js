@@ -65,6 +65,8 @@ function Maps(props){
                 region={props.region}
                 controlArray={props.controlArray}
             />
+            
+
             </>):(<></>)}
             
         </GoogleMap>

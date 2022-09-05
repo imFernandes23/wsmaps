@@ -25,26 +25,22 @@ function Main(){
     //headers
 
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
-
-
-
+    const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
+    const [regionId, setRegionId] = useState()
 
-    const [dataLoaded, setDataLoaded] = useState([])
-    let maxClassPages 
-
-
-
-
-
+    //headers
 
     function handleSetRegion(index){
         setRegionSelected(index)
-        const id = Regions[index].id
-        const classes = true
+        setRegionId(Regions[index].id)
+        setInLoadScreen(true)
+        setTimeout(function(){
+            setInLoadScreen(false)
+        },1800)
     }
 
-
+  
 
 
     if(!isLoaded){
@@ -68,7 +64,7 @@ function Main(){
             setRegion={regionSelected}
             controlArray={controlArray}
             onChange={setControlArray}
-
+            setSubClassesArray={setSubClassesArray}
         />
         
         {regionSelected !== null ?
@@ -80,6 +76,8 @@ function Main(){
                     view={regionsGetFitBounds.regionBounds[regionSelected]}
                     region={regionSelected}
                     controlArray={controlArray}
+                    subClassesArray={subClassesArray}
+                    regionId={regionId}
 
                 />
             </>

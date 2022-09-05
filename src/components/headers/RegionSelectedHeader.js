@@ -17,17 +17,10 @@ export default function RegionSelectedHeader(props){
 
     function handleSetConfig(index){
         let newArray = [...props.controlArray]
-
         newArray[index] = !props.controlArray[index]
-
         props.onChange(newArray)
-
-
     }
 
-    function handleSetConfigTemas(){
-        setConfigMenu(false)
-    }
 
 
     return(
@@ -53,8 +46,7 @@ export default function RegionSelectedHeader(props){
                 <Themes
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
-                    dataLoaded={props.dataLoaded}
-                    fetchApiData={props.fetchApiData}
+                    setSubClassesArray={props.setSubClassesArray}
                 />
             
                 </>

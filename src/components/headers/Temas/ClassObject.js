@@ -11,6 +11,7 @@ export default function ClassObject(props){
     const [maxNumPage, setMaxNumPage] = useState(1)
     const [loader, setLoader] = useState(true)
     const [dataLoaded, setDataLoaded] = useState([])
+    
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -43,8 +44,7 @@ export default function ClassObject(props){
     return(<>
     
         <div className={isOpen ? 'class-object active': 'class-object'} >
-            <div className="object-content" onClick={() => {setIsOpen(!isOpen)
-            if(isOpen === false){props.setRequestClass(props.id)}}}>
+            <div className="object-content" onClick={() => {setIsOpen(!isOpen)}}>
                 <p className="name">{props.name}</p>
                 <AiIcons.AiOutlineRight className={isOpen ? 'icon active' : 'icon'}/>
             </div>
@@ -60,7 +60,8 @@ export default function ClassObject(props){
                                 key={`class_${props.id}_sub${index}`}
                                 subname={item.name}
                                 id={item.id}
-                                setRequestSubClass={props.setRequestSubClass}
+                                addSubClass={props.addSubClass}
+                                removeSubClass={props.removeSubClass}
                             />)
                         })
                     }</>)}

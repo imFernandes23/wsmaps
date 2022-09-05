@@ -2,7 +2,6 @@ import React from "react";
 import * as AiIcons from 'react-icons/ai'
 import './Themes.css'
 import ClassObject from "./ClassObject";
-import FakeData from "./FakeData";
 import api from "../../../services/api";
 import {useState, useEffect} from 'react'
 
@@ -12,6 +11,7 @@ function Themes(props){
     const [currentPage, setCurrentPage] = useState(1)
     const [maxNumPage, setMaxNumPage] = useState(1)
     const [loader, setLoader] = useState(true)
+    let arrayOfSubClasses = []
 
     
 
@@ -43,14 +43,20 @@ function Themes(props){
     }
 
 
-    function setRequestClass(id){
-
+    function addSubClass(id){
+        console.log('adcionar ao array a subclasse de id ' + id)
+        arrayOfSubClasses.push(id)
+        console.log(arrayOfSubClasses)
     }
 
-    function setRequestSubClass(id){
-        console.log('carregar subclasse' + id)
+    function removeSubClass(id){
+        console.log('remover do array a subclasse de id ' + id)
+        let index = arrayOfSubClasses.findIndex((element) => element === id)
+        let leftArray =  arrayOfSubClasses.slice(0, index)
+        let rightArray = arrayOfSubClasses.slice(index+1)
+        arrayOfSubClasses = [...leftArray,...rightArray]
+        console.log(arrayOfSubClasses)
     }
-
     
 
     return(
@@ -64,14 +70,23 @@ function Themes(props){
         {loader === true ? (<>
             
         </>):(<>{dataLoaded.map((item, index) => {
-            return(<ClassObject key={index} name={item.name} id={item.id} setRequestClass={setRequestClass} setRequestSubClass={setRequestSubClass} children={item.children}/>)
+            return(<ClassObject 
+                key={index} 
+                name={item.name} 
+                id={item.id}
+                addSubClass={addSubClass}
+                removeSubClass={removeSubClass}
+                />)
         })}</>)}
         
         
         <div id="class-loader" className={ loader ? 'loader active' : 'loader deactive'}/>
         </div>
         
-        <button className="btn-confirm">
+        <button className="btn-confirm" onClick={() => {
+            props.setThemesMenu(!props.themesMenu)
+            props.setSubClassesArray(arrayOfSubClasses)
+        }}>
             Confirmar
         </button>
 

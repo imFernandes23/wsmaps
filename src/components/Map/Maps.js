@@ -3,6 +3,7 @@ import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
 import RegionsDraw from './RegionsDraw'
+import ThemesDrawer from "./ThemesDrawer";
 
 
 function Maps(props){
@@ -65,7 +66,11 @@ function Maps(props){
                 region={props.region}
                 controlArray={props.controlArray}
             />
-            
+            <ThemesDrawer
+                subClassesArray={props.subClassesArray}
+                regionId={props.regionId}
+                setInLoadScreen={props.setInLoadScreen}
+            />
 
             </>):(<></>)}
             

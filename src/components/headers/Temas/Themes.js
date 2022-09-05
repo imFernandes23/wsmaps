@@ -44,18 +44,15 @@ function Themes(props){
 
 
     function addSubClass(id){
-        console.log('adcionar ao array a subclasse de id ' + id)
-        arrayOfSubClasses.push(id)
-        console.log(arrayOfSubClasses)
+        arrayOfSubClasses.push(id)  
     }
 
     function removeSubClass(id){
-        console.log('remover do array a subclasse de id ' + id)
+
         let index = arrayOfSubClasses.findIndex((element) => element === id)
         let leftArray =  arrayOfSubClasses.slice(0, index)
         let rightArray = arrayOfSubClasses.slice(index+1)
         arrayOfSubClasses = [...leftArray,...rightArray]
-        console.log(arrayOfSubClasses)
     }
     
 

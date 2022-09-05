@@ -51,7 +51,11 @@ function Main(){
         <LoadingOverlay Loading={inLoadScreen}/>
 
 
-        <ButtonRedo onClick={() => setRegionSelected(null)} setRegion={regionSelected}/>
+        <ButtonRedo 
+            onClick={() => {
+                setRegionSelected(null)
+                setSubClassesArray([])
+            }} setRegion={regionSelected}/>
 
         <RegionSelector
             labels={regionsInitVectors.regionsLabel}
@@ -78,6 +82,8 @@ function Main(){
                     controlArray={controlArray}
                     subClassesArray={subClassesArray}
                     regionId={regionId}
+                    setInLoadScreen={setInLoadScreen}
+
 
                 />
             </>

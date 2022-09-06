@@ -9,7 +9,7 @@ function ThemesDrawer(props){
     const [fullData, setFullData ] = useState([])
 
     useEffect(() => {
-        console.log(props.subClassesArray)
+        console.log(subClassesArray)
         
     },[props.subClassesArray])
 

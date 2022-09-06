@@ -25,6 +25,7 @@ export default function InitialRegions(props){
         />
         <MarkerF
             position={props.center}
+            clickable={false}
             label={{
                 className: "map-marker",
                 text: props.label,

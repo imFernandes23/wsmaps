@@ -41,10 +41,6 @@ function Main(){
         },1800)
     }
 
-    useEffect(() => {
-        console.log(subClassesArray)
-    }, [subClassesArray])
-  
 
 
     if(!isLoaded){
@@ -87,7 +83,6 @@ function Main(){
                     subClassesArray={subClassesArray}
                     regionId={regionId}
                     setInLoadScreen={setInLoadScreen}
-
 
                 />
             </>

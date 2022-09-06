@@ -18,6 +18,7 @@ function Maps(props){
 
     const onLoad = useCallback((map) => setMap(map),[])
 
+
     useEffect(() => {
         if(map){
             const bounds = new window.google.maps.LatLngBounds();

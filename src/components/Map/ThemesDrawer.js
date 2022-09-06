@@ -7,9 +7,7 @@ function ThemesDrawer(props){
     const [subClassesArray, setSubClassesArray] = useState(props.subClassesArray)
     const [regionId, setRegionId ] = useState(props.regionId)
 
-    useEffect(() => {
-        console.log(subClassesArray)
-    }, [subClassesArray])
+
 
 }
 

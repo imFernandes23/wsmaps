@@ -11,7 +11,7 @@ function Themes(props){
     const [currentPage, setCurrentPage] = useState(1)
     const [maxNumPage, setMaxNumPage] = useState(1)
     const [loader, setLoader] = useState(true)
-    let arrayOfSubClasses = []
+    const  [arrayOfSubClasses, setArrayOfSubClasses] = useState([])
 
     
 
@@ -44,7 +44,9 @@ function Themes(props){
 
 
     function addSubClass(id){
-        arrayOfSubClasses.push(id)  
+        let leftArray = arrayOfSubClasses
+        leftArray.push(id)
+        setArrayOfSubClasses([...leftArray])
     }
 
     function removeSubClass(id){
@@ -52,7 +54,7 @@ function Themes(props){
         let index = arrayOfSubClasses.findIndex((element) => element === id)
         let leftArray =  arrayOfSubClasses.slice(0, index)
         let rightArray = arrayOfSubClasses.slice(index+1)
-        arrayOfSubClasses = [...leftArray,...rightArray]
+        setArrayOfSubClasses([...leftArray,...rightArray])
     }
     
 

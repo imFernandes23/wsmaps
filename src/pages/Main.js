@@ -22,14 +22,15 @@ function Main(){
     const [center, setCenter] = useState({lat: -1.394782568744898,lng: -48.41606140136719})
     const [regionSelected, setRegionSelected] = useState(null);
 
-    //headers
+    //headersSelectedRegion
 
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
     const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
 
-    //headers
+
+    //headersSelectedRegion
 
     function handleSetRegion(index){
         setRegionSelected(index)
@@ -40,6 +41,9 @@ function Main(){
         },1800)
     }
 
+    useEffect(() => {
+        console.log(subClassesArray)
+    }, [subClassesArray])
   
 
 

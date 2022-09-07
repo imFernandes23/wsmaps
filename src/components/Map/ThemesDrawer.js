@@ -49,6 +49,8 @@ function ThemesDrawer(props){
             
             setFullData(currentData)
         props.setInLoadScreen(false)
+        }else{
+            setFullData([])
         } 
         }
     

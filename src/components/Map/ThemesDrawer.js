@@ -1,6 +1,6 @@
 import React from "react";
 import api from "../../services/api";
-import { MarkerF } from "@react-google-maps/api";
+import { MarkerF, OverlayView } from "@react-google-maps/api";
 import { useState, useEffect} from  'react'
 
 function ThemesDrawer(props){
@@ -37,6 +37,7 @@ function ThemesDrawer(props){
                         let coords = JSON.parse(element.geometry)
                         newData.push({
                             id: element.id, 
+                            subId: element.subclass_id,
                             coord: {lat: coords.coordinates[1], lng: coords.coordinates[0]}, 
                             name: element.name,
                             subName: element.subclass.name,
@@ -54,11 +55,20 @@ function ThemesDrawer(props){
         } 
         }
     
-    
+    return( <DrawMarkers/> )
+
+}
 
 
-
-    
+function DrawMarkers(props){
+    return(
+        <OverlayView
+            position={{lat: -1.33278758467817, lng: -48.4010730625409}}
+            mapPaneName={OverlayView.MARKER_LAYER}
+        >
+            <h1>TESTE</h1>
+        </OverlayView>
+    )
 }
 
 export default ThemesDrawer

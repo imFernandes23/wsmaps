@@ -7,17 +7,16 @@ import './ThemesDrawer.css'
 function ThemesDrawer(props){
     
     return(<>
-        <MarkerF 
-            position={props.element.coord}
-            />
         <OverlayView position={props.element.coord} mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+        <>
             <div 
             style={{'--MainColor':props.element.color}} 
             className='marker deactive'
             >
-                teste
+                <img className="img-icon" src={props.element.icon}/>
             </div>
-            
+            <div style={{'--MainColor':props.element.color}} className="pointer" ></div>
+        </>    
         </OverlayView>
 
     </>)

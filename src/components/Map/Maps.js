@@ -30,7 +30,7 @@ function Maps(props){
 
 
         }
-    }, [map, props.view, props.polygonsInit])
+    }, [map, props.view, props.polygonsInit ])
 
     return(
         <GoogleMap 
@@ -42,6 +42,7 @@ function Maps(props){
             defaultCenter={{lat: -1.394782568744898,lng: -48.41606140136719}}
             zoom={props.zoom}
             center={props.center}
+            onDragEnd={onLoad}
     
             
         >
@@ -67,11 +68,13 @@ function Maps(props){
                 region={props.region}
                 controlArray={props.controlArray}
             />
-            <ThemesDrawer
-                subClassesArray={props.subClassesArray}
-                regionId={props.regionId}
-                setInLoadScreen={props.setInLoadScreen}
-            />
+
+            {props.fullData.length > 0 ?            
+                props.fullData.map((element, index) => {
+                    return <ThemesDrawer element={element} key={element.id} />
+                })
+            :(<></>)}
+    
 
             </>):(<></>)}
             

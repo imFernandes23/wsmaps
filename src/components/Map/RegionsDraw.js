@@ -15,7 +15,7 @@ export default function RegionsDraw(props){
         const optionLimits = (
             {
                 fillColor: "#fff",
-                fillOpacity: 0.6,
+                fillOpacity: 0.2,
                 strokeColor: "#000",
                 strokeOpacity: 1,
                 strokeWeight: .8,

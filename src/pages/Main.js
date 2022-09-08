@@ -28,7 +28,7 @@ function Main(){
     const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
-
+    const [fullData, setFullData] = useState([])
 
     //headersSelectedRegion
 
@@ -40,6 +40,57 @@ function Main(){
             setInLoadScreen(false)
         },1800)
     }
+
+    useEffect(() => {
+        getFullData(regionId, subClassesArray)
+    }, [subClassesArray])
+
+    useEffect(() => {
+        console.log(fullData)
+    },[fullData])
+
+    async function getFullData(regionId, subClassesArray){
+        let currentPage = 1
+        let maxNumPage = 1
+
+        if(subClassesArray.length > 0){
+            setInLoadScreen(true)
+            let RegionActivities = `regions/${regionId}/activities`
+            let RegionsSubclasses = ''
+            subClassesArray.forEach((element) => {
+                RegionsSubclasses = RegionsSubclasses + `&subclasses[]=${element}` 
+            })
+
+            let currentData = []
+
+            for ( currentPage; currentPage <= maxNumPage ; currentPage++){
+                let newData = []
+                let page = `?page=${currentPage}`
+                await api.get(RegionActivities + page + RegionsSubclasses).then((res) => {
+                    maxNumPage = res.data.last_page;
+                    res.data.data.forEach((element) => {
+                        let coords = JSON.parse(element.geometry)
+                        newData.push({
+                            id: element.id, 
+                            subId: element.subclass_id,
+                            coord: {lat: coords.coordinates[1], lng: coords.coordinates[0]}, 
+                            name: element.name,
+                            subName: element.subclass.name,
+                            color: element.subclass.class.related_color,
+                            icon: element.subclass.related_icon.path})
+                    })
+                currentData = [...currentData, ...newData]
+                })
+            }
+            
+            setFullData(currentData)
+            
+        setInLoadScreen(false)
+        }else{
+            setFullData([])
+        }
+    }
+
 
 
 
@@ -80,9 +131,7 @@ function Main(){
                     view={regionsGetFitBounds.regionBounds[regionSelected]}
                     region={regionSelected}
                     controlArray={controlArray}
-                    subClassesArray={subClassesArray}
-                    regionId={regionId}
-                    setInLoadScreen={setInLoadScreen}
+                    fullData={fullData}
 
                 />
             </>

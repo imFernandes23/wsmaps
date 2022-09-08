@@ -61,7 +61,9 @@ function Themes(props){
     return(
     <div className={props.themesMenu ? 'themes active' : 'themes'}>
         <h2 className="title-element"> Temas </h2>
-        <span className="btn-close" onClick={() => props.setThemesMenu(!props.themesMenu)}><AiIcons.AiOutlineClose/></span>
+        <span className="btn-close" onClick={() => {props.setThemesMenu(!props.themesMenu)
+        props.setSubClassesArray(arrayOfSubClasses)}
+        }><AiIcons.AiOutlineClose/></span>
 
         <div className="full-list">
         

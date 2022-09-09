@@ -29,12 +29,9 @@ function ThemesDrawer(props){
             >
                 <img className="img-icon" src={props.element.icon}/>
 
-                {isOpen ? (<>
-
-                        <p className="eleName">{name}</p>
+                        <p className={isOpen ? 'eleName active' : 'eleName'}>{name}</p>
                         <br/>
-                        <p className="subName">{subName}</p>
-                </>) : (<></>)}
+                        <p className={isOpen ? 'subName active' : 'subName'}>{subName}</p>
 
             </div>
         </>    

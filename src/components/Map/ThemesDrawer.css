@@ -19,6 +19,8 @@
     font-size: 16;
     position: relative;
     font-weight: 600;
+    transform: scale(0);
+    transition: .5s;
 }
 .subName{
     font-weight: 400;
@@ -26,6 +28,15 @@
     position: relative;
     display: inline-block;
     font-size: 15;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.eleName.active{
+    transform: scale(1);
+}
+.subName.active{
+    transform: scale(1);
 }
 
 
@@ -69,6 +80,8 @@
     height: 90px;
     opacity: 0.15;
     transform: rotate(0deg);
+    transform-origin: center;
+    transition: .5s;
 }
 
 .marker:hover{
@@ -82,6 +95,7 @@
     height: 30px;
     transform: rotate(45deg);
     transition: .5s;
+    transform-origin: center;
 }
 
 

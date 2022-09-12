@@ -1,20 +1,21 @@
+
 .box-itens{
     position: absolute;
     background-color: white;
     border-radius: 15px;
     width: 126px;
     height: 30px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     overflow: hidden;
     left: 15px;
     top: 33px;
     transition: .5s;
-    transform-origin: bottom;
+    transform-origin: bottom right;
 }
 
 .box-itens.active{
-    width: 270px;
+    width: 300px;
     height: 300px;
     padding: 5px;
 }
@@ -55,6 +56,10 @@
     pointer-events: none;
 }
 
+.button-clear:active{
+    transform: translateY(2px);
+}
+
 .component{
     flex: none;
     position: absolute;
@@ -80,6 +85,11 @@
     transition: .2s;
 }
 
+.component:active{
+    transform: translateY(2px);
+}
+
+
 
 .itens{
     position: absolute;
@@ -87,7 +97,7 @@
     flex-wrap: wrap;
     margin-top: 40px;
     align-content: flex-start;
-    width: 260px;
+    width: 290px;
     height: 85%;
     padding: 1%;
     overflow-y: scroll;

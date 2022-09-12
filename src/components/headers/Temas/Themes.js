@@ -46,24 +46,55 @@ function Themes(props){
     }
 
 
-    function addSubClass(id){
+    function addSubClass(id, subname, state){
         let leftArray = arrayOfSubClasses
         leftArray.push(id)
         setArrayOfSubClasses([...leftArray])
+
+        let leftArraySN = arrayOfSCNames
+        leftArraySN.push(subname)
+        setArrayOfSCNames([...leftArraySN])
+
+        let leftArrayStates = arrayOfSCStates
+        leftArrayStates.push(state)
+        setArrayOfSCStates([...leftArrayStates])
     }
 
     function removeSubClass(id){
 
         let index = arrayOfSubClasses.findIndex((element) => element === id)
+
         let leftArray =  arrayOfSubClasses.slice(0, index)
         let rightArray = arrayOfSubClasses.slice(index+1)
         setArrayOfSubClasses([...leftArray,...rightArray])
+
+        let leftArraySN =  arrayOfSCNames.slice(0, index)
+        let rightArraySN = arrayOfSCNames.slice(index+1)
+        setArrayOfSCNames([...leftArraySN,...rightArraySN])
+
+        arrayOfSCStates[index](false)
+
+        let leftArrayStates =  arrayOfSCStates.slice(0, index)
+        let rightArrayStates = arrayOfSCStates.slice(index+1)
+        setArrayOfSCStates([...leftArrayStates,...rightArrayStates])
     }
     
 
+    function clearAll(){
+        setArrayOfSubClasses([])
+        setArrayOfSCNames([])
+        arrayOfSCStates.forEach((item) => {item(false)})
+        setArrayOfSCStates([])
+    }
+
     return(
     <div className={props.themesMenu ? 'themes active' : 'themes'}>
-        <SelectedItens/>
+        <SelectedItens
+            arrayOfSubClasses={arrayOfSubClasses}
+            arrayOfSCNames={arrayOfSCNames}
+            removeSubClass={removeSubClass}
+            clearAll={clearAll}
+        />
         <h2 className="title-element"> Temas </h2>
         <span className="btn-close" onClick={() => {props.setThemesMenu(!props.themesMenu)
         props.setSubClassesArray(arrayOfSubClasses)}

@@ -15,8 +15,6 @@ function ThemesDrawer(props){
 
     function handleClick(){
         setIsOpen(!isOpen)
-
-        console.log('cliquei ' + name + subName)
     }
 
     return(<>

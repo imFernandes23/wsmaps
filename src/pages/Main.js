@@ -46,7 +46,7 @@ function Main(){
     }, [subClassesArray])
 
     useEffect(() => {
-        console.log(fullData)
+        
     },[fullData])
 
     async function getFullData(regionId, subClassesArray){

@@ -4,6 +4,7 @@ import './Themes.css'
 import ClassObject from "./ClassObject";
 import api from "../../../services/api";
 import {useState, useEffect} from 'react'
+import SelectedItens from "./SelectedItens";
 
 
 function Themes(props){
@@ -11,7 +12,9 @@ function Themes(props){
     const [currentPage, setCurrentPage] = useState(1)
     const [maxNumPage, setMaxNumPage] = useState(1)
     const [loader, setLoader] = useState(true)
-    const  [arrayOfSubClasses, setArrayOfSubClasses] = useState([])
+    const [arrayOfSubClasses, setArrayOfSubClasses] = useState([])
+    const [arrayOfSCNames, setArrayOfSCNames] = useState([])
+    const [arrayOfSCStates, setArrayOfSCStates] = useState([])
 
     
 
@@ -60,6 +63,7 @@ function Themes(props){
 
     return(
     <div className={props.themesMenu ? 'themes active' : 'themes'}>
+        <SelectedItens/>
         <h2 className="title-element"> Temas </h2>
         <span className="btn-close" onClick={() => {props.setThemesMenu(!props.themesMenu)
         props.setSubClassesArray(arrayOfSubClasses)}

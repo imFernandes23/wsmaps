@@ -50,6 +50,7 @@
     transition: .2s;
     outline: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
+    cursor: pointer;
 }
 
 .btn-confirm:hover{

@@ -31,7 +31,7 @@ function Search(props){
             <AiIcons.AiOutlineSearch/>
         </button>
         <input type='text' placeholder="O que você procura?" onChange={attContent} className='input-search' value={textInput}/>
-        <button onClick={handleSetClear} className='button-search'>
+        <button onClick={handleSetClear} className='btn-input-clear'>
             <AiIcons.AiOutlineClose/>
         </button>
     </div>

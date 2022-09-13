@@ -7,12 +7,14 @@ import ButtonTemas from "../buttons/ButtonTemas";
 import ToglleSelect from "../selectors/ToglleSelect";
 import Configurations from "./Configuracoes/Configurations";
 import Themes from './Temas/Themes'
+import Search from "./Buscas/Search";
 
 
 
 export default function RegionSelectedHeader(props){
     const [configMenu,setConfigMenu] = useState(false)
     const [themesMenu, setThemesMenu] = useState(false)
+    const [searchMenu, setSearchMenu] = useState(false)
     const [toglle, setToglle] = useState(false)
 
     function handleSetConfig(index){
@@ -34,6 +36,8 @@ export default function RegionSelectedHeader(props){
                     setConfigMenu={setConfigMenu}
                     themesMens={themesMenu}
                     setThemesMenu={setThemesMenu}
+                    searchMenu={searchMenu}
+                    setSearchMenu={setSearchMenu}
                 />
 
                 <Configurations
@@ -47,6 +51,11 @@ export default function RegionSelectedHeader(props){
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
                     setSubClassesArray={props.setSubClassesArray}
+                />
+
+                <Search
+                    searchMenu={searchMenu}
+                    setSearchMenu={setSearchMenu}
                 />
             
                 </>

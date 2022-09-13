@@ -102,3 +102,13 @@
     padding: 1%;
     overflow-y: scroll;
 }
+
+.alert{
+    font-size: 13px;
+    color: gray;
+    position: absolute;
+    width: 99%;
+    text-align: center;
+    top: 100px;
+
+}

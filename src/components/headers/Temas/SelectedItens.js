@@ -39,7 +39,9 @@ function SelectedItens(props){
                             removeSubClass={props.removeSubClass}
                         />)
                     })
-                }</>):(<></>)}
+                }</>):(<>
+                    <div className="alert">Você ainda não escolheu os temas.</div>
+                </>)}
 
             </div>
             

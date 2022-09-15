@@ -30,14 +30,15 @@ function Search(props){
         <button onClick={() => {handleSetSearch(textInput)}} className='button-search'>
             <AiIcons.AiOutlineSearch/>
         </button>
-        <input type='text' placeholder="O que você procura?" onChange={attContent} className='input-search' value={textInput}/>
+        <input type='text' placeholder=" O que você procura?" onChange={attContent} className='input-search' value={textInput}/>
         <button onClick={handleSetClear} className='btn-input-clear'>
             <AiIcons.AiOutlineClose/>
         </button>
     </div>
     
-
-
+    <div className="search-res">
+        <div>Resultados de busca</div>
+    </div>
 
     <button className="btn-confirm" onClick={() => {
             props.setSearchMenu(!props.searchMenu)

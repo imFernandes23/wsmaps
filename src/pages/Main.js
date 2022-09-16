@@ -1,4 +1,4 @@
-import React,{useEffect, useState, useRef} from "react";
+import React,{useEffect, useState} from "react";
 import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
@@ -46,7 +46,7 @@ function Main(){
     }, [subClassesArray])
 
     useEffect(() => {
-        
+
     },[fullData])
 
     async function getFullData(regionId, subClassesArray){

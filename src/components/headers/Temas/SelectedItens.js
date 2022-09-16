@@ -34,6 +34,7 @@ function SelectedItens(props){
                 { show ? (<>{
                     props.arrayOfSubClasses.map((item, index) => {
                         return(<Item 
+                            key={`item_set${index}`}
                             name={props.arrayOfSCNames[index]}
                             id={item}
                             removeSubClass={props.removeSubClass}

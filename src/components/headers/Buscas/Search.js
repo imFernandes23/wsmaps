@@ -2,13 +2,22 @@ import React from "react";
 import './Search.css'
 import * as AiIcons from 'react-icons/ai'
 import {useState} from 'react'
+import FakeData from "./FakeData";
+import ItemSearch from "./ItemSearch"
 
 
 function Search(props){
     const [textInput, setTextinput] = useState('')
+    const [dataFound, setDataFound] = useState([])
+    const [show, setShow] = useState(false)
 
     function handleSetSearch(content){
         console.log(content)
+        if(content.length > 0){
+            console.log(FakeData)
+            setDataFound(FakeData)
+            setShow(true)
+        }
     }
 
     const attContent = event => {
@@ -17,6 +26,8 @@ function Search(props){
 
     function handleSetClear(){
         setTextinput('')
+        setDataFound([])
+        setShow(false)
     }
 
     return(
@@ -37,14 +48,18 @@ function Search(props){
     </div>
     
     <div className="search-res">
-        <div>Resultados de busca</div>
+        {show ? (<>
+            {dataFound.map((element) => {
+                return( <ItemSearch 
+                    key={element.id}
+                    element={element}
+                />)
+            })}
+        </>):(<>
+            <p>Você ainda não fez uma busca.</p>
+        </>)}
     </div>
 
-    <button className="btn-confirm" onClick={() => {
-            props.setSearchMenu(!props.searchMenu)
-        }}>
-        confirmar
-    </button>
     </div>
     )
 }

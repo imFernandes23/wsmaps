@@ -120,6 +120,7 @@ function Main(){
             controlArray={controlArray}
             onChange={setControlArray}
             setSubClassesArray={setSubClassesArray}
+            regionId={regionId}
         />
         
         {regionSelected !== null ?

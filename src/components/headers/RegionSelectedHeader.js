@@ -56,6 +56,7 @@ export default function RegionSelectedHeader(props){
                 <Search
                     searchMenu={searchMenu}
                     setSearchMenu={setSearchMenu}
+                    regionId={props.regionId}
                 />
             
                 </>

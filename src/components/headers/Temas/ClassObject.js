@@ -25,6 +25,7 @@ export default function ClassObject(props){
 
     async function getSubClasses(){
         if(currentPage <= maxNumPage){
+            setLoader(true)
             await api.get(`classes/${props.id}/subclasses?page=${currentPage}`).then((res)=>{
                 setMaxNumPage(res.data.last_page)
                 let newData = []
@@ -51,10 +52,7 @@ export default function ClassObject(props){
 
             
                 <div className="childrens-list">
-                    {loader ==- true ? 
-                    (<>
-
-                    </>):(<>{
+                    {
                         dataLoaded.map((item, index) => {
                             return(<SubClassObject
                                 key={`class_${props.id}_sub${index}`}
@@ -64,7 +62,7 @@ export default function ClassObject(props){
                                 removeSubClass={props.removeSubClass}
                             />)
                         })
-                    }</>)}
+                    }
 
                     <div id={`subclass-loader${props.id}`} className={ loader ? 'loader active' : 'loader deactive'}></div>
 

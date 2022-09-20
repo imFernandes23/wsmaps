@@ -2,7 +2,6 @@ import React from "react";
 import './Search.css'
 import * as AiIcons from 'react-icons/ai'
 import {useState, useEffect} from 'react'
-import FakeData from "./FakeData";
 import ItemSearch from "./ItemSearch"
 import api from "../../../services/api";
 
@@ -11,26 +10,24 @@ function Search(props){
     const [textInput, setTextinput] = useState('')
     const [dataFound, setDataFound] = useState([])
     const [loader, setLoader] = useState(false)
-    let currentPage = 1
+    const [currentPage, setCurrentPage] = useState(1)
     let maxNumPage = 1
-    let textSearch 
+
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
             if(entries.some((entry) => entry.isIntersecting)){
-                if(currentPage != maxNumPage) {
-                    console.log("alo")
-                }
             }
         });
         intersectionObserver.observe(document.querySelector('#search-loader'))
         return () => intersectionObserver.disconnect()
     })
 
-    async function getSearchData(){
+    async function getSearchData(text){
         if(currentPage <= maxNumPage){
             setLoader(true)
-            await api.get(`regions/${props.regionId}/activities?name=${textSearch}&page=${currentPage}`).then((res) => {
+            let page = currentPage
+            await api.get(`regions/${props.regionId}/activities?name=${text}&page=${2}`).then((res) => {
                 maxNumPage = res.data.last_page
                 console.log(res)
                 let newData = []
@@ -50,7 +47,8 @@ function Search(props){
                 setDataFound((prevdata) => [...prevdata, ...newData])
             
             })
-            currentPage = currentPage + 1
+            console.log(currentPage)
+            setCurrentPage(page + 1)
             setLoader(false)
         }
 
@@ -58,12 +56,8 @@ function Search(props){
     }
 
     function handleSetSearch(content){
-        setDataFound([])
-        currentPage = 1
-        maxNumPage = 1
         if(content.length > 0){
-            textSearch = content
-            getSearchData()
+            getSearchData(textInput)
         }
     }
 
@@ -104,6 +98,7 @@ function Search(props){
             })}
 
             <div id={`search-loader`} className={ loader ? 'loader active' : 'loader deactive'}></div>
+
     </div>
 
 

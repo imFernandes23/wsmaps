@@ -11,7 +11,8 @@ function Search(props){
     const [dataFound, setDataFound] = useState([])
     const [loader, setLoader] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    let maxNumPage = 1
+    const [maxNumPage, setMaxNumPage] = useState(1)
+    
 
 
     useEffect(() => {
@@ -23,41 +24,17 @@ function Search(props){
         return () => intersectionObserver.disconnect()
     })
 
-    async function getSearchData(text){
-        if(currentPage <= maxNumPage){
-            setLoader(true)
-            let page = currentPage
-            await api.get(`regions/${props.regionId}/activities?name=${text}&page=${2}`).then((res) => {
-                maxNumPage = res.data.last_page
-                console.log(res)
-                let newData = []
-                res.data.data.forEach((element) => {
-                    
-                    let coords = JSON.parse(element.geometry)
-                    newData.push({
-                        id: element.id, 
-                        subId: element.subclass_id,
-                        coord: {lat: coords.coordinates[1], lng: coords.coordinates[0]}, 
-                        name: element.name,
-                        subName: element.subclass.name,
-                        color: element.subclass.class.related_color,
-                        icon: element.subclass.related_icon.path})
-                })
-                
-                setDataFound((prevdata) => [...prevdata, ...newData])
-            
-            })
-            console.log(currentPage)
-            setCurrentPage(page + 1)
-            setLoader(false)
+    useEffect(() => {
+        if(textInput.length > 0){
+            console.log('resultado de buscas')
         }
+    }, [textInput])
 
-        console.log(currentPage, maxNumPage, dataFound)
+    async function getSearchData(){
     }
 
     function handleSetSearch(content){
         if(content.length > 0){
-            getSearchData(textInput)
         }
     }
 
@@ -68,8 +45,6 @@ function Search(props){
     function handleSetClear(){
         setTextinput('')
         setDataFound([])
-        currentPage = 1
-        maxNumPage = 1
     }
 
     return(

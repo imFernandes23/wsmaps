@@ -92,8 +92,6 @@ function Search(props){
     function handleSetClear(){
         setTextinput('')
         setCurrentWord('')
-        page = 1
-        maxNumPage = 1
         setDataFound([])
     }
 

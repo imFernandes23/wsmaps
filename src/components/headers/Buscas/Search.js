@@ -29,7 +29,6 @@ function Search(props){
         }else{
             setShowMore(false)
         }
-
     }, [dataFound])
 
 //    useEffect(() => {
@@ -80,7 +79,7 @@ function Search(props){
     function handleSetSearch(){
         if(textInput.length > 0 && textInput !== currentWord){
             setCurrentWord(textInput)
-            getSearchData(page)
+            getSearchData()
         }
     }
 

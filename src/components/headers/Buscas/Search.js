@@ -5,36 +5,82 @@ import {useState, useEffect} from 'react'
 import ItemSearch from "./ItemSearch"
 import api from "../../../services/api";
 
+let page = 1
+let maxNumPage = 1
 
 function Search(props){
     const [textInput, setTextinput] = useState('')
     const [dataFound, setDataFound] = useState([])
     const [loader, setLoader] = useState(false)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [maxNumPage, setMaxNumPage] = useState(1)
-    
+    const [showMore, setShowMore] = useState(false)
+    const [currentWord, setCurrentWord] = useState('')
 
 
-    useEffect(() => {
-        const intersectionObserver = new IntersectionObserver((entries) => {
-            if(entries.some((entry) => entry.isIntersecting)){
-            }
-        });
-        intersectionObserver.observe(document.querySelector('#search-loader'))
-        return () => intersectionObserver.disconnect()
-    })
 
     useEffect(() => {
-        if(textInput.length > 0){
-            console.log('resultado de buscas')
+        page = 1
+        maxNumPage = 1
+        setDataFound([])
+    },[currentWord])
+
+    useEffect(() => {
+        if(dataFound.length > 0){
+            setShowMore(true)
+        }else{
+            setShowMore(false)
         }
-    }, [textInput])
+
+    }, [dataFound])
+
+//    useEffect(() => {
+//        const intersectionObserver = new IntersectionObserver((entries) => {
+//            if(entries.some((entry) => entry.isIntersecting)){
+//            }
+//        });
+//        intersectionObserver.observe(document.querySelector('#search-loader'))
+//        return () => intersectionObserver.disconnect()
+//    })
+
+//http://mapasdigitais.bitsebytes.net/api/v3/regions/1/activities?name=farmacia&page=2
 
     async function getSearchData(){
+
+        if(page <= maxNumPage){
+            setLoader(true)
+
+            await api.get(`regions/${props.regionId}/activities?name=${textInput}&page=${page}`).then((res) => {
+                
+                
+                let newData = []
+
+                res.data.data.forEach((element) => {
+                    let coord = JSON.parse(element.geometry)
+                    newData.push({
+                        id: element.id,
+                        subId: element.subclass_id,
+                        coord: {lat: coord.coordinates[1], lng: coord.coordinates[0]},
+                        name: element.name,
+                        subName:element.subclass.name,
+                        color: element.subclass.class.related_color,
+                        icon: element.subclass.related_icon.path,
+                    })
+                })
+                setDataFound((prevData) => [...prevData, ...newData])
+                page++
+                maxNumPage = res.data.last_page
+            })
+            setLoader(false) 
+            if(page > maxNumPage){
+                setShowMore(false)
+            }
+        }
+
     }
 
-    function handleSetSearch(content){
-        if(content.length > 0){
+    function handleSetSearch(){
+        if(textInput.length > 0 && textInput !== currentWord){
+            setCurrentWord(textInput)
+            getSearchData(page)
         }
     }
 
@@ -42,8 +88,12 @@ function Search(props){
         setTextinput(event.target.value)
     }
 
+
     function handleSetClear(){
         setTextinput('')
+        setCurrentWord('')
+        page = 1
+        maxNumPage = 1
         setDataFound([])
     }
 
@@ -55,7 +105,7 @@ function Search(props){
     </span>
 
     <div className="search-bar">
-        <button onClick={() => {handleSetSearch(textInput)}} className='button-search'>
+        <button onClick={() => {handleSetSearch()}} className='button-search'>
             <AiIcons.AiOutlineSearch/>
         </button>
         <input type='text' placeholder=" O que você procura?" onChange={attContent} className='input-search' value={textInput}/>
@@ -73,6 +123,8 @@ function Search(props){
             })}
 
             <div id={`search-loader`} className={ loader ? 'loader active' : 'loader deactive'}></div>
+            {showMore ? (<button className="btn-plus" onClick={() => {getSearchData()}}><AiIcons.AiOutlinePlus/></button>): (<></>)}
+            
 
     </div>
 

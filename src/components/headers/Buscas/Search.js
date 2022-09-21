@@ -16,21 +16,6 @@ function Search(props){
     const [currentWord, setCurrentWord] = useState('')
 
 
-
-    useEffect(() => {
-        page = 1
-        maxNumPage = 1
-        setDataFound([])
-    },[currentWord])
-
-    useEffect(() => {
-        if(dataFound.length > 0){
-            setShowMore(true)
-        }else{
-            setShowMore(false)
-        }
-    }, [dataFound])
-
 //    useEffect(() => {
 //        const intersectionObserver = new IntersectionObserver((entries) => {
 //            if(entries.some((entry) => entry.isIntersecting)){
@@ -71,6 +56,8 @@ function Search(props){
             setLoader(false) 
             if(page > maxNumPage){
                 setShowMore(false)
+            }else{
+                setShowMore(true)
             }
         }
 
@@ -78,6 +65,8 @@ function Search(props){
 
     function handleSetSearch(){
         if(textInput.length > 0 && textInput !== currentWord){
+            page = 1
+            setDataFound([])
             setCurrentWord(textInput)
             getSearchData()
         }

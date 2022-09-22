@@ -29,6 +29,7 @@ function Main(){
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
     const [fullData, setFullData] = useState([])
+  
 
     //headersSelectedRegion
 
@@ -45,9 +46,6 @@ function Main(){
         getFullData(regionId, subClassesArray)
     }, [subClassesArray])
 
-    useEffect(() => {
-
-    },[fullData])
 
     async function getFullData(regionId, subClassesArray){
         let currentPage = 1
@@ -121,6 +119,8 @@ function Main(){
             onChange={setControlArray}
             setSubClassesArray={setSubClassesArray}
             regionId={regionId}
+            setFullData={setFullData}
+
         />
         
         {regionSelected !== null ?

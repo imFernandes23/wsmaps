@@ -14,18 +14,30 @@ function Search(props){
     const [loader, setLoader] = useState(false)
     const [showMore, setShowMore] = useState(false)
     const [currentWord, setCurrentWord] = useState('')
+    const [suportData, setSuportData] = useState([])
+
+    useEffect(() => {
+        if(dataFound.length > 0) {
+            props.setFullData(dataFound)
+        }
+    }, [dataFound])
+
+    useEffect(() => {
+        if(props.clear === false){
+            clearAll()
+            props.setFullData([])
+        }
+    },[props.clear])
 
 
-//    useEffect(() => {
-//        const intersectionObserver = new IntersectionObserver((entries) => {
-//            if(entries.some((entry) => entry.isIntersecting)){
-//            }
-//        });
-//        intersectionObserver.observe(document.querySelector('#search-loader'))
-//        return () => intersectionObserver.disconnect()
-//    })
-
-//http://mapasdigitais.bitsebytes.net/api/v3/regions/1/activities?name=farmacia&page=2
+    function clearAll(){
+        setTextinput('')
+        setDataFound([])
+        setShowMore(false)
+        setCurrentWord('')
+        page = 1
+        maxNumPage = 1
+    }
 
     async function getSearchData(){
 
@@ -81,6 +93,22 @@ function Search(props){
         setTextinput('')
         setCurrentWord('')
         setDataFound([])
+        props.setFullData([])
+    }
+
+    function selectItem(element){
+        setSuportData(dataFound)
+        setDataFound([element])
+        setShowMore(false)
+    }
+
+    function unSelectItem(){
+        setDataFound(suportData)
+        if(page > maxNumPage){
+            setShowMore(false)
+        }else{
+            setShowMore(true)
+        }    
     }
 
     return(
@@ -105,6 +133,9 @@ function Search(props){
                 return( <ItemSearch 
                     key={element.id}
                     element={element}
+                    selectItem={selectItem}
+                    unSelectItem={unSelectItem}
+                    setSearchMenu={props.setSearchMenu}
                 />)
             })}
 

@@ -16,7 +16,13 @@ function Themes(props){
     const [arrayOfSCNames, setArrayOfSCNames] = useState([])
     const [arrayOfSCStates, setArrayOfSCStates] = useState([])
 
-    
+    useEffect(() => {
+        if(props.clear === false){
+            clearAll()
+            props.setSubClassesArray([])
+        }
+
+    }, [props.clear])
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {

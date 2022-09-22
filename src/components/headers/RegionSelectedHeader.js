@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RegionSelectedHeader.css"
 import * as AiIcons from 'react-icons/ai'
 import RegionsDraw from "../Map/RegionsDraw";
@@ -12,10 +12,21 @@ import Search from "./Buscas/Search";
 
 
 export default function RegionSelectedHeader(props){
+    const [arrayOfClears, setArrayOfClears] = useState([true, true, true, true, true])
     const [configMenu,setConfigMenu] = useState(false)
     const [themesMenu, setThemesMenu] = useState(false)
     const [searchMenu, setSearchMenu] = useState(false)
     const [toglle, setToglle] = useState(false)
+
+    useEffect(() => {
+        if(themesMenu === true){
+            setArrayOfClears([false, false, true, false, false])
+        }
+        if(searchMenu === true){
+            setArrayOfClears([false, false, false, true, false])
+        }
+    }, [configMenu, themesMenu, searchMenu])
+
 
     function handleSetConfig(index){
         let newArray = [...props.controlArray]
@@ -51,12 +62,15 @@ export default function RegionSelectedHeader(props){
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
                     setSubClassesArray={props.setSubClassesArray}
+                    clear={arrayOfClears[2]}
                 />
 
                 <Search
                     searchMenu={searchMenu}
                     setSearchMenu={setSearchMenu}
                     regionId={props.regionId}
+                    setFullData={props.setFullData}
+                    clear={arrayOfClears[3]}
                 />
             
                 </>

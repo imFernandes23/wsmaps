@@ -7,11 +7,15 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-
     border-bottom: 1px solid rgba(128, 128,128,0.2);
     border-right: 1px solid rgba(128, 128,128,0.2);    border-top: 1px solid rgba(128, 128,128,0.1);
     border-left: 1px solid rgba(128, 128,128,0.1);
     transition: 0.5s;
+    background-color: white;
+}
+
+.item-search.active{
+    background-color: #EBFEEB;
 }
 
 .item-search:hover{

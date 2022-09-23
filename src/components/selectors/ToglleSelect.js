@@ -1,7 +1,7 @@
 import React from "react";
 import * as AiIcons from 'react-icons/ai'
 import './ToglleSelect.css'
-import { useState, CSSProperties } from 'react';
+import { useState, } from 'react';
 
 function ToglleSelect(props){
     const [toglle, setToglle] = useState(false)

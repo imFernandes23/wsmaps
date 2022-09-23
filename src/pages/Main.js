@@ -49,7 +49,7 @@ function Main(){
             setFitBounds(regionsGetFitBounds.regionBounds[regionSelected])
         }
 
-    }, [subClassesArray, regionId])
+    }, [subClassesArray, regionId, regionSelected, setFitBounds])
 
 
     async function getFullData(regionId, subClassesArray){

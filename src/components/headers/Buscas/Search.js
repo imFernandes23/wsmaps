@@ -16,6 +16,7 @@ function Search(props){
     const [currentWord, setCurrentWord] = useState('')
     const [suportData, setSuportData] = useState([])
 
+
     useEffect(() => {
         if(props.clear === true){
             clearAll()

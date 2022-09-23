@@ -1,7 +1,6 @@
 import React from "react";
-import api from "../../services/api";
-import { MarkerF, OverlayView } from "@react-google-maps/api";
-import { useState, useEffect} from  'react'
+import { OverlayView } from "@react-google-maps/api";
+import { useState} from  'react'
 import './ThemesDrawer.css'
 
 function ThemesDrawer(props){

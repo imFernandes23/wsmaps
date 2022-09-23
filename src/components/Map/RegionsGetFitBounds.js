@@ -1,11 +1,10 @@
-import React from "react";
+
 import Regions from "../../data/Regions"
 
  export default function RegionsGetFitBounds(){
     const allRegionsBounds = []
     let markerTopLeft = [0,-90]
     let markerBotRight = [-179, 90]
-    let cont = 0
 
     const regionBounds = []
 
@@ -13,11 +12,11 @@ import Regions from "../../data/Regions"
         let markerTLR = [0,-90]
         let markerBRR = [-179,90]
         let element = item.limites.features[0].geometry.coordinates
-        element.map(coords => {
+        element.forEach(coords => {
 
-            coords.map(path => {
-                if(path[0] < markerTopLeft [0] ){ markerTopLeft[0] = path[0]};
-                if(path[1] > markerTopLeft [1] ){ markerTopLeft[1] = path[1]};
+            coords.forEach((path) => {
+                if(path[0] < markerTopLeft[0]){ markerTopLeft[0] = path[0]};
+                if(path[1] > markerTopLeft[1]){ markerTopLeft[1] = path[1]};
 
                 if(path[0] < markerTLR[0] ){ markerTLR[0] = path[0]};
                 if(path[1] > markerTLR[1] ){ markerTLR[1] = path[1]};

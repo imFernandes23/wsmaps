@@ -1,9 +1,6 @@
 
 import React, { useState, useEffect } from "react";
 import "./RegionSelectedHeader.css"
-import * as AiIcons from 'react-icons/ai'
-import RegionsDraw from "../Map/RegionsDraw";
-import ButtonTemas from "../buttons/ButtonTemas";
 import ToglleSelect from "../selectors/ToglleSelect";
 import Configurations from "./Configuracoes/Configurations";
 import Themes from './Temas/Themes'
@@ -15,7 +12,7 @@ export default function RegionSelectedHeader(props){
 
 
     const [configMenu,setConfigMenu] = useState(false)
-    const [configClear, setConfigClear] = useState(false)
+
 
     const [themesMenu, setThemesMenu] = useState(false)
     const [themesClear, setThemesClear] = useState(false)
@@ -23,16 +20,15 @@ export default function RegionSelectedHeader(props){
     const [searchMenu, setSearchMenu] = useState(false)
     const [searchClear, setSearchClear] = useState(false)
 
-    const [toglle, setToglle] = useState(false)
 
     useEffect(() => {
         if(themesMenu === true){
-            setConfigClear(true)
+            setSearchClear(true)
         }
         if(searchMenu === true){
             setThemesClear(true)
         }
-    }, [configMenu, themesMenu, searchMenu])
+    }, [ themesMenu, searchMenu])
 
 
     function handleSetConfig(index){
@@ -77,7 +73,7 @@ export default function RegionSelectedHeader(props){
                     setSearchMenu={setSearchMenu}
                     regionId={props.regionId}
                     setFullData={props.setFullData}
-                    clear={themesClear}
+                    clear={searchClear}
                 />
             
                 </>

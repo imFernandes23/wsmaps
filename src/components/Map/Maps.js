@@ -1,5 +1,5 @@
 import React, {useMemo, useEffect, useState, useCallback}  from "react";
-import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import { GoogleMap} from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
 import RegionsDraw from './RegionsDraw'

@@ -5,8 +5,6 @@ import * as AiIcons from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import {SidebarData} from './SidebarData'
-import {iconContext} from 'react-icons'
-
 function Sidebar() {
   const [sidebarVar, setSidebarVar] = useState(false)
 

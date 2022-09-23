@@ -12,18 +12,25 @@ import Search from "./Buscas/Search";
 
 
 export default function RegionSelectedHeader(props){
-    const [arrayOfClears, setArrayOfClears] = useState([true, true, true, true, true])
+
+
     const [configMenu,setConfigMenu] = useState(false)
+    const [configClear, setConfigClear] = useState(false)
+
     const [themesMenu, setThemesMenu] = useState(false)
+    const [themesClear, setThemesClear] = useState(false)
+
     const [searchMenu, setSearchMenu] = useState(false)
+    const [searchClear, setSearchClear] = useState(false)
+
     const [toglle, setToglle] = useState(false)
 
     useEffect(() => {
         if(themesMenu === true){
-            setArrayOfClears([false, false, true, false, false])
+            setConfigClear(true)
         }
         if(searchMenu === true){
-            setArrayOfClears([false, false, false, true, false])
+            setThemesClear(true)
         }
     }, [configMenu, themesMenu, searchMenu])
 
@@ -62,7 +69,7 @@ export default function RegionSelectedHeader(props){
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
                     setSubClassesArray={props.setSubClassesArray}
-                    clear={arrayOfClears[2]}
+                    clear={themesClear}
                 />
 
                 <Search
@@ -70,7 +77,7 @@ export default function RegionSelectedHeader(props){
                     setSearchMenu={setSearchMenu}
                     regionId={props.regionId}
                     setFullData={props.setFullData}
-                    clear={arrayOfClears[3]}
+                    clear={themesClear}
                 />
             
                 </>

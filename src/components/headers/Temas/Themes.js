@@ -17,7 +17,7 @@ function Themes(props){
     const [arrayOfSCStates, setArrayOfSCStates] = useState([])
 
     useEffect(() => {
-        if(props.clear === false){
+        if(props.clear === true){
             clearAll()
             props.setSubClassesArray([])
         }

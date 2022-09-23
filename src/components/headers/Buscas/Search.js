@@ -17,17 +17,19 @@ function Search(props){
     const [suportData, setSuportData] = useState([])
 
     useEffect(() => {
+        if(props.clear === true){
+            clearAll()
+            props.setFullData([])
+        }
+    },[props.clear])
+
+
+    useEffect(() => {
         if(dataFound.length > 0) {
             props.setFullData(dataFound)
         }
     }, [dataFound])
 
-    useEffect(() => {
-        if(props.clear === false){
-            clearAll()
-            props.setFullData([])
-        }
-    },[props.clear])
 
 
     function clearAll(){

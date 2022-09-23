@@ -14,6 +14,7 @@ function Maps(props){
     
     }), [])
 
+
     const [map, setMap] = useState(null);
 
     const onLoad = useCallback((map) => setMap(map),[])
@@ -37,14 +38,8 @@ function Maps(props){
 
             mapContainerClassName='map-container'
             options={options}
-            defaultZoom={14}
             onLoad = {onLoad}
-            defaultCenter={{lat: -1.394782568744898,lng: -48.41606140136719}}
-            zoom={props.zoom}
-            center={props.center}
-            onDragEnd={onLoad}
-    
-            
+            onBoundsChanged={{}}       
         >
 
             {props.polygonsInit !== undefined ? (<>{
@@ -52,7 +47,7 @@ function Maps(props){
                     <InitialRegions
                         key={index.toString()}
                         arrayPath={item}
-                        onClick={() => props.polyInitOnClick(index)}
+                        onClick={() => {props.polyInitOnClick(index)}}
                         center={props.polygonsInit.regionsMarkers[index]}
                         label={props.polygonsInit.regionsLabel[index]}  
                     />)
@@ -63,13 +58,15 @@ function Maps(props){
 
             </>):(<></>)} 
         
-            {props.region !== undefined ? (<>
+            {   //configurations
+                props.region !== undefined ? (<>
             <RegionsDraw 
                 region={props.region}
                 controlArray={props.controlArray}
             />
 
-            {props.fullData.length > 0 ?            
+            {   //themes and search
+                props.fullData.length > 0 ?            
                 props.fullData.map((element, index) => {
                     return <ThemesDrawer element={element} key={element.id} />
                 })

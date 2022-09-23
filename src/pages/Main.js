@@ -12,15 +12,14 @@ import Regions from "../data/Regions";
 
 const regionsInitVectors = RegionsInitVectors()
 
-const regionsGetFitBounds = RegionsGetFitBounds()
+let regionsGetFitBounds = RegionsGetFitBounds()
 
 function Main(){
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyCGhU6kv2oz6AIW4LbG-eO3AraMqmIsAdw'
     });
-    const [zoom, setZoom] = useState(12)
-    const [center, setCenter] = useState({lat: -1.394782568744898,lng: -48.41606140136719})
     const [regionSelected, setRegionSelected] = useState(null);
+    const [fitBounds, setFitBounds] = useState()
 
     //headersSelectedRegion
 
@@ -44,7 +43,13 @@ function Main(){
 
     useEffect(() => {
         getFullData(regionId, subClassesArray)
-    }, [subClassesArray])
+        if(regionSelected === null){
+            setFitBounds(regionsGetFitBounds.allRegionsBounds)
+        }else{
+            setFitBounds(regionsGetFitBounds.regionBounds[regionSelected])
+        }
+
+    }, [subClassesArray, regionId])
 
 
     async function getFullData(regionId, subClassesArray){
@@ -127,9 +132,7 @@ function Main(){
          (
             <>  
                 <Maps 
-                    center={center}
-                    zoom={zoom}
-                    view={regionsGetFitBounds.regionBounds[regionSelected]}
+                    view={fitBounds}
                     region={regionSelected}
                     controlArray={controlArray}
                     fullData={fullData}
@@ -140,11 +143,9 @@ function Main(){
          (
             <>                 
                 <Maps 
-                    center={center} 
-                    zoom={zoom} 
                     polygonsInit={regionsInitVectors}
                     polyInitOnClick={handleSetRegion}
-                    view={regionsGetFitBounds.allRegionsBounds}
+                    view={fitBounds}
                 />
             </>
          )}

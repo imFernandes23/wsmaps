@@ -9,7 +9,7 @@ import Regions from "../../data/Regions"
 
     const regionBounds = []
 
-    Regions.map( item => {
+    Regions.forEach( item => {
         let markerTLR = [0,-90]
         let markerBRR = [-179,90]
         let element = item.limites.features[0].geometry.coordinates
@@ -34,7 +34,5 @@ import Regions from "../../data/Regions"
     })
 
     allRegionsBounds.push({lat: markerTopLeft[1], lng:markerTopLeft[0]},{lat:markerBotRight[1], lng:markerBotRight[0]})
-    
-
     return {allRegionsBounds, regionBounds}
  }

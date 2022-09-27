@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import "./RegionSelectedHeader.css"
 import ToglleSelect from "../selectors/ToglleSelect";
+import Undo from "./Desfazer/Undo";
 import Configurations from "./Configuracoes/Configurations";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
@@ -9,7 +10,7 @@ import Search from "./Buscas/Search";
 
 
 export default function RegionSelectedHeader(props){
-
+    const [undoMenu, setUndoMenu] = useState(false)
 
     const [configMenu,setConfigMenu] = useState(false)
 
@@ -46,12 +47,22 @@ export default function RegionSelectedHeader(props){
                 <div className="region-header-title" >{props.labels[props.setRegion]}</div>
 
                 <ToglleSelect 
+                    undoMenu={undoMenu}
+                    setUndoMenu={setUndoMenu}
                     configMenu={configMenu}
                     setConfigMenu={setConfigMenu}
                     themesMens={themesMenu}
                     setThemesMenu={setThemesMenu}
                     searchMenu={searchMenu}
                     setSearchMenu={setSearchMenu}
+                />
+
+                <Undo
+                    undoMenu={undoMenu}
+                    setUndoMenu={setUndoMenu}
+                    setControlArray={props.onChange}
+                    setSearchClear={setSearchClear}
+                    setThemesClear={setThemesClear}
                 />
 
                 <Configurations

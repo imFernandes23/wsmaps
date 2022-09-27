@@ -21,6 +21,7 @@ function Search(props){
         if(props.clear === true){
             clearAll()
             props.setFullData([])
+            setDataFound([])
         }
     },[props.clear])
 

@@ -7,9 +7,6 @@ function Undo(props){
 
     function undoAll(){
         props.setControlArray([true,true,true,true,true,true,false])
-        props.setSearchClear(true)
-        props.setThemesClear(true)
-
     }
 
 

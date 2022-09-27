@@ -17,14 +17,6 @@ function Search(props){
     const [suportData, setSuportData] = useState([])
 
 
-    useEffect(() => {
-        if(props.clear === true){
-            clearAll()
-            props.setFullData([])
-            setDataFound([])
-        }
-    },[props.clear])
-
 
     useEffect(() => {
         if(dataFound.length > 0) {
@@ -34,7 +26,9 @@ function Search(props){
 
 
 
-    function clearAll(){
+
+
+    const clearAll = () => {
         setTextinput('')
         setDataFound([])
         setShowMore(false)
@@ -80,12 +74,18 @@ function Search(props){
     }
 
     function handleSetSearch(){
+        props.setFullData([])
+        if(props.clearResidual !== false){props.clearResidual()}
+        props.clear((element) => element = clearAll)
+
         if(textInput.length > 0 && textInput !== currentWord){
             page = 1
             setDataFound([])
             setCurrentWord(textInput)
             getSearchData()
         }
+
+        
     }
 
     const attContent = event => {

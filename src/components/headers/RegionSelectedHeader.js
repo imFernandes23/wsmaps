@@ -7,8 +7,6 @@ import Configurations from "./Configuracoes/Configurations";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
 
-
-
 export default function RegionSelectedHeader(props){
     const [undoMenu, setUndoMenu] = useState(false)
 
@@ -20,16 +18,6 @@ export default function RegionSelectedHeader(props){
 
     const [searchMenu, setSearchMenu] = useState(false)
     const [searchClear, setSearchClear] = useState(false)
-
-
-    useEffect(() => {
-        if(themesMenu === true){
-            setSearchClear(true)
-        }
-        if(searchMenu === true){
-            setThemesClear(true)
-        }
-    }, [ themesMenu, searchMenu])
 
 
     function handleSetConfig(index){
@@ -60,9 +48,10 @@ export default function RegionSelectedHeader(props){
                 <Undo
                     undoMenu={undoMenu}
                     setUndoMenu={setUndoMenu}
+                    setFullData={props.setFullData}
                     setControlArray={props.onChange}
-                    setSearchClear={setSearchClear}
-                    setThemesClear={setThemesClear}
+                    searchClear={searchClear}
+                    themesClear={themesClear}
                 />
 
                 <Configurations
@@ -76,7 +65,9 @@ export default function RegionSelectedHeader(props){
                     themesMenu={themesMenu}
                     setThemesMenu={setThemesMenu}
                     setSubClassesArray={props.setSubClassesArray}
-                    clear={themesClear}
+                    setFullData={props.setFullData}
+                    clear={setThemesClear}
+                    clearResidual={searchClear}
                 />
 
                 <Search
@@ -84,7 +75,8 @@ export default function RegionSelectedHeader(props){
                     setSearchMenu={setSearchMenu}
                     regionId={props.regionId}
                     setFullData={props.setFullData}
-                    clear={searchClear}
+                    clear={setSearchClear}
+                    clearResidual={themesClear}
                 />
             
                 </>

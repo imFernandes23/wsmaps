@@ -1,12 +1,14 @@
 import React from "react";
-import { useState } from "react";
 import './Undo.css'
 import * as AiIcons from 'react-icons/ai'
 
 function Undo(props){
 
     function undoAll(){
+        props.setFullData([])
         props.setControlArray([true,true,true,true,true,true,false])
+        if(props.themesClear !== false){props.themesClear()}
+        if(props.searchClear !== false){props.searchClear()}
     }
 
 

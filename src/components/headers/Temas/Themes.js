@@ -16,13 +16,6 @@ function Themes(props){
     const [arrayOfSCNames, setArrayOfSCNames] = useState([])
     const [arrayOfSCStates, setArrayOfSCStates] = useState([])
 
-    useEffect(() => {
-        if(props.clear === true){
-            clearAll()
-            props.setSubClassesArray([])
-        }
-
-    }, [props.clear])
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -86,11 +79,19 @@ function Themes(props){
     }
     
 
-    function clearAll(){
+    const clearAll = () => {
         setArrayOfSubClasses([])
         setArrayOfSCNames([])
         arrayOfSCStates.forEach((item) => {item(false)})
         setArrayOfSCStates([])
+    }
+
+    function confirm (){
+        props.setFullData([])
+        if(props.clearResidual !== false){props.clearResidual()}
+        props.setThemesMenu(!props.themesMenu)
+        props.setSubClassesArray(arrayOfSubClasses)
+        props.clear((element) => element = clearAll)
     }
 
     return(
@@ -102,8 +103,7 @@ function Themes(props){
             clearAll={clearAll}
         />
         <h2 className="title-element"> Temas </h2>
-        <span className="btn-close" onClick={() => {props.setThemesMenu(!props.themesMenu)
-        props.setSubClassesArray(arrayOfSubClasses)}
+        <span className="btn-close" onClick={confirm
         }><AiIcons.AiOutlineClose/></span>
 
         <div className="full-list">
@@ -125,10 +125,7 @@ function Themes(props){
         <div id="class-loader" className={ loader ? 'loader active' : 'loader deactive'}/>
         </div>
         
-        <button className="btn-confirm" onClick={() => {
-            props.setThemesMenu(!props.themesMenu)
-            props.setSubClassesArray(arrayOfSubClasses)
-        }}>
+        <button className="btn-confirm" onClick={confirm}>
             Confirmar
         </button>
 

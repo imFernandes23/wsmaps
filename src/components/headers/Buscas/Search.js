@@ -98,6 +98,7 @@ function Search(props){
         setCurrentWord('')
         setDataFound([])
         props.setFullData([])
+        setShowMore(false)
     }
 
     function selectItem(element){

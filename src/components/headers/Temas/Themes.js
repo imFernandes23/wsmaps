@@ -103,7 +103,12 @@ function Themes(props){
             clearAll={clearAll}
         />
         <h2 className="title-element"> Temas </h2>
-        <span className="btn-close" onClick={confirm
+        <span className="btn-close" onClick={() => {
+            if(props.clearResidual !== false){props.clearResidual()}
+            props.setThemesMenu(!props.themesMenu)
+            props.setSubClassesArray(arrayOfSubClasses)
+            props.clear((element) => element = clearAll)
+        }
         }><AiIcons.AiOutlineClose/></span>
 
         <div className="full-list">

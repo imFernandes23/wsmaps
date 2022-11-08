@@ -97,8 +97,10 @@ function Search(props){
         setTextinput('')
         setCurrentWord('')
         setDataFound([])
-        props.setFullData([])
         setShowMore(false)
+        if(currentWord.length > 0){
+            props.setFullData([])
+        }
     }
 
     function selectItem(element){

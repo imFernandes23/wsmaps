@@ -16,12 +16,14 @@ let regionsGetFitBounds = RegionsGetFitBounds()
 
 function Main(){
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyCGhU6kv2oz6AIW4LbG-eO3AraMqmIsAdw'
+        googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
     });
     const [regionSelected, setRegionSelected] = useState(null);
     const [fitBounds, setFitBounds] = useState()
 
     //headersSelectedRegion
+
+
 
     const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
     const [subClassesArray, setSubClassesArray] = useState([])

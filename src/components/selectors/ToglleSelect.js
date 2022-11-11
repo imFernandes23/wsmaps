@@ -1,5 +1,7 @@
 import React from "react";
 import * as AiIcons from 'react-icons/ai'
+import * as BiIcons from 'react-icons/bi'
+
 import './ToglleSelect.css'
 import { useState, } from 'react';
 
@@ -9,49 +11,41 @@ function ToglleSelect(props){
     return(
         <>
             <div className={toglle ? 'toglle-menu active' : 'toglle-menu'}>
-                <button className={ toglle ? 'btn-toglle active' : 'btn-toglle'} onClick={() => {setToglle(!toglle)
+                <span className={ toglle ? 'btn-toglle active' : 'btn-toglle'} onClick={() => {setToglle(!toglle)
                 props.setUndoMenu(false)
                 props.setConfigMenu(false)
                 props.setThemesMenu(false)
                 props.setSearchMenu(false)
                 }}>
                     <AiIcons.AiOutlinePlus/>
-                </button>
+                </span>
 
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 0}}
+                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 1}} onClick={() => {props.setSearchMenu(!props.searchMenu)
+                setToglle(false)}}>
+                    <AiIcons.AiOutlineSearch />
+                    <p>Buscar</p>
+                </span>
+
+                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}} onClick={() => {props.setConfigMenu(!props.configMenu)
+                setToglle(false)}}>
+                    <AiIcons.AiOutlineSetting />
+                    <p>Configurações</p>
+                </span>
+
+                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 3}} onClick={() => {props.setThemesMenu(!props.themesMenu)
+                setToglle(false)}}>
+                    <BiIcons.BiBrushAlt />
+                    <p>Temas</p>
+                </span>
+
+                
+                
+                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 4}}
                 onClick={() => {props.setUndoMenu(!props.undoMenu)
                 setToglle(false)}}>
                     <AiIcons.AiOutlineUndo />
-        
-                </button>
-
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 1}} onClick={() => {props.setConfigMenu(!props.configMenu)
-                setToglle(false)}}>
-                    <AiIcons.AiOutlineSetting />
-           
-                </button>
-
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}} onClick={() => {props.setThemesMenu(!props.themesMenu)
-                setToglle(false)}}>
-                    <AiIcons.AiOutlineBulb />
-  
-                </button>
-
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 3}} onClick={() => {props.setSearchMenu(!props.searchMenu)
-                setToglle(false)}}>
-                    <AiIcons.AiOutlineSearch />
-    
-                </button>
-                
-                <button className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 4}}>
-                    <AiIcons.AiOutlineEnvironment />
-     
-                </button>
-
-                
-
-                
-
+                    <p>Desfazer Tudo</p>
+                </span>
 
             </div>
         </>

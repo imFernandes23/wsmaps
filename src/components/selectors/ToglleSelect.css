@@ -1,62 +1,64 @@
 .toglle-menu{
-    display: flex;
-    justify-content: center;
-    left: 20px;
-    top: 20px;
-    align-items: center;
-    width: 40px;
-    height: 40px;
     position: absolute;
-    transition: 1s;
-    z-index: 80;
-
-}
-
-.toglle-menu.active{
-    top:90px;
-}
-
-
-
-.btn-toglle , .btn-opt{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 20px;
     z-index: 100;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    text-align: center;
-    background-color: #0455BF;
-    transition: 1s;
-    outline: pointer;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.41);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: .8s;
+}
+
+.btn-toglle{
+    z-index: 100;
 }
 
 .btn-toglle.active{
     transform: rotate(315deg);
 }
 
-.btn-opt .btn-toglle, svg{
-    font-size: 25px;
-    transform: rotate(calc(var(--value) * (-360deg/-8)));
-}
-
-.btn-opt.active{
+.btn-opt , .btn-toglle{
+    display: flex;
+    height: 40px;
+    background-color: #0455BF;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    border-radius: 20px;
+    width: fit-content;
+    color: white;
+    transition: 1s;
     position: absolute;
-    transition-delay: calc(var(--value) * 0.1s);
-    transform: rotate(calc(var(--value) * (-360deg/8))) translateY(70px);
 }
 
-.btn-opt{
-    position: absolute;
-    z-index: 90;
+.btn-opt.active {
+    transform: translateY(calc(var(--value) * 50px));
 }
 
-.btn-opt:hover{
+
+.btn-opt > svg , .btn-toglle > svg{
+    width: 40px;
+    font-size: 19px;
+    transition: 1s;
+    cursor: pointer
+}
+
+
+
+.btn-opt:hover {
     background-color: #0468BF;
-
 }
 
+
+.btn-opt > p {
+    transition: .5s;
+    font-size: 0px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.btn-opt.active > p {
+    font-size: 18px;
+    margin-right: 15px;
+    transition-delay: calc(var(--value) * 0.2s + .8s);
+}

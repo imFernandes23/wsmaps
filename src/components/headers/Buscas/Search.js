@@ -74,7 +74,9 @@ function Search(props){
     }
 
     function handleSetSearch(){
-        props.setFullData([])
+        if(textInput !== currentWord){
+            props.setFullData([])
+        }      
         if(props.clearResidual !== false){props.clearResidual()}
         props.clear((element) => element = clearAll)
 
@@ -118,6 +120,13 @@ function Search(props){
         }    
     }
 
+    const HandleKeyEnter = (e: React.KeyboardEvent) => {
+        if(e.keyCode === 13){
+            handleSetSearch()
+        }
+    }
+
+
     return(
     <div className={props.searchMenu ? 'search active' : 'search'}>
     <h2 className="title-element"> Buscas </h2>
@@ -129,7 +138,14 @@ function Search(props){
         <button onClick={() => {handleSetSearch()}} className='button-search'>
             <AiIcons.AiOutlineSearch/>
         </button>
-        <input type='text' placeholder=" O que você procura?" onChange={attContent} className='input-search' value={textInput}/>
+        <input 
+            type='text' 
+            placeholder=" O que você procura?" 
+            onChange={attContent} 
+            className='input-search' 
+            value={textInput}
+            onKeyDown={HandleKeyEnter}
+            />
         <button onClick={handleSetClear} className='btn-input-clear'>
             <AiIcons.AiOutlineClose/>
         </button>

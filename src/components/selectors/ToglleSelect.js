@@ -18,6 +18,7 @@ function ToglleSelect(props){
                 props.setSearchMenu(false)
                 }}>
                     <AiIcons.AiOutlinePlus/>
+                    <p>Ferramentas</p>
                 </span>
 
                 <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 1}} onClick={() => {props.setSearchMenu(!props.searchMenu)

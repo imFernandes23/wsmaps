@@ -106,13 +106,6 @@ function Main(){
         return(<>
         <LoadingOverlay Loading={inLoadScreen}/>
 
-
-        <ButtonRedo 
-            onClick={() => {
-                setRegionSelected(null)
-                setSubClassesArray([])
-            }} setRegion={regionSelected}/>
-
         <RegionSelector
             labels={regionsInitVectors.regionsLabel}
             onChange={handleSetRegion}
@@ -127,7 +120,10 @@ function Main(){
             setSubClassesArray={setSubClassesArray}
             regionId={regionId}
             setFullData={setFullData}
-
+            backButton={() => {
+                setRegionSelected(null)
+                setSubClassesArray([])
+            }}
         />
         
         {regionSelected !== null ?

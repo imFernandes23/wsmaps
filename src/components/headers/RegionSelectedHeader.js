@@ -6,6 +6,7 @@ import Undo from "./Desfazer/Undo";
 import Configurations from "./Configuracoes/Configurations";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
+import * as AiIcons from 'react-icons/ai'
 
 export default function RegionSelectedHeader(props){
     const [undoMenu, setUndoMenu] = useState(false)
@@ -34,6 +35,9 @@ export default function RegionSelectedHeader(props){
                 <>
                 <div className="region-header-title" >{props.labels[props.setRegion]}</div>
 
+                
+                <div className="header">
+
                 <ToglleSelect 
                     undoMenu={undoMenu}
                     setUndoMenu={setUndoMenu}
@@ -44,6 +48,19 @@ export default function RegionSelectedHeader(props){
                     searchMenu={searchMenu}
                     setSearchMenu={setSearchMenu}
                 />
+                <p className="region-name">{props.labels[props.setRegion]}</p>
+
+
+                <div className="back-btn" onClick={() => props.backButton()}>
+                    <AiIcons.AiOutlineArrowLeft/>
+                    <p>Voltar</p>
+                </div>
+
+
+                </div>
+
+
+                
 
                 <Undo
                     undoMenu={undoMenu}

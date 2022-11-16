@@ -1,21 +1,33 @@
 .toglle-menu{
-    position: absolute;
-    top: 20px;
     z-index: 100;
-    background-color: white;
+    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 10px;
     transition: .8s;
+
 }
 
 .btn-toglle{
     z-index: 100;
 }
 
-.btn-toglle.active{
+.btn-toglle p {
+    cursor: pointer;
+    margin-right: 10px;
+    transition: .5s;
+}
+
+.btn-toglle.active svg{
     transform: rotate(315deg);
 }
+
+.btn-toglle.active p {
+    font-size: 0px;
+    margin-right: 0px;
+}
+
+
 
 .btn-opt , .btn-toglle{
     display: flex;

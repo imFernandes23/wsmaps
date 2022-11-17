@@ -1,24 +1,30 @@
 
 
+@media (min-width: 550px){}
+@media (orientation: portrait) and (max-width: 550px){}
 .region-selector{
     position: absolute;
     z-index: 100;
-    width: fit-content;
+    width: 200px;
     height: 40px;
     align-self: center;
-    margin-left: 50%;
-    /* top: 100px; */
-    top: -45px;
-    transform: translateX(-50%);
+    left: 50vw;
+    top:90px;
+    transform: translateX(-50%) scale(0);
     padding: 8px;
     border-radius: 25px;
     border: none;
     padding-right: 10px;
     background-color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.41);
-    transition: .2s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: 1s;
+    cursor: pointer;
 }
 
 .region-selector.active{
-    top: 100px
+    transform: translateX(-50%) scale(1);
+}
+
+.region-selector select{
+    display: none;
 }

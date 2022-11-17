@@ -3,7 +3,7 @@ import React, { useState, useEffect, useSyncExternalStore } from "react";
 import "./RegionSelectedHeader.css"
 import ToglleSelect from "../selectors/ToglleSelect";
 import Undo from "./Desfazer/Undo";
-import Configurations from "./Configuracoes/Configurations";
+import Streets from "./Ruas/Streets";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
 import * as AiIcons from 'react-icons/ai'
@@ -11,7 +11,7 @@ import * as AiIcons from 'react-icons/ai'
 export default function RegionSelectedHeader(props){
     const [undoMenu, setUndoMenu] = useState(false)
 
-    const [configMenu,setConfigMenu] = useState(false)
+    const [streetsMenu,setStreetsMenu] = useState(false)
 
 
     const [themesMenu, setThemesMenu] = useState(false)
@@ -21,7 +21,7 @@ export default function RegionSelectedHeader(props){
     const [searchClear, setSearchClear] = useState(false)
 
 
-    function handleSetConfig(index){
+    function handleSetStreets(index){
         let newArray = [...props.controlArray]
         newArray[index] = !props.controlArray[index]
         props.onChange(newArray)
@@ -30,7 +30,7 @@ export default function RegionSelectedHeader(props){
 
 
     return(
-        <div className={props.setRegion === null ? 'full-layout' : 'full-layout active'}>
+        <div className={props.setRegion !== null ? 'full-layout active' : 'full-layout'}>
             {props.setRegion !== null ? (
                 <>
                 <div className="region-header-title" >{props.labels[props.setRegion]}</div>
@@ -41,8 +41,8 @@ export default function RegionSelectedHeader(props){
                 <ToglleSelect 
                     undoMenu={undoMenu}
                     setUndoMenu={setUndoMenu}
-                    configMenu={configMenu}
-                    setConfigMenu={setConfigMenu}
+                    streetsMenu={streetsMenu}
+                    setStreetsMenu={setStreetsMenu}
                     themesMens={themesMenu}
                     setThemesMenu={setThemesMenu}
                     searchMenu={searchMenu}
@@ -71,11 +71,11 @@ export default function RegionSelectedHeader(props){
                     themesClear={themesClear}
                 />
 
-                <Configurations
-                    configMenu={configMenu}
-                    setConfigMenu={setConfigMenu}
+                <Streets
+                    streetsMenu={streetsMenu}
+                    setStreetsMenu={setStreetsMenu}
                     controlArray={props.controlArray}
-                    handleSetConfig={handleSetConfig}
+                    handleSetStreets={handleSetStreets}
                 />
 
                 <Themes

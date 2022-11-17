@@ -6,6 +6,7 @@
     height: calc(100vh - 60px);
     position: absolute;
     left: -100vw;
+    overflow: hidden;
 }
 
 .full-layout.active{

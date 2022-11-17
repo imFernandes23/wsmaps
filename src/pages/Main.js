@@ -2,7 +2,6 @@ import React,{useEffect, useState} from "react";
 import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
-import ButtonRedo from "../components/buttons/ButtonRedo";
 import RegionSelector from "../components/selectors/RegionSelector"
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
@@ -40,7 +39,7 @@ function Main(){
         setInLoadScreen(true)
         setTimeout(function(){
             setInLoadScreen(false)
-        },1800)
+        },1000)
     }
 
     useEffect(() => {

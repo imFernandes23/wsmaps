@@ -1,7 +1,7 @@
 .screen{
     position: absolute;
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10000000;
     display: flex;

@@ -1,20 +1,20 @@
 import React from "react";
-import ConfigurationsData from './ConfigurationsData'
-import './Configurations.css'
+import StreetsData from './StreetsData'
+import './Streets.css'
 import * as AiIcons from 'react-icons/ai'
 
-function Configurations(props){
+function Streets(props){
 
 
-    return(<div className={props.configMenu ? 'configurations active' : 'configurations'}>
-        <h2 className="title-element"> Configurações </h2>
+    return(<div className={props.streetsMenu ? 'streets active' : 'streets'}>
+        <h2 className="title-element"> Ruas </h2>
 
-            <span className="btn-close" onClick={() => props.setConfigMenu(!props.configMenu)}>
+            <span className="btn-close" onClick={() => props.setStreetsMenu(!props.streetsMenu)}>
                 <AiIcons.AiOutlineClose/>
             </span>
 
             <div className="list-itens">
-            {ConfigurationsData.map((item, index) => {
+            {StreetsData.map((item, index) => {
                 return(
                     <div className="element" key={index}>
                         <p className="ele-nome">{item.name}</p>
@@ -22,7 +22,7 @@ function Configurations(props){
                         <input
                             type='checkbox'
                             checked={props.controlArray[index]}
-                            onChange={() => props.handleSetConfig(index)}
+                            onChange={() => props.handleSetStreets(index)}
                         />
                     </div>
                 )
@@ -32,4 +32,4 @@ function Configurations(props){
     </div>)
 }
 
-export default Configurations
+export default Streets

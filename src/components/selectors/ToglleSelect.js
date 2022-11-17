@@ -1,6 +1,7 @@
 import React from "react";
 import * as AiIcons from 'react-icons/ai'
 import * as BiIcons from 'react-icons/bi'
+import * as TbIcons from 'react-icons/tb'
 
 import './ToglleSelect.css'
 import { useState, } from 'react';
@@ -13,7 +14,7 @@ function ToglleSelect(props){
             <div className={toglle ? 'toglle-menu active' : 'toglle-menu'}>
                 <span className={ toglle ? 'btn-toglle active' : 'btn-toglle'} onClick={() => {setToglle(!toglle)
                 props.setUndoMenu(false)
-                props.setConfigMenu(false)
+                props.setStreetsMenu(false)
                 props.setThemesMenu(false)
                 props.setSearchMenu(false)
                 }}>
@@ -27,10 +28,10 @@ function ToglleSelect(props){
                     <p>Buscar</p>
                 </span>
 
-                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}} onClick={() => {props.setConfigMenu(!props.configMenu)
+                <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 2}} onClick={() => {props.setStreetsMenu(!props.streetsMenu)
                 setToglle(false)}}>
-                    <AiIcons.AiOutlineSetting />
-                    <p>Configurações</p>
+                    <TbIcons.TbRoad/>
+                    <p>Ruas</p>
                 </span>
 
                 <span className={toglle ?  'btn-opt active' : 'btn-opt'} style={{"--value": 3}} onClick={() => {props.setThemesMenu(!props.themesMenu)

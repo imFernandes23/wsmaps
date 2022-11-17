@@ -1,6 +1,6 @@
 
 
-const ConfigurationsData = [
+const StreetsData = [
     {
         name: 'Ruas Pavimentadas',
         color: {backgroundColor:'#ffad29'},
@@ -31,4 +31,4 @@ const ConfigurationsData = [
     }
 ]
 
-export default ConfigurationsData
+export default StreetsData

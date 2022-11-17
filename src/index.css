@@ -18,16 +18,16 @@
 
 .Page{
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   background-color: lightblue;
 }
 .map{
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   z-index: -1;
 }
 .map-container{
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   z-index: 1;
 }

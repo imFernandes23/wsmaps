@@ -119,10 +119,12 @@ input:checked[type='checkbox']::before{
 }
 
 ::-webkit-scrollbar{
-    width: 5px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-thumb{
     width: 10px;
+    border-radius: 2px;
     background-color: #0468BF;
+    border: 2px solid white;
 }

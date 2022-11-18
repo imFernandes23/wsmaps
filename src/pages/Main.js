@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
-import RegionSelector from "../components/selectors/RegionSelector"
+import RegionSelect from "../components/selectors/RegionSelect";
 import RegionSelectedHeader from "../components/headers/RegionSelectedHeader"
 import RegionsGetFitBounds from "../components/Map/RegionsGetFitBounds";
 import LoadingOverlay from "../components/LoadingOverlay"
@@ -24,7 +24,7 @@ function Main(){
 
 
 
-    const [controlArray, setControlArray] = useState([true,true,true,true,true,true,false])
+    const [controlArray, setControlArray] = useState([true,false,true,false,false,false,false])
     const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
@@ -103,9 +103,11 @@ function Main(){
     }else{// a página Main começa aqui
         //Items da tela inicial
         return(<>
+
+        
         <LoadingOverlay Loading={inLoadScreen}/>
 
-        <RegionSelector
+        <RegionSelect
             labels={regionsInitVectors.regionsLabel}
             onChange={handleSetRegion}
             setRegion={regionSelected}

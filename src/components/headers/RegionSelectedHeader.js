@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from "react";
 import "./RegionSelectedHeader.css"
+import "./Header.css"
+import "./DownButtons.css"
 import ToglleSelect from "../selectors/ToglleSelect";
 import Undo from "./Desfazer/Undo";
 import Streets from "./Ruas/Streets";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
 import * as AiIcons from 'react-icons/ai'
+import * as MdIcons from 'react-icons/md'
 
 export default function RegionSelectedHeader(props){
     const [undoMenu, setUndoMenu] = useState(false)
@@ -33,34 +36,46 @@ export default function RegionSelectedHeader(props){
         <div className={props.setRegion !== null ? 'full-layout active' : 'full-layout'}>
             {props.setRegion !== null ? (
                 <>
-                <div className="region-header-title" >{props.labels[props.setRegion]}</div>
+
 
                 
                 <div className="header">
 
-                <ToglleSelect 
-                    undoMenu={undoMenu}
-                    setUndoMenu={setUndoMenu}
-                    streetsMenu={streetsMenu}
-                    setStreetsMenu={setStreetsMenu}
-                    themesMens={themesMenu}
-                    setThemesMenu={setThemesMenu}
-                    searchMenu={searchMenu}
-                    setSearchMenu={setSearchMenu}
-                />
-                <p className="region-name">{props.labels[props.setRegion]}</p>
+                    <ToglleSelect 
+                        undoMenu={undoMenu}
+                        setUndoMenu={setUndoMenu}
+                        streetsMenu={streetsMenu}
+                        setStreetsMenu={setStreetsMenu}
+                        themesMens={themesMenu}
+                        setThemesMenu={setThemesMenu}
+                        searchMenu={searchMenu}
+                        setSearchMenu={setSearchMenu}
+                    />
+                    <p className="region-name">{props.labels[props.setRegion]}</p>
 
 
-                <div className="back-btn" onClick={() => props.backButton()}>
-                    <AiIcons.AiOutlineArrowLeft/>
-                    <p>Voltar</p>
-                </div>
-
-
+                    <div className="back-btn" onClick={() => props.backButton()}>
+                        <AiIcons.AiOutlineArrowLeft/>
+                        <p>Voltar</p>
+                    </div>
                 </div>
 
 
                 
+                
+                <ul className="down-buttons">
+                    <li>
+                        <MdIcons.MdOutlineSubtitles/>
+                        <p>Legendas</p>
+                    </li>
+                    <li>
+                        <AiIcons.AiOutlineSetting/>
+                        <p>Configurações</p>
+                    </li>
+                    
+                </ul>  
+
+
 
                 <Undo
                     undoMenu={undoMenu}

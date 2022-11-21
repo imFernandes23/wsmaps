@@ -17,7 +17,7 @@ function Main(){
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
     });
-    const [regionSelected, setRegionSelected] = useState(null);
+    const [regionSelected, setRegionSelected] = useState(1);
     const [fitBounds, setFitBounds] = useState()
 
     //headersSelectedRegion

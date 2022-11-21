@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import StreetsData from './StreetsData'
 import './Streets.css'
 import * as AiIcons from 'react-icons/ai'
 
+
 function Streets(props){
 
 
-    return(<div className={props.streetsMenu ? 'streets active' : 'streets'}>
+
+    return(<div className={props.streetsMenu ? 'streets active' : 'streets'} >
         <h2 className="title-element"> Ruas </h2>
 
             <span className="btn-close" onClick={() => props.setStreetsMenu(!props.streetsMenu)}>

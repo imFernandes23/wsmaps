@@ -3,8 +3,9 @@ import * as AiIcons from 'react-icons/ai'
 import './Themes.css'
 import ClassObject from "./ClassObject";
 import api from "../../../services/api";
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import SelectedItens from "./SelectedItens";
+import OutSideClick from "../../hooks/OutsideClick";
 
 
 function Themes(props){
@@ -15,7 +16,9 @@ function Themes(props){
     const [arrayOfSubClasses, setArrayOfSubClasses] = useState([])
     const [arrayOfSCNames, setArrayOfSCNames] = useState([])
     const [arrayOfSCStates, setArrayOfSCStates] = useState([])
+    const Ref = useRef(null)
 
+    OutSideClick(Ref, props.themesMenu, confirm)
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -94,8 +97,9 @@ function Themes(props){
         props.clear((element) => element = clearAll)
     }
 
+
     return(
-    <div className={props.themesMenu ? 'themes active' : 'themes'}>
+    <div ref={Ref} className={props.themesMenu ? 'themes active' : 'themes'}>
         <SelectedItens
             arrayOfSubClasses={arrayOfSubClasses}
             arrayOfSCNames={arrayOfSCNames}
@@ -103,13 +107,7 @@ function Themes(props){
             clearAll={clearAll}
         />
         <h2 className="title-element"> Temas </h2>
-        <span className="btn-close" onClick={() => {
-            if(props.clearResidual !== false){props.clearResidual()}
-            props.setThemesMenu(!props.themesMenu)
-            props.setSubClassesArray(arrayOfSubClasses)
-            props.clear((element) => element = clearAll)
-        }
-        }><AiIcons.AiOutlineClose/></span>
+        <span className="btn-close" onClick={() => confirm()}><AiIcons.AiOutlineClose/></span>
 
         <div className="full-list">
         

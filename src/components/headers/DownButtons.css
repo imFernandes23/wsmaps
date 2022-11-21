@@ -4,7 +4,7 @@
 
 @media (min-width: 550px){
     *{
-        --time: 0.8s
+        --time: 0.5s
     }
     .down-buttons{
         position: absolute;
@@ -16,7 +16,7 @@
         padding: 5px;
         border-radius: 25px;
         gap: 10px;
-        top: 75px;
+        top: 70px;
         right: calc(50vw - 235px);
         list-style: none;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);

@@ -1,9 +1,10 @@
 import React from "react";
 import './Search.css'
 import * as AiIcons from 'react-icons/ai'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import ItemSearch from "./ItemSearch"
 import api from "../../../services/api";
+import OutSideClick from "../../hooks/OutsideClick";
 
 let page = 1
 let maxNumPage = 1
@@ -15,7 +16,7 @@ function Search(props){
     const [showMore, setShowMore] = useState(false)
     const [currentWord, setCurrentWord] = useState('')
     const [suportData, setSuportData] = useState([])
-
+    const Ref = useRef(null)
 
 
     useEffect(() => {
@@ -24,9 +25,11 @@ function Search(props){
         }
     }, [dataFound])
 
+    OutSideClick(Ref, props.searchMenu, close)
 
-
-
+    function close(){
+        props.setSearchMenu(!props.searchMenu)
+    }
 
     const clearAll = () => {
         setTextinput('')
@@ -128,7 +131,7 @@ function Search(props){
 
 
     return(
-    <div className={props.searchMenu ? 'search active' : 'search'}>
+    <div ref={Ref} className={props.searchMenu ? 'search active' : 'search'}>
     <h2 className="title-element"> Buscas </h2>
     <span className="btn-close" onClick={() => {props.setSearchMenu(!props.searchMenu)}}>
         <AiIcons.AiOutlineClose/>

@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useRef} from "react";
 import './Undo.css'
 import * as AiIcons from 'react-icons/ai'
+import OutSideClick from "../../hooks/OutsideClick";
 
 function Undo(props){
+    const Ref = useRef(null)
+
+    OutSideClick(Ref, props.undoMenu, close)
+
+    function close(){
+        props.setUndoMenu(false)
+    }
 
     function undoAll(){
         props.setFullData([])
@@ -13,7 +21,7 @@ function Undo(props){
 
 
     return(
-    <div className={props.undoMenu ? 'undo-pop-up active' : 'undo-pop-up'}>
+    <div ref={Ref} className={props.undoMenu ? 'undo-pop-up active' : 'undo-pop-up'}>
         <p className="info">Deseja defaszer tudo? E voltar as configuraçôes padrão?</p>
 
         <span>
@@ -22,7 +30,7 @@ function Undo(props){
             undoAll()}}>
                 <AiIcons.AiOutlineCheck/>
             </button>
-            <button className="button refuse" onClick={() => props.setUndoMenu(false)}>
+            <button className="button refuse" onClick={() => close()}>
                 <AiIcons.AiOutlineClose/>
             </button>
         </span>

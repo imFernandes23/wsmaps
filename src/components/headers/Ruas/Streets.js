@@ -1,14 +1,22 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import StreetsData from './StreetsData'
 import './Streets.css'
+import OutSideClick from "../../hooks/OutsideClick";
 import * as AiIcons from 'react-icons/ai'
 
 
 function Streets(props){
+    const Ref = useRef(null)
 
+    OutSideClick(Ref, props.streetsMenu, close)
 
+    function close(){
+        props.setStreetsMenu(false)
+    }
 
-    return(<div className={props.streetsMenu ? 'streets active' : 'streets'} >
+    
+
+    return(<div ref={Ref} className={props.streetsMenu ? 'streets active' : 'streets'} >
         <h2 className="title-element"> Ruas </h2>
 
             <span className="btn-close" onClick={() => props.setStreetsMenu(!props.streetsMenu)}>

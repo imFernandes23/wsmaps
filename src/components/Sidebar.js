@@ -3,12 +3,18 @@ import './Sidebar.css'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState , useRef} from 'react'
 import {SidebarData} from './SidebarData'
+import OutSideClick from './hooks/OutsideClick'
+
 function Sidebar() {
   const [sidebarVar, setSidebarVar] = useState(false)
-
   const showSidebar = () => setSidebarVar(!sidebarVar)
+  const Ref = useRef(null)
+
+  OutSideClick(Ref, sidebarVar, showSidebar)
+
+
 
   return (
     <>
@@ -18,7 +24,7 @@ function Sidebar() {
         </Link>
     </div>
     <nav className={sidebarVar ? 'side-menu active' : 'side-menu'}>
-      <ul className='side-menu-itens'onClick={showSidebar}>
+      <ul ref={Ref} className='side-menu-itens'onClick={showSidebar}>
         <li className='sidebar-toggle'>
           <Link to='#' className='menu-bars' onClick={showSidebar}>
             <AiIcons.AiOutlineClose/>

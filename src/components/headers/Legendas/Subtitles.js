@@ -22,7 +22,7 @@ function Subtitles(props){
                 {SubStreet.map((item , index) => {
                      if(props.controlArray[index] === true){   
                     return( 
-                        <div className="sub-element">
+                        <div className="sub-element" key={index}>
                             <span className="sub-icon street" style={{'--mainColor': item.color}}></span>
                             <p>{item.name}</p>
 

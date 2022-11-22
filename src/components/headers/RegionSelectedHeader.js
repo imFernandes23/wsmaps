@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useSyncExternalStore } from "react";
+import React, { useState } from "react";
 import "./RegionSelectedHeader.css"
 import "./Header.css"
 import "./DownButtons.css"
@@ -28,7 +28,7 @@ export default function RegionSelectedHeader(props){
 
     //outros elementos
 
-    const [subtitlesBox, setSubtitlesBox] = useState(true)
+    const [subtitlesBox, setSubtitlesBox] = useState(false)
 
     function handleSetStreets(index){
         let newArray = [...props.controlArray]
@@ -121,6 +121,8 @@ export default function RegionSelectedHeader(props){
                     subtitlesBox={subtitlesBox}
                     setSubtitlesBox={setSubtitlesBox}
                     controlArray={props.controlArray}
+                    fullData={props.fullData}
+                    subClassesArray={props.subClassesArray}
                 />    
 
                 </>

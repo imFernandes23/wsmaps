@@ -17,7 +17,7 @@ function Main(){
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
     });
-    const [regionSelected, setRegionSelected] = useState(7);
+    const [regionSelected, setRegionSelected] = useState(null);
     const [fitBounds, setFitBounds] = useState()
 
     //headersSelectedRegion
@@ -120,11 +120,14 @@ function Main(){
             onChange={setControlArray}
             setSubClassesArray={setSubClassesArray}
             regionId={regionId}
+            fullData={fullData}
             setFullData={setFullData}
+            subClassesArray={subClassesArray}
             backButton={() => {
                 setRegionSelected(null)
                 setSubClassesArray([])
             }}
+
         />
         
         {regionSelected !== null ?

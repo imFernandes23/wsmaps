@@ -1,9 +1,10 @@
-import { useState , useEffect} from "react";
+import { useState , useEffect, useRef} from "react";
 import React from "react";
 import * as AiIcons from 'react-icons/ai'
 import SubClassObject from "./SubClassObject";
 import './ClassObject.css'
 import api from "../../../services/api";
+import OutSideClick from "../../hooks/OutsideClick";
 
 export default function ClassObject(props){
     const [isOpen, setIsOpen] = useState(false)
@@ -11,7 +12,11 @@ export default function ClassObject(props){
     const [maxNumPage, setMaxNumPage] = useState(1)
     const [loader, setLoader] = useState(true)
     const [dataLoaded, setDataLoaded] = useState([])
+    const Ref = useRef(null)
     
+    const close = () => setIsOpen(false)
+
+    OutSideClick(Ref, isOpen, close)
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -41,10 +46,12 @@ export default function ClassObject(props){
         }
     }
 
+    
+
 
     return(<>
     
-        <div className={isOpen ? 'class-object active': 'class-object'} >
+        <div ref={Ref} className={isOpen ? 'class-object active': 'class-object'} >
             <div className="object-content" onClick={() => {setIsOpen(!isOpen)}}>
                 <p className="name">{props.name}</p>
                 <AiIcons.AiOutlineRight className={isOpen ? 'icon active' : 'icon'}/>

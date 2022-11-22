@@ -4,14 +4,25 @@ import * as BiIcons from 'react-icons/bi'
 import * as TbIcons from 'react-icons/tb'
 
 import './ToglleSelect.css'
-import { useState, } from 'react';
+import { useState, useRef} from 'react';
+import OutSideClick from "../hooks/OutsideClick";
 
 function ToglleSelect(props){
     const [toglle, setToglle] = useState(false)
+    const Ref = useRef(null)
+    const close = () => {
+        setToglle(false)
+        props.setUndoMenu(false)
+        props.setStreetsMenu(false)
+        props.setThemesMenu(false)
+        props.setSearchMenu(false)
+    }
+
+    OutSideClick(Ref, toglle, close)
 
     return(
         <>
-            <div className={toglle ? 'toglle-menu active' : 'toglle-menu'}>
+            <div ref={Ref} className={toglle ? 'toglle-menu active' : 'toglle-menu'} >
                 <span className={ toglle ? 'btn-toglle active' : 'btn-toglle'} onClick={() => {setToglle(!toglle)
                 props.setUndoMenu(false)
                 props.setStreetsMenu(false)

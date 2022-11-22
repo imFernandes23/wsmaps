@@ -1,34 +1,34 @@
 
 
-const StreetsData = [
+const SubStreet = [
     {
         name: 'Ruas Pavimentadas',
-        color: {backgroundColor:'#ffad29'},
+        color: '#ffad29',
     },
     {
         name: 'Ruas com bloquete',
-        color: {backgroundColor:'#7C7C7C'},
+        color: '#7C7C7C',
     },
     {
         name: 'Ruas sem asfalto',
-        color: {backgroundColor:'#EFE944'},
+        color: '#EFE944',
     },
     {
         name: 'Ruas com alagamentos',
-        color: {backgroundColor:'#005FFF'},
+        color: '#005FFF',
     },
     {
         name: 'Ruas que precisam de reparos',
-        color: {backgroundColor:'#F54516'},
+        color: '#F54516',
     },
     {
         name: 'Ruas obstruidas',
-        color: {backgroundColor:'#000'},
+        color: '#000',
     },
     {
         name: 'Pontos de coleta de lixo',
-        color: {backgroundColor:'#41D606'}
+        color: '#41D606'
     }
 ]
 
-export default StreetsData
+export default SubStreet

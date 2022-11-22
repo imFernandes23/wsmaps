@@ -8,14 +8,17 @@ import Undo from "./Desfazer/Undo";
 import Streets from "./Ruas/Streets";
 import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
+
+import Subtitles from "./Legendas/Subtitles";
 import * as AiIcons from 'react-icons/ai'
 import * as MdIcons from 'react-icons/md'
 
 export default function RegionSelectedHeader(props){
+
+    //ferramentas 
+
     const [undoMenu, setUndoMenu] = useState(false)
-
     const [streetsMenu,setStreetsMenu] = useState(false)
-
 
     const [themesMenu, setThemesMenu] = useState(false)
     const [themesClear, setThemesClear] = useState(false)
@@ -23,6 +26,9 @@ export default function RegionSelectedHeader(props){
     const [searchMenu, setSearchMenu] = useState(false)
     const [searchClear, setSearchClear] = useState(false)
 
+    //outros elementos
+
+    const [subtitlesBox, setSubtitlesBox] = useState(true)
 
     function handleSetStreets(index){
         let newArray = [...props.controlArray]
@@ -64,7 +70,7 @@ export default function RegionSelectedHeader(props){
                 
                 
                 <ul className="down-buttons">
-                    <li>
+                    <li onClick={() => setSubtitlesBox(!subtitlesBox)}>
                         <MdIcons.MdOutlineSubtitles/>
                         <p>Legendas</p>
                     </li>
@@ -111,6 +117,12 @@ export default function RegionSelectedHeader(props){
                     clearResidual={themesClear}
                 />
             
+                <Subtitles
+                    subtitlesBox={subtitlesBox}
+                    setSubtitlesBox={setSubtitlesBox}
+                    controlArray={props.controlArray}
+                />    
+
                 </>
             ):(<><p> </p></>)}
         </div>

@@ -21,7 +21,7 @@ function Subtitles(props){
             setShowMore(false)
         }
             
-    }, [props.fullData])
+    }, [props.fullData, props.subClassesArray])
 
     function SubThemes(Data, SubClasses) {
         const arraySubClass = new Array(SubClasses.length).fill(null)
@@ -62,22 +62,23 @@ function Subtitles(props){
             </span>
 
             <div className="subtitles-content">
-                {SubStreet.map((item , index) => {
+                {SubStreet.map((item , index) => 
+                    {
                      if(props.controlArray[index] === true){   
-                    return( 
+                        return( 
                         <div className="sub-element" key={index}>
                             <span className="sub-icon street" style={{'--mainColor': item.color}}></span>
                             <p>{item.name}</p>
 
                         </div>)
                      }
-                })}
+                } )}
 
                 {showMore ? subThemes.map((item, index) => {
                     return(
                         <div className="sub-element" key={index + 7}>
                             <span style={{'--mainColor' : item.color}}>
-                            <img  src={item.icon} />
+                            <img  src={item.icon} alt='Marker Icon'/>
                             </span>
                             
                             <p className="sub-theme">{item.name}</p>

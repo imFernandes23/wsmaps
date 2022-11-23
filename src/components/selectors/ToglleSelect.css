@@ -72,5 +72,5 @@
 .btn-opt.active > p {
     font-size: 18px;
     margin-right: 15px;
-    transition-delay: calc(var(--value) * 0.2s + .8s);
+    transition-delay: calc(var(--value) * 0.2s + .5s);
 }

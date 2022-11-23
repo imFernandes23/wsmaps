@@ -8,47 +8,41 @@ function Subtitles(props){
     const Ref = useRef(null)
     const close = () => {props.setSubtitlesBox(false)}
     const [subThemes, setSubThemes] = useState([])
-    const [showMore, setShowMore] = useState(false)
+    const [showMore, setShowMore] = useState(true)
 
     OutSideClick(Ref, props.subtitlesBox, close)
 
     useEffect(() => {
 
-        if(props.fullData.length > 0){
-            SubThemes(props.fullData, props.subClassesArray)
-            setShowMore(true)
-        }else{
-            setShowMore(false)
-        }
+        SubThemes(props.fullData)
             
-    }, [props.fullData, props.subClassesArray])
+    }, [props.fullData])
 
-    function SubThemes(Data, SubClasses) {
-        const arraySubClass = new Array(SubClasses.length).fill(null)
-        let search = true
-        
 
-        Data.forEach((item, index) => {
-            if(search === true){
+    function SubThemes(Data) {
+        const arraySubClass = []
+        const arraySubId = []
 
-                SubClasses.forEach((element, index) => {
-                    if(item.subId === element && arraySubClass[index] === null){
-                                            
-                        arraySubClass[index] = ({
-                            name: item.subName,
-                            quant: 0,
-                            icon: item.icon,
-                            id: item.subId,
-                            color: item.color,
-                        })
+        Data.forEach((item) => {
+            let pointer = arraySubId.findIndex((value) => value === item.subId)
 
-                    }else if(item.subId === element && arraySubClass[index] !== null){
-                        arraySubClass[index].quant++
-                    }
+            if(pointer === -1){
+                arraySubClass.push({
+                    name: item.subName,
+                    subId: item.subId,
+                    icon: item.icon,
+                    color: item.color,
+                    quant: 1,
                 })
+
+                arraySubId.push(item.subId)
+            }else{
+                arraySubClass[pointer].quant++
             }
+            
         })
 
+        
         setSubThemes(arraySubClass)
     }
 

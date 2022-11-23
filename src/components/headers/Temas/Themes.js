@@ -18,7 +18,7 @@ function Themes(props){
     const [arrayOfSCStates, setArrayOfSCStates] = useState([])
     const Ref = useRef(null)
 
-    OutSideClick(Ref, props.themesMenu, confirm)
+    OutSideClick(Ref, props.themesMenu, close)
 
     useEffect(() => {
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -91,12 +91,15 @@ function Themes(props){
 
     function confirm (){
         props.setFullData([])
-        if(props.clearResidual !== false){props.clearResidual()}
-        props.setThemesMenu(!props.themesMenu)
         props.setSubClassesArray(arrayOfSubClasses)
-        props.clear((element) => element = clearAll)
+        close()
     }
 
+    function close (){
+        if(props.clearResidual !== false){props.clearResidual()}
+        props.setThemesMenu(!props.themesMenu)
+        props.clear((element) => element = clearAll)
+    }
 
     return(
     <div ref={Ref} className={props.themesMenu ? 'themes active' : 'themes'}>
@@ -107,7 +110,7 @@ function Themes(props){
             clearAll={clearAll}
         />
         <h2 className="title-element"> Temas </h2>
-        <span className="btn-close" onClick={() => confirm()}><AiIcons.AiOutlineClose/></span>
+        <span className="btn-close" onClick={close}><AiIcons.AiOutlineClose/></span>
 
         <div className="full-list">
         

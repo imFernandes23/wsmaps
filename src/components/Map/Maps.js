@@ -3,6 +3,7 @@ import { GoogleMap} from "@react-google-maps/api";
 import { MapStyle } from "./MapStyle";
 import InitialRegions from './InitialRegions'
 import RegionsDraw from './RegionsDraw'
+import RegionDrawConfig from "./RegionDrawConfig";
 import ThemesDrawer from "./ThemesDrawer";
 
 
@@ -63,6 +64,12 @@ function Maps(props){
             <RegionsDraw 
                 region={props.region}
                 controlArrayStreets={props.controlArrayStreets}
+            />
+
+            <RegionDrawConfig
+                region={props.region}
+                controlArrayConfig={props.controlArrayConfig}
+
             />
 
             {   //themes and search

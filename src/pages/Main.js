@@ -142,6 +142,7 @@ function Main(){
                     view={fitBounds}
                     region={regionSelected}
                     controlArrayStreets={controlArrayStreets}
+                    controlArrayConfig={controlArrayConfig}
                     fullData={fullData}
 
                 />

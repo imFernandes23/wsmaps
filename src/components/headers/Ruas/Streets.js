@@ -27,11 +27,12 @@ function Streets(props){
             {StreetsData.map((item, index) => {
                 return(
                     <div className="element" key={index}>
-                        <p className="ele-nome">{item.name}</p>
                         <div className="color-element" style={item.color}></div>
+                        <p className="ele-nome">{item.name}</p>
+                        
                         <input
                             type='checkbox'
-                            checked={props.controlArray[index]}
+                            checked={props.controlArrayStreets[index]}
                             onChange={() => props.handleSetStreets(index)}
                         />
                     </div>

@@ -58,7 +58,7 @@ function Subtitles(props){
             <div className="subtitles-content">
                 {SubStreet.map((item , index) => 
                     {
-                     if(props.controlArray[index] === true){   
+                     if(props.controlArrayStreets[index] === true){   
                         return( 
                         <div className="sub-element" key={index}>
                             <span className="sub-icon street" style={{'--mainColor': item.color}}></span>

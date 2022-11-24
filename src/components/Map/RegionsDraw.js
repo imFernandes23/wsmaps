@@ -351,26 +351,26 @@ export default function RegionsDraw(props){
         <div key={'areaLimits'}>
             {DrawAreaLimits()}
         </div>
-        {props.controlArray[0] ? (<>
+        {props.controlArrayStreets[0] ? (<>
             <div key={'areaAsphalt'}>{DrawAreaAsphalt()}</div>
         </>): ('')}
-        {props.controlArray[1] ? (<>
+        {props.controlArrayStreets[1] ? (<>
             <div key={'areaBlock'}>{DrawAreaBlock()}</div>
         </>): ('')}
-        {props.controlArray[2] ? (<>
+        {props.controlArrayStreets[2] ? (<>
             <div key={'areaUnpaved'}>{DrawAreaUnpaved()}</div>
         </>): ('')}
-        {props.controlArray[3] ? (<>
+        {props.controlArrayStreets[3] ? (<>
             <div key={'areaFlooding'}>{DrawAreaFlooding()}</div>
         </>): ('')}
-        {props.controlArray[4] ? (<>
+        {props.controlArrayStreets[4] ? (<>
             <div key={'areaRepairs'}>{DrawAreaRepairs()}</div>
         </>): ('')}
-        {props.controlArray[5] ? (<>
+        {props.controlArrayStreets[5] ? (<>
             <div key={'areaObstructed'}>{DrawAreaObstructed()}</div>
         </>): ('')}
-        {props.controlArray[6] ? (<>
+        {/* {props.controlArray[6] ? (<>
             <div key={'areaDisposal'}>{DrawAreaDisposal()}</div>
-        </>): ('')}
+        </>): ('')} */}
     </>)
 }

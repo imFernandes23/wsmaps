@@ -10,6 +10,8 @@ import Themes from './Temas/Themes'
 import Search from "./Buscas/Search";
 
 import Subtitles from "./Legendas/Subtitles";
+import Configurations from "./Configuracoes/Configurations";
+
 import * as AiIcons from 'react-icons/ai'
 import * as MdIcons from 'react-icons/md'
 
@@ -30,11 +32,20 @@ export default function RegionSelectedHeader(props){
 
     const [subtitlesBox, setSubtitlesBox] = useState(false)
 
+    const [configurationsBox, setConfigurationsBox] = useState(false)
+
     function handleSetStreets(index){
-        let newArray = [...props.controlArray]
-        newArray[index] = !props.controlArray[index]
-        props.onChange(newArray)
+        let newArray = [...props.controlArrayStreets]
+        newArray[index] = !props.controlArrayStreets[index]
+        props.setControlArrayStreets(newArray)
     }
+
+    function handleSetConfig(index){
+        let newArray = [...props.controlArrayConfig]
+        newArray[index] = !props.controlArrayConfig[index]
+        props.setControlArrayConfig(newArray)
+    }
+
 
 
 
@@ -74,7 +85,7 @@ export default function RegionSelectedHeader(props){
                         <MdIcons.MdOutlineSubtitles/>
                         <p>Legendas</p>
                     </li>
-                    <li>
+                    <li onClick={() => setConfigurationsBox(!configurationsBox)}>
                         <AiIcons.AiOutlineSetting/>
                         <p>Configurações</p>
                     </li>
@@ -95,7 +106,7 @@ export default function RegionSelectedHeader(props){
                 <Streets
                     streetsMenu={streetsMenu}
                     setStreetsMenu={setStreetsMenu}
-                    controlArray={props.controlArray}
+                    controlArrayStreets={props.controlArrayStreets}
                     handleSetStreets={handleSetStreets}
                 />
 
@@ -120,10 +131,17 @@ export default function RegionSelectedHeader(props){
                 <Subtitles
                     subtitlesBox={subtitlesBox}
                     setSubtitlesBox={setSubtitlesBox}
-                    controlArray={props.controlArray}
+                    controlArrayStreets={props.controlArrayStreets}
                     fullData={props.fullData}
                     subClassesArray={props.subClassesArray}
-                />    
+                />   
+
+                <Configurations
+                    configurationsBox={configurationsBox}
+                    setConfigurationsBox={setConfigurationsBox}
+                    controlArrayConfig={props.controlArrayConfig}
+                    handleSetConfig={handleSetConfig}
+                />
 
                 </>
             ):(<><p> </p></>)}

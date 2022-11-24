@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect, useState, useSyncExternalStore} from "react";
 import {useLoadScript} from '@react-google-maps/api'
 import Maps from '../components/Map/Maps'
 import RegionsInitVectors from "../components/Map/RegionsInitVectors";
@@ -24,7 +24,8 @@ function Main(){
 
 
 
-    const [controlArray, setControlArray] = useState([true,false,true,false,false,false,false])
+    const [controlArrayStreets, setControlArrayStreets] = useState([true,true,true,true,false,false])
+    const [controlArrayConfig, setControlArrayConfig] = useState([false,false])
     const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
@@ -116,8 +117,12 @@ function Main(){
         <RegionSelectedHeader
             labels={regionsInitVectors.regionsLabel}
             setRegion={regionSelected}
-            controlArray={controlArray}
-            onChange={setControlArray}
+
+            controlArrayStreets={controlArrayStreets}
+            setControlArrayStreets={setControlArrayStreets}
+            controlArrayConfig={controlArrayConfig}
+            setControlArrayConfig={setControlArrayConfig}
+
             setSubClassesArray={setSubClassesArray}
             regionId={regionId}
             fullData={fullData}
@@ -136,7 +141,7 @@ function Main(){
                 <Maps 
                     view={fitBounds}
                     region={regionSelected}
-                    controlArray={controlArray}
+                    controlArrayStreets={controlArrayStreets}
                     fullData={fullData}
 
                 />

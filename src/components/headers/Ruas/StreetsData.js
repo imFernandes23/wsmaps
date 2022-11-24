@@ -25,10 +25,7 @@ const StreetsData = [
         name: 'Ruas obstruidas',
         color: {backgroundColor:'#000'},
     },
-    {
-        name: 'Pontos de coleta de lixo',
-        color: {backgroundColor:'#41D606'}
-    }
+    
 ]
 
 export default StreetsData

@@ -58,11 +58,11 @@ function Maps(props){
 
             </>):(<></>)} 
         
-            {   //configurations
+            {   //streets
                 props.region !== undefined ? (<>
             <RegionsDraw 
                 region={props.region}
-                controlArray={props.controlArray}
+                controlArrayStreets={props.controlArrayStreets}
             />
 
             {   //themes and search

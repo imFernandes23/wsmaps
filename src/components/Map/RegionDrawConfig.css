@@ -43,4 +43,18 @@
     align-items: center;
     cursor: default;
     box-shadow: 0 0 5px var(--MainColor);
+    z-index: 10000;
+    animation: 2s markPosi infinite linear;
+}
+
+
+
+@keyframes markPosi {
+    0%{
+        transform: translateX(-50%) translateY(-120%) rotate(-45deg);
+    }
+    50%{
+        transform: translateX(-50%) translateY(-110%) rotate(-45deg);
+    }
+    100%{transform: translateX(-50%) translateY(-120%) rotate(-45deg);}
 }

@@ -132,8 +132,10 @@ export default function RegionSelectedHeader(props){
                     subtitlesBox={subtitlesBox}
                     setSubtitlesBox={setSubtitlesBox}
                     controlArrayStreets={props.controlArrayStreets}
+                    controlArrayConfig={props.controlArrayConfig}
                     fullData={props.fullData}
                     subClassesArray={props.subClassesArray}
+                    
                 />   
 
                 <Configurations

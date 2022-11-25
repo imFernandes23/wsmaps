@@ -1,8 +1,9 @@
 import React, {useRef, useState, useEffect} from "react";
 import "./Subtitles.css"
 import OutSideClick from "../../hooks/OutsideClick";
-import * as AiIcons from 'react-icons/ai'
+import * as AiIcons from 'react-icons/ai';
 import SubStreet from "./SubStreets";
+import SubConfigs from "./SubConfigs.js";
 
 function Subtitles(props){
     const Ref = useRef(null)
@@ -68,9 +69,21 @@ function Subtitles(props){
                      }
                 } )}
 
+                {SubConfigs.map((item , index) => 
+                    {
+                     if(props.controlArrayConfig[index] === true){   
+                        return( 
+                        <div className="sub-element" key={index + 2}>
+                            <span className="sub-icon street" style={{'--mainColor': item.color}}></span>
+                            <p>{item.name}</p>
+
+                        </div>)
+                     }
+                } )}
+
                 {showMore ? subThemes.map((item, index) => {
                     return(
-                        <div className="sub-element" key={index + 7}>
+                        <div className="sub-element" key={index + 9}>
                             <span style={{'--mainColor' : item.color}}>
                             <img  src={item.icon} alt='Marker Icon'/>
                             </span>

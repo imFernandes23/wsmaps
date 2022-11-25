@@ -98,7 +98,8 @@ export default function RegionSelectedHeader(props){
                     undoMenu={undoMenu}
                     setUndoMenu={setUndoMenu}
                     setFullData={props.setFullData}
-                    setControlArray={props.onChange}
+                    setControlArrayStreets={props.setControlArrayStreets}
+                    setControlArrayConfig={props.setControlArrayConfig}
                     searchClear={searchClear}
                     themesClear={themesClear}
                 />

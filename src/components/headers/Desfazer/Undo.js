@@ -14,7 +14,8 @@ function Undo(props){
 
     function undoAll(){
         props.setFullData([])
-        props.setControlArray([true,true,true,true,true,true,false])
+        props.setControlArrayStreets([true,true,true,true,false,false])
+        props.setControlArrayConfig([false,false])
         if(props.themesClear !== false){props.themesClear()}
         if(props.searchClear !== false){props.searchClear()}
     }

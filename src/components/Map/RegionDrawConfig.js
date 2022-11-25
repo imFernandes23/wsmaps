@@ -1,8 +1,36 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { MarkerF, OverlayView } from "@react-google-maps/api";
 import Regions from "../../data/Regions";
+import './RegionDrawConfig.css'
+import trashSvg from "../../assets/svg/trash.svg"
 
 function RegionDrawConfig(props){
+    const [myPosi, setMyPosi] = useState()
+    
+    useEffect(() => {
+
+    },[props.controlArrayConfig[0]])
+
+    navigator.geolocation.watchPosition(position => { console.log(position)})
+
+    function DrawCurrentPosi(){
+        navigator.geolocation.watchPosition((position) => {
+            setMyPosi({lat: position.coords.latitude, lng: position.coords.longitude})   
+        })
+
+
+        return(
+            <OverlayView position={myPosi} mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+                
+                   <div 
+                        style={{'--MainColor': '#06D6CC'}} 
+                        className='marker-posi'
+                   >
+                   </div> 
+
+            </OverlayView>
+        )
+    }
 
     function DrawAreaDisposal(){
         const disposalArray = []
@@ -26,9 +54,10 @@ function RegionDrawConfig(props){
                 
                    <div 
                         style={{'--MainColor': '#8CDC04'}} 
-                        className='marker'
+                        className='marker-disposal'
                    >
-                    
+                        <img src={trashSvg} alt="disposal icon" className="disposal-icon"/>
+
                    </div> 
 
             </OverlayView>
@@ -38,14 +67,23 @@ function RegionDrawConfig(props){
     }
 
     return(<>
+
         <div>
-        {props.controlArrayConfig[1] ? (<>
-            <div key={'areaDisposal'}>{DrawAreaDisposal()}</div>
+        {props.controlArrayConfig[0] ? (<>
+            <div key={'MyPosition'}>{DrawCurrentPosi()}</div>
         </>): ('')}
         </div>
+
+        <div>
+        {/* {props.controlArrayConfig[1] ? (<>
+            <div key={'areaDisposal'}>{DrawAreaDisposal()}</div>
+        </>): ('')} */}
+        </div>
+
+        
     </>)
 
-
+  
 }
 
 export default RegionDrawConfig

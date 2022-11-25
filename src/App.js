@@ -1,4 +1,4 @@
-//safe-place-4.0
+//safe-place-6.0
 
 import React from "react";
 import Sidebar from "./components/Sidebar";

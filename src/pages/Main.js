@@ -22,15 +22,12 @@ function Main(){
 
     //headersSelectedRegion
 
-
-
     const [controlArrayStreets, setControlArrayStreets] = useState([true,true,true,true,false,false])
     const [controlArrayConfig, setControlArrayConfig] = useState([false,false])
     const [subClassesArray, setSubClassesArray] = useState([])
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
     const [fullData, setFullData] = useState([])
-  
 
     //headersSelectedRegion
 
@@ -96,7 +93,12 @@ function Main(){
         }
     }
 
-
+    const backButton = () => {
+        setRegionSelected(null)
+        setSubClassesArray([])
+        setControlArrayConfig([false,false])
+        setControlArrayStreets([true,true,true,true,false,false])
+    }
 
 
     if(!isLoaded){
@@ -128,10 +130,7 @@ function Main(){
             fullData={fullData}
             setFullData={setFullData}
             subClassesArray={subClassesArray}
-            backButton={() => {
-                setRegionSelected(null)
-                setSubClassesArray([])
-            }}
+            backButton={backButton}
 
         />
         

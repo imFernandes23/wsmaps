@@ -66,6 +66,7 @@
     z-index: -1;
     transition: .5s;
     padding: 10px;
+    border: 1px solid #0468BF;
 }
 
 .region-chart-body span{
@@ -95,4 +96,5 @@
     max-height: 400px;
     overflow-y: scroll;
     scale: 1;
+    
 }

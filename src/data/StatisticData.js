@@ -1,4 +1,4 @@
-const DataStatic = [
+export const StatisticData = [
     {
         label: 'Benguí',
         area: 1.92 ,
@@ -138,7 +138,7 @@ const DataStatic = [
         domiciliosComCaucada: 30.15,
     },
     {
-        label: 'Nova União/São Francisco',
+        label: 'N. União/S. Francisco',
         area: 2.79,
         concentracaoPopulacional: 5241,
         totalDeDomicilios: 3645,

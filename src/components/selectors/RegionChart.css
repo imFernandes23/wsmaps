@@ -49,6 +49,37 @@
     transition: 1s;
 }
 
+.region-chart-body{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    left: -25px;
+    height: 40px;
+    border-radius: 20px;
+    gap: 5px;
+    align-items: center;
+    transform-origin: top center;
+    scale: 0;
+    overflow: hidden;
+    z-index: -1;
+    transition: .5s;
+    padding: 10px;
+}
+
+.region-chart-body span{
+    display: flex;
+    position: relative;
+    height: 40px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    left: -5px;
+}
+
+.region-chart-body span p {
+    width: 200px;
+}
+
 /* Comportamento do Seletor Aberto */
 
 .region-chart-header.active span{
@@ -56,4 +87,12 @@
 }
 .region-chart-header.active span svg{
     transform: rotate(0deg);
+}
+
+.region-chart-body.active{
+    transform: translateY(50px);
+    height: auto;
+    max-height: 400px;
+    overflow-y: scroll;
+    scale: 1;
 }

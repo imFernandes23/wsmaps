@@ -5,20 +5,17 @@ import ChartsTable from "../components/tables/ChartsTable";
 
 function Statistics(){
     const [controlChart , setControlChart] = useState([true, true, true, true, true, true, true])
-
-    useEffect(() => {
-        console.log('mofidy data')
-    },[controlChart])
-
+    
     return(
         <div className="Page">
             <RegionChart
                 data={StatisticData}
                 controlChart={controlChart}
                 setControlChart={setControlChart}
+
             />
 
-            <ChartsTable/>
+            <ChartsTable controlChart={controlChart} data={StatisticData}/>
         </div>
     )
 }

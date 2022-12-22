@@ -138,7 +138,7 @@ export const StatisticData = [
         domiciliosComCaucada: 30.15,
     },
     {
-        label: 'N. União/S. Francisco',
+        label: 'N. Un/S. Fr',
         area: 2.79,
         concentracaoPopulacional: 5241,
         totalDeDomicilios: 3645,

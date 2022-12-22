@@ -1,12 +1,12 @@
-@media (orientation: portrait) and (max-width: 740px){
+@media (orientation: portrait) and (max-width: 840px){
     .charts-table{
         position: absolute;
         bottom: 15px;
-        left: calc(50vw - 185px);
-        width: 370px;
+        left: calc(50vw - 210px);
+        width: 420px;
         padding: 10px;
         height: calc(100vh - 150px);
-        background-color: white;
+        background-color: transparent;
         border-radius: 10px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -17,7 +17,7 @@
     }
 
     .grafh{
-        width: 350px;
+        width: 400px;
         height: 250px;
         background-color: white;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -26,12 +26,12 @@
     }
 }
 
-@media (min-width: 741px){
+@media (min-width: 841px){
     .charts-table{
         position: absolute;
         bottom: 15px;
-        left: calc(50vw - 365px);
-        width: 740px;
+        left: calc(50vw - 420px);
+        width: 840px;
         padding: 10px 0 10px 15px;
         height: calc(100vh - 150px);
         background-color: white;
@@ -45,7 +45,7 @@
     }
 
     .grafh{
-        width: 350px;
+        width: 400px;
         height: 250px;
         background-color: white;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -54,12 +54,12 @@
     }
 }
 
-@media (min-width: 1100px){
+@media (min-width: 1240px){
     .charts-table{
         position: absolute;
         bottom: 15px;
-        left: calc(50vw - 550px);
-        width: 1100px;
+        left: calc(50vw - 620px);
+        width: 1250px;
         padding: 10px 0 10px 15px;
         height: calc(100vh - 150px);
         background-color: white;
@@ -72,7 +72,7 @@
         column-gap:10px;
     }
     .grafh{
-        width: 350px;
+        width: 400px;
         height: 250px;
         background-color: white;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);

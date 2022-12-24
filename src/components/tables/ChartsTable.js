@@ -14,6 +14,17 @@ function ChartsTable(props){
     const [seriesMedMorad, setSeriesMedMorad] = useState([])
     const [seriesRendaMedChefFM, setSeriesRendaMedChefFM] = useState([])
     const [seriesRendaMedPO, setSeriesRendaMedPO] = useState([])
+    const [seriesChefAlfa, setSeriesChefAlfa] = useState([])
+    const [seriesPessDBranc, setSeriesPessDBranc] = useState([])
+    const [seriesPessDPret, setSeriesPessDPret ] = useState([])
+    const [seriesChefMulh, setSeriesChefMulh] = useState([])
+    const [seriesAbstAgua, setSeriesAbstAgua] = useState([])
+    const [seriesColetLixo, setSeriesColetLixo] = useState([])
+    const [seriesArborizacao, setSeriesArborizacao] = useState([])
+    const [seriesEsgotoAbert, setSeriesEsgotoAbert] = useState([])
+    const [seriesIlumiPub, setSeriesIlumiPub] = useState([])
+    const [seriesViasPavi, setSeriesViasPavi] = useState([])
+    const [seriesDomCaucada, setSeriesDomCaucada] = useState([])
 
     useEffect(() => {
 
@@ -32,6 +43,17 @@ function ChartsTable(props){
         let seriesMedMorad = []
         let seriesRendaMedChefFM = []
         let seriesRendaMedPO = []
+        let seriesChefAlfa = []
+        let seriesPessDBranc = []
+        let seriesPessDPret = []
+        let seriesChefMulh = []
+        let seriesAbstAgua = []
+        let seriesColetLixo = []
+        let seriesArborizacao = []
+        let seriesEsgotoAbert = []
+        let seriesIlumiPub = []
+        let seriesViasPavi = []
+        let seriesDomCaucada = []
 
 
         array.forEach((item, index) => {
@@ -46,7 +68,19 @@ function ChartsTable(props){
                 seriesMedMorad.push(data[index].mediaDeMoradoresEmDomicilios)
                 seriesRendaMedChefFM.push(data[index].rendaMediaDosChefesDeFamilia)
                 seriesRendaMedPO.push(data[index].rendaMediaDasPessoasOcupadas)
-                
+                seriesChefAlfa.push(data[index].chefesDeFamiliaAlfabetizados)
+                seriesPessDBranc.push(data[index].pessoasDeclaradasBrancas)
+                seriesPessDPret.push(data[index].cessoasDeclaradasPretas)
+                seriesChefMulh.push(data[index].chefeDeDomicilioMulheres)
+                seriesAbstAgua.push(data[index].domiciliosComAbastecimentoDeAguaPelaRedeGeral)
+                seriesColetLixo.push(data[index].domiciliosComColetaDeLixo)
+                seriesArborizacao.push(data[index].domiciliosComArborizacaoNasRuas)
+                seriesEsgotoAbert.push(data[index].esgotoEmViasACeuAberto)
+                seriesIlumiPub.push(data[index].domiciliosComIlumincaoPublica)
+                seriesViasPavi.push(data[index].domiciliosComViasPavimentadas)
+                seriesDomCaucada.push(data[index].domiciliosComCaucada)
+
+
 
             }
         })
@@ -61,6 +95,17 @@ function ChartsTable(props){
         setSeriesMedMorad(seriesMedMorad)
         setSeriesRendaMedChefFM(seriesRendaMedChefFM)
         setSeriesRendaMedPO(seriesRendaMedPO)
+        setSeriesChefAlfa(seriesChefAlfa)
+        setSeriesPessDBranc(seriesPessDBranc)
+        setSeriesPessDPret(seriesPessDPret)
+        setSeriesChefMulh(seriesChefMulh)
+        setSeriesAbstAgua(seriesAbstAgua)
+        setSeriesColetLixo(seriesColetLixo)
+        setSeriesArborizacao(seriesArborizacao)
+        setSeriesEsgotoAbert(seriesEsgotoAbert)
+        setSeriesIlumiPub(seriesIlumiPub)
+        setSeriesViasPavi(seriesViasPavi)
+        setSeriesDomCaucada(seriesDomCaucada)
 
     }
 
@@ -71,12 +116,16 @@ function ChartsTable(props){
         <div className="grafh">
             <ApexChart
                 type="pie"
-                width={400}
-                height={250}
+                width={'100%'}
+
                 series={seriesArea}
                 options={{
                     title:{text:'Área em km2'},
                     noData:{text:'Insira regiões.'},
+                    chart:{
+                        width: '100%',
+                        height: '100%'
+                    },
                     labels:labels,
                     dataLabels:{
                         formatter: function(val, opts){
@@ -93,13 +142,16 @@ function ChartsTable(props){
         <div className="grafh">
         <ApexChart
                 type="pie"
-                width={400}
-                height={250}
+                width={'100%'}
                 series={seriesHab}
                 options={{
                     title:{text:'Concentração Populacional (Habitantes/km2)'},
                     noData:{text:'Insira regiões.'},
                     labels:labels,
+                    chart:{
+                        width:'100%',
+                        height:'100%'
+                    },
                     dataLabels:{
                         formatter: function(val, opts){
                             return opts.w.config.series[opts.seriesIndex]
@@ -112,8 +164,7 @@ function ChartsTable(props){
         </div>
         <div className="grafh">
         <ApexChart
-                width={400}
-                height={250}
+                width={'100%'}
                 series={[{
                     name: 'Total de Domicílios',
                     type: 'column',
@@ -125,7 +176,8 @@ function ChartsTable(props){
                 }]}
                 options={{
                     chart:{
-                        height:250,
+                        width:'100%',
+                        height:'100%',
                         type:'line',
                         toolbar:{
                             show:false,
@@ -139,6 +191,9 @@ function ChartsTable(props){
                     },
                     noData:{text:'Insira regiões.'},
                     labels: labels,
+                    markers: {
+                        size: [0, 4]
+                    },
                     xaxis: {
                         labels:{
                             style:{
@@ -168,8 +223,7 @@ function ChartsTable(props){
         </div>
         <div className="grafh">
         <ApexChart
-                width={400}
-                height={250}
+                width={'100%'}
                 series={[{
                     name: 'Rendimento Total',
                     type: 'column',
@@ -181,7 +235,8 @@ function ChartsTable(props){
                 }]}
                 options={{
                     chart:{
-                        height:250,
+                        width: '100%',
+                        height: '100%',
                         type:'line',
                         toolbar:{
                             show:false,
@@ -195,6 +250,10 @@ function ChartsTable(props){
                     },
                     noData:{text:'Insira regiões.'},
                     labels: labels,
+                    dataLabels:{
+                        enabled: true,
+                        enabledOnSeries: [1]
+                    },
                     xaxis: {
                         labels:{
                             style:{
@@ -229,8 +288,7 @@ function ChartsTable(props){
         </div>
         <div className="grafh">
         <ApexChart
-                width={400}
-                height={250}
+                width={'100%'}
                 series={[
                 {
                     name: 'Média de moradores em domicílios',
@@ -249,20 +307,24 @@ function ChartsTable(props){
                 ]}
                 options={{
                     chart:{
-                        height:250,
+                        width:'100%',
+                        height:'100%',
                         type:'line',
                         toolbar:{
                             show:false,
                         }
                     },
                     stroke:{
-                        width:[0 , 2, 2 ]
+                        width:[0 , 2, 2]
                     },
                     title: { 
                         text:'Total de domicílios e seus respectivos moradores'
                     },
                     noData:{text:'Insira regiões.'},
                     labels: labels,
+                    dataLabels:{
+                        enabled: true
+                    },
                     xaxis: {
                         labels:{
                             style:{
@@ -295,9 +357,194 @@ function ChartsTable(props){
             >
             </ApexChart>
         </div>
-        <div className="grafh">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat</div>
-        <div className="grafh">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat</div>
-        <div className="grafh">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat</div>
+        <div className="grafh">
+        <ApexChart
+                width={'100%'}
+                series={[{
+                    name: 'Chefes de familia alfabetizados',
+                    type: 'column',
+                    data: seriesChefAlfa
+                },{
+                    name: 'Pessoas declaradas brancas',
+                    type: 'line',
+                    data: seriesPessDBranc
+                },{
+                    name: 'Pessoas declaradas pretas',
+                    type: 'line',
+                    data: seriesPessDPret
+                },{
+                    name: 'Chefes de domicilios mulheres',
+                    type: 'line',
+                    data: seriesChefMulh
+                }]}
+                options={{
+                    chart:{
+                        width:'100%',
+                        height:'100%',
+                        type:'line',
+                        toolbar:{
+                            show:false,
+                        }
+                    },
+                    stroke:{
+                        width:[0, 2]
+                    },
+                    title: { 
+                        text:'Caracterização dos domicilios (%).'
+                    },
+                    noData:{text:'Insira regiões.'},
+                    dataLabels:{
+                        enabled: true
+                    },
+                    labels: labels,
+                    xaxis: {
+                        labels:{
+                            style:{
+                                fontSize: '10px',
+
+                            }
+                        },
+                        type: 'category',
+                    },
+                    yaxis:{
+                        labels:{
+                            formatter: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+
+                    
+
+                }}
+            >
+            </ApexChart>
+        </div>
+        <div className="grafh">
+        <ApexChart
+                width={'100%'}
+                series={[{
+                    name: 'Domicílios com abastecimento de água pela rede geral',
+                    type: 'line',
+                    data: seriesAbstAgua
+                },{
+                    name: 'Domicílios com com coleta de lixo',
+                    type: 'line',
+                    data: seriesColetLixo
+                },{
+                    name: 'Domicílios com arborização',
+                    type: 'line',
+                    data: seriesArborizacao
+                },{
+                    name: 'Domicilios com esgoto à céu aberto',
+                    type: 'line',
+                    data: seriesEsgotoAbert
+                }]}
+                options={{
+                    chart:{
+                        width:'100%',
+                        height:'100%',
+                        type:'line',
+                        toolbar:{
+                            show:false,
+                        }
+                    },
+                    stroke:{
+                        width:[2, 2, 3, 2]
+                    },
+                    title: { 
+                        text:'Condições dos domicílios. (%)'
+                    },
+                    noData:{text:'Insira regiões.'},
+                    dataLabels:{
+                        enabled:true,
+
+                    },
+                    labels: labels,
+                    xaxis: {
+                        labels:{
+                            style:{
+                                fontSize: '10px',
+
+                            }
+                        },
+                        type: 'category',
+                    },
+                    yaxis:{
+                        labels:{
+                            formatter: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+
+                    
+
+                }}
+            >
+            </ApexChart>
+        </div>
+        <div className="grafh">
+        <ApexChart
+                width={'100%'}
+                series={[{
+                    name: 'Domicílios com iluminação pública',
+                    type: 'line',
+                    data: seriesIlumiPub
+                },{
+                    name: 'Domicílios com ruas pavimentadas',
+                    type: 'line',
+                    data: seriesViasPavi
+                },{
+                    name: 'Domicílios com cauçada',
+                    type: 'line',
+                    data: seriesDomCaucada
+                }]}
+                options={{
+                    chart:{
+                        width:'100%',
+                        height:'100%',
+                        type:'line',
+                        toolbar:{
+                            show:false,
+                        }
+                    },
+                    stroke:{
+                        width:[2, 2, 2]
+                    },
+                    title: { 
+                        text:'Condições dos domicílios. (%)'
+                    },
+                    noData:{text:'Insira regiões.'},
+                    dataLabels:{
+                        enabled:true,
+
+                    },
+                    labels: labels,
+                    xaxis: {
+                        labels:{
+                            style:{
+                                fontSize: '10px',
+
+                            }
+                        },
+                        type: 'category',
+                    },
+                    yaxis:{
+                        labels:{
+                            formatter: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+
+                    
+
+                }}
+            >
+            </ApexChart>
+        </div>
+        <p>Fonte: IBGE 2010</p>
     </div>
 }
 

@@ -537,9 +537,6 @@ function ChartsTable(props){
                             }
                         }
                     }
-
-                    
-
                 }}
             >
             </ApexChart>

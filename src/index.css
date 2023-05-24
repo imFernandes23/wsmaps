@@ -7,17 +7,11 @@
     box-sizing: border-box;
 }
 
-#root{
+body, html {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
-
-.body{
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 
 .icon-div{
   width: 20px;

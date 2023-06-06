@@ -17,8 +17,8 @@ function App() {
         <Route path='statistics' element={<Statistics/>} />
         <Route path='about' element={<About/>} />
         <Route path='credits' element={<Credits/>} />
-        <Route path="/" exact={true} element={<Main/>}></Route>
-        <Route path="/projeto-maps" element={<Main/>}/>
+        <Route path="/wsmaps" exact={true} element={<Main/>}></Route>
+        <Route path="/wsmaps" element={<Main/>}/>
       </Routes>
     </Router>
     </>

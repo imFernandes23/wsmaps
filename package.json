@@ -2,7 +2,7 @@
   "name": "projeto-maps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://imFernandes23.github.io/projeto-maps",
+  "homepage": "https://imFernandes23.github.io/wsmaps",
   "dependencies": {
     "@react-google-maps/api": "^2.12.1",
     "@testing-library/jest-dom": "^5.16.5",

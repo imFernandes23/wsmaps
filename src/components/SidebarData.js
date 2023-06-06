@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai'
 export const SidebarData = [
     {
         title: 'Navegar',
-        path: '/',
+        path: '/wsmaps',
         icon: <AiIcons.AiOutlineEnvironment/>,
         cName: 'nav-text'
     },

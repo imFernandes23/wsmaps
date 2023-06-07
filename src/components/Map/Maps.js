@@ -12,7 +12,7 @@ function Maps(props){
         disableDefaultUI: true,
         clickableIcons: false,
         styles: MapStyle,
-    
+        gestureHandling: 'greedy'
     }), [])
 
 
@@ -40,7 +40,7 @@ function Maps(props){
             mapContainerClassName='map-container'
             options={options}
             onLoad = {onLoad}
-            onBoundsChanged={{}}       
+            onBoundsChanged={{}}
         >
 
             {props.polygonsInit !== undefined ? (<>{

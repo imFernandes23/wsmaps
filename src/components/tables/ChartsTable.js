@@ -110,8 +110,6 @@ function ChartsTable(props){
     }
 
 
-    console.log(props.data)
-
     return <div className="charts-table">
         <div className="grafh">
             <ApexChart

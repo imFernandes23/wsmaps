@@ -15,7 +15,7 @@ let regionsGetFitBounds = RegionsGetFitBounds()
 
 function Main(){
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
+        googleMapsApiKey: process.env.REACT_APP_API_KEY,
     });
     const [regionSelected, setRegionSelected] = useState(null);
     const [fitBounds, setFitBounds] = useState()
@@ -28,6 +28,9 @@ function Main(){
     const [inLoadScreen, setInLoadScreen] = useState(false)
     const [regionId, setRegionId] = useState()
     const [fullData, setFullData] = useState([])
+     
+    
+
 
     //headersSelectedRegion
 

@@ -8,7 +8,10 @@ import Statistics from "./pages/Statistics";
 import About from "./pages/About";
 import Credits from "./pages/Credits";
 
+
+
 function App() {
+
   return (
     <>
     <Router>

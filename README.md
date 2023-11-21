@@ -23,9 +23,14 @@ A interface conta com as ferramentas de. Temas para selecionar locais de enteres
 *Telas das Ferramentas*
 
 # Tecnologias
+Este projeto foi objeto de pesquisa do meu TCC na conclusão do curso de engenharia da computação, com o tema: "Considerações de Design para Visualização de Dados Sociais em Mapas Web". E para a publicação de um artigo no CLIHC23 como o título de "Design Considerations for Visualizing Social Data in Web Maps" onde é abordado diversass considerações de design e usabilidade para este tipo de aplicação. Neste projeto foram utilizadas as seguintes tecnologias.
+
     - React.js
     - GoogleMapsAPI.js
     - Google Cloud
     - Axios
     - CSS3
+
+# Mais
+Se você curtiu a ideia ou quer dar uma olhada no projeto, ele está online no github pages e você pode acessa-lo clicando <a href="https://imfernandes23.github.io/wsmaps/">AQUI</a>.
 
